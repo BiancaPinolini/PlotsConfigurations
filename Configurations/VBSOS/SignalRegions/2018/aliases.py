@@ -26,10 +26,12 @@ aliases['R_j2l1'] = {
         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[0],-9999.),2))',
         'samples': mc + ['DATA']
 }
+
 aliases['R_j1l2'] = {
         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[1],-9999.),2))',
         'samples': mc + ['DATA']
 }
+
 aliases['R_j2l2'] = {
         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))',
         'samples': mc + ['DATA']
@@ -58,7 +60,7 @@ aliases['cut_index'] = {
 
 
 #
-aliases['detall'] = {
+aliases['detall_alias'] = {
     'expr': 'fabs(Lepton_eta[0]-Lepton_eta[1])',
     'samples': mc + ['DATA']
 }
@@ -78,7 +80,7 @@ aliases['eta2'] = {
     'expr': 'Lepton_eta[1]',
     'samples': mc + ['DATA']
 }
-aliases['dphijj'] = {
+aliases['dphijj_alias'] = {
     'expr': 'fabs(Alt$(CleanJet_phi[0],-9999.)-Alt$(CleanJet_phi[1],-9999.))',
     'samples': mc + ['DATA']
 }

@@ -71,6 +71,8 @@ MVAReader_emloose_v1::evaluate(unsigned)
     return -999.;
   }
 
+  // std::cout << "LOOSE = " << (int)(*(cut_index->Get())) << " " << cut_ << std::endl;
+
   std::vector<float> input{};
 
   input.push_back( TMath::Abs(*(detajj->Get())));
@@ -99,14 +101,14 @@ MVAReader_emloose_v1::bindTree_(multidraw::FunctionLibrary& _library)
 {  
   _library.bindBranch(cut_index, "cut_index");
   _library.bindBranch(detajj, "detajj");
-  _library.bindBranch(detall, "detall");
+  _library.bindBranch(detall, "detall_alias");
   _library.bindBranch(jetpt1, "jetpt1");
   _library.bindBranch(jetpt2, "jetpt2");
   _library.bindBranch(eta1, "eta1");
   _library.bindBranch(eta2, "eta2");
   _library.bindBranch(MET_pt, "MET_pt");
   _library.bindBranch(dphill, "dphill");
-  _library.bindBranch(dphijj, "dphijj");
+  _library.bindBranch(dphijj, "dphijj_alias");
   _library.bindBranch(Zlep1, "Zlep1");
   _library.bindBranch(Zlep2, "Zlep2");
   _library.bindBranch(mll, "mll");

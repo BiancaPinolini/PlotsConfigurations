@@ -4,7 +4,7 @@
 #                            'fold'  : 3
 #                         }
 
-# variables['detall']  = {   'name': 'detall',
+# variables['detall']  = {   'name': 'detall_alias',
 #                            'range' : (20,0,6),
 #                            'xaxis' : '#Delta#eta_{ll}',
 #                            'fold'  : 3
@@ -47,7 +47,7 @@
 #                         'fold'  : 3
 #                         }
 
-# variables['dphijj']  = {'name': 'dphijj',
+# variables['dphijj']  = {'name': 'dphijj_alias',
 #                         'range' : (20,0,9),
 #                         'xaxis' : '#Delta#Phi_{jj}',
 #                         'fold'  : 3
@@ -78,33 +78,33 @@
 #                                 'xaxis' : 'b-tag of the 2^{nd} most central jet',
 #                                 'fold'  : 3
 #                             }
-# variables['dR_jl1'] = {	'name' : 'R_jl1',
-#                         'range' : (100,0,10),
-#                         'xaxis' : 'R from 1^{st} lep to nearest jet',
-#                         'fold'  : 3
-#                             }
-# variables['dR_jl2'] = { 'name' : 'R_jl2',
-#                         'range' : (100,0,10),
-#                         'xaxis' : 'R from 2^{nd} lep to nearest jet',
-#                         'fold'  : 3
-#                             }
+variables['dR_jl1'] = {	'name' : 'dR_jl1',
+                        'range' : (100,0,10),
+                        'xaxis' : 'R from 1^{st} lep to nearest jet',
+                        'fold'  : 3
+                            }
+variables['dR_jl2'] = { 'name' : 'dR_jl2',
+                        'range' : (100,0,10),
+                        'xaxis' : 'R from 2^{nd} lep to nearest jet',
+                        'fold'  : 3
+                            }
 
 variables['DNNoutput_emloose'] = { 'name' : 'DNNoutput_emloose',
                         'cuts' : ['em_loose'],
                         'range' : (30,0,1),
-                        'xaxis' : 'DNN output',
+                        'xaxis' : 'DNN output em_loose',
                         'fold'  : 3
                             }
 variables['DNNoutput_emmedium'] = { 'name' : 'DNNoutput_emmedium',
                         'cuts' : ['em_medium'],
                         'range' : (30,0,1),
-                        'xaxis' : 'DNN output',
+                        'xaxis' : 'DNN output em_medium',
                         'fold'  : 3
                         }
 variables['DNNoutput_emtight'] = { 'name' : 'DNNoutput_emtight',
                         'cuts' : ['em_tight'],
                         'range' : (30,0,1),
-                        'xaxis' : 'DNN output',
+                        'xaxis' : 'DNN output em_tight',
                         'fold'  : 3
                         }
 

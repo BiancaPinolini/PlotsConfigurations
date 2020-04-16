@@ -64,12 +64,13 @@ mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC'
 ###########################################
 ###### Top #######
 
-files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
+files = nanoGetSampleFiles(mcDirectory, 'ST_tW_top_ext1') + \
+    nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
     nanoGetSampleFiles(mcDirectory, 'ST_s-channel_ext1') + \
     nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop') + \
     nanoGetSampleFiles(mcDirectory, 'ST_t-channel_top') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop_ext1') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_tW_top_ext1')
+    nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop_ext1')
+    
 
 samples['top'] = {
     'name': files,
@@ -93,7 +94,7 @@ samples['WWewk'] = {
 
 signals.append('WpWmJJ_EWK')
 
-# samples select
+# # samples select
 # samples =  {
 #  'WWewk' : samples["WWewk"]
 # }
