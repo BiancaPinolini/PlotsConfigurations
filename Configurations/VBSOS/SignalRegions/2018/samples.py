@@ -64,12 +64,20 @@ mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC'
 ###########################################
 ###### Top #######
 
+<<<<<<< HEAD
+files = nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop_ext1') + \
+=======
 files = nanoGetSampleFiles(mcDirectory, 'ST_tW_top_ext1') + \
+>>>>>>> e2922ff4f5dcd3e642727533a388248b05a967e7
     nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
     nanoGetSampleFiles(mcDirectory, 'ST_s-channel_ext1') + \
     nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop') + \
     nanoGetSampleFiles(mcDirectory, 'ST_t-channel_top') + \
+<<<<<<< HEAD
+    nanoGetSampleFiles(mcDirectory, 'ST_tW_top_ext1')
+=======
     nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop_ext1')
+>>>>>>> e2922ff4f5dcd3e642727533a388248b05a967e7
     
 
 samples['top'] = {

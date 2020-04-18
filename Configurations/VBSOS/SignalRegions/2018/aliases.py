@@ -3,9 +3,9 @@ import copy
 import inspect
 
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
-configurations = os.path.dirname(configurations) # ggH2016
-configurations = os.path.dirname(configurations) # Differential
-configurations = os.path.dirname(configurations) # Configurations
+configurations = os.path.dirname(configurations) # 2018
+configurations = os.path.dirname(configurations) # SignalRegions
+configurations = os.path.dirname(configurations) # VBSOS
 configurations = os.path.dirname(configurations) # Configurations
 
 #aliases = {}
@@ -18,48 +18,52 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[0],-9999.),2))',
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Lepton_eta[0],2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Lepton_phi[0],2))',
         'samples': mc + ['DATA']
 }
 
 aliases['R_j2l1'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[0],-9999.),2))',
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Lepton_eta[0],2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Lepton_phi[0],2))',
         'samples': mc + ['DATA']
 }
 
 aliases['R_j1l2'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[1],-9999.),2))',
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Lepton_eta[1],2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Lepton_phi[1],2))',
         'samples': mc + ['DATA']
 }
 
 aliases['R_j2l2'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))',
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Lepton_eta[1],2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Lepton_phi[1],2))',
         'samples': mc + ['DATA']
 }
 
 
-# 
+# cuts
 aliases['em_loose'] = {
     'expr': 'mjj > 100',
     'samples': mc + ['DATA']
 }
-aliases['em_medium'] = {
-    'expr': 'mjj > 300 && detajj > 3.5',
-    'samples': mc + ['DATA']
-}
-aliases['em_tight'] = {
-    'expr': 'mjj > 500 && detajj > 4',
-    'samples': mc + ['DATA']
-}
+# aliases['em_medium'] = {
+#     'expr': 'mjj > 300 && detajj > 3.5',
+#     'samples': mc + ['DATA']
+# }
+# aliases['em_tight'] = {
+#     'expr': 'mjj > 500 && detajj > 4',
+#     'samples': mc + ['DATA']
+# }
 
 aliases['cut_index'] = {
-    'expr': '(1*em_loose)+(2*em_medium)+(4*em_tight)',
+    'expr': '(1*em_loose)', #+(2*em_medium)+(4*em_tight)',
     'samples': mc + ['DATA']
 }
 
 
 
+<<<<<<< HEAD
+# variables
+=======
 #
+>>>>>>> e2922ff4f5dcd3e642727533a388248b05a967e7
 aliases['detall_alias'] = {
     'expr': 'fabs(Lepton_eta[0]-Lepton_eta[1])',
     'samples': mc + ['DATA']
@@ -84,22 +88,22 @@ aliases['dphijj_alias'] = {
     'expr': 'fabs(Alt$(CleanJet_phi[0],-9999.)-Alt$(CleanJet_phi[1],-9999.))',
     'samples': mc + ['DATA']
 }
-aliases['Zlep1'] = {
-    'expr': '(Lepton_eta[0] - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj',
-    'samples': mc + ['DATA']
-}
-aliases['Zlep2'] = {
-    'expr': '(Lepton_eta[1] - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj',
-    'samples': mc + ['DATA']
-}
+# aliases['Zlep1'] = {
+#     'expr': '(Lepton_eta[0] - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj',
+#     'samples': mc + ['DATA']
+# }
+# aliases['Zlep2'] = {
+#     'expr': '(Lepton_eta[1] - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj',
+#     'samples': mc + ['DATA']
+# }
 aliases['btag_first'] = {
     'expr': '(fabs(CleanJet_eta[0]) <= fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(CleanJet_eta[0]) > fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[1]]',
     'samples': mc + ['DATA']
 }
-aliases['btag_second'] = {
-    'expr': '(fabs(CleanJet_eta[0]) > fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(CleanJet_eta[0]) <= fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[1]]',
-    'samples': mc + ['DATA']
-}
+# aliases['btag_second'] = {
+#     'expr': '(fabs(CleanJet_eta[0]) > fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(CleanJet_eta[0]) <= fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[1]]',
+#     'samples': mc + ['DATA']
+# }
 aliases['dR_jl1'] = {
     'expr': '(R_j1l1 < R_j2l1)*R_j1l1+(R_j1l1 >= R_j2l1)*R_j2l1',
     'samples': mc + ['DATA']
@@ -109,36 +113,37 @@ aliases['dR_jl2'] = {
     'samples': mc + ['DATA']
 }
 
+# DNN output
 mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/mva/'
-models_path = '/eos/home-b/bpinolin/ML_classification/output/VBSOS'
+models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
 aliases['DNNoutput_emloose'] = {
-    'class': 'MVAReader_emloose_v1',
-    'args': ( models_path +'/em_loose/models/v1/', False, 1),
+    'class': 'MVAReader_emloose_v3',
+    'args': ( models_path +'/em_loose/models/v3/', False, 1),
     'linesToAdd':[
         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
         'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mvareader_emloose_v1.cc+', 
+        '.L ' + mva_reader_path + 'mvareader_emloose_v3.cc+', 
     ],
 }
-aliases['DNNoutput_emmedium'] = {
-    'class': 'MVAReader_emmedium_v1',
-    'args': ( models_path +'/em_medium/models/v1/', False, 3),
-    'linesToAdd':[
-        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-        'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mvareader_emmedium_v1.cc+', 
-    ],
-}
-aliases['DNNoutput_emtight'] = {
-    'class': 'MVAReader_emtight_v1',
-    'args': ( models_path +'/em_tight/models/v1/', False, 7),
-    'linesToAdd':[
-        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-        'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mvareader_emtight_v1.cc+', 
-    ],
-}
+# aliases['DNNoutput_emmedium'] = {
+#     'class': 'MVAReader_emmedium_v3',
+#     'args': ( models_path +'/em_medium/models/v3/', False, 3),
+#     'linesToAdd':[
+#         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+#         'gSystem->Load("libDNNEvaluator.so")',
+#         '.L ' + mva_reader_path + 'mvareader_emmedium_v3.cc+', 
+#     ],
+# }
+# aliases['DNNoutput_emtight'] = {
+#     'class': 'MVAReader_emtight_v3',
+#     'args': ( models_path +'/em_tight/models/v3/', False, 7),
+#     'linesToAdd':[
+#         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+#         'gSystem->Load("libDNNEvaluator.so")',
+#         '.L ' + mva_reader_path + 'mvareader_emtight_v3.cc+', 
+#     ],
+# }
 
 
 
