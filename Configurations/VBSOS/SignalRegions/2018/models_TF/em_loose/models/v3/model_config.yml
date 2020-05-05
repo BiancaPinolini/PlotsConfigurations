@@ -1,0 +1,26 @@
+a__model_dir: /eos/home-b/bpinolin/ML_output/VBSOS/em_loose/models/v3
+base_dir: /eos/home-b/bpinolin/ML_output/
+batch_size: 2048
+cols:
+- btag_first
+- detajj
+- detall
+- eta1
+- eta2
+- jetpt1
+- jetpt2
+- dphill
+- dphijj
+- Mll
+- met
+- dR_jl1
+- dR_jl2
+cut: em_loose
+epochs: 3
+model_tag: model_sgd
+model_version: v3
+plot_config: VBSOS
+samples_version: v3
+test_size: 0.2
+train_time: 273.5962977409363
+val_size: 0.0
