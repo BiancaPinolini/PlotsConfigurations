@@ -75,7 +75,7 @@ MVAReader_emloose_v3::evaluate(unsigned)
 
   std::vector<float> input{};
 
-  std::cout << TMath::Abs(*(detajj->Get())) << std::endl;
+  // std::cout << TMath::Abs(*(detajj->Get())) << std::endl;
 
   input.push_back( TMath::Abs(*(detajj->Get())));
   input.push_back( *(detall->Get()) );
