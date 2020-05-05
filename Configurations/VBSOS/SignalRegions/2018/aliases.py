@@ -59,11 +59,7 @@ aliases['cut_index'] = {
 
 
 
-<<<<<<< HEAD
 # variables
-=======
-#
->>>>>>> e2922ff4f5dcd3e642727533a388248b05a967e7
 aliases['detall_alias'] = {
     'expr': 'fabs(Lepton_eta[0]-Lepton_eta[1])',
     'samples': mc + ['DATA']

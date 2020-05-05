@@ -4,19 +4,11 @@ variables['detajj']  = {   'name': 'fabs(detajj)',
                            'fold'  : 3
                         }
 
-<<<<<<< HEAD
 variables['detall']  = {   'name': 'detall_alias',
                            'range' : (20,0,6),
                            'xaxis' : '#Delta#eta_{ll}',
                            'fold'  : 3
                         }
-=======
-# variables['detall']  = {   'name': 'detall_alias',
-#                            'range' : (20,0,6),
-#                            'xaxis' : '#Delta#eta_{ll}',
-#                            'fold'  : 3
-#                         }
->>>>>>> e2922ff4f5dcd3e642727533a388248b05a967e7
 
 variables['jetpt1']  = {   'name': 'jetpt1',
                            'range' : (15,0.,300),
@@ -55,19 +47,11 @@ variables['dphill']  = {'name': 'fabs(dphill)',
                         'fold'  : 3
                         }
 
-<<<<<<< HEAD
 variables['dphijj']  = {'name': 'dphijj_alias',
                         'range' : (20,0,9),
                         'xaxis' : '#Delta#Phi_{jj}',
                         'fold'  : 3
                         }
-=======
-# variables['dphijj']  = {'name': 'dphijj_alias',
-#                         'range' : (20,0,9),
-#                         'xaxis' : '#Delta#Phi_{jj}',
-#                         'fold'  : 3
-#                         }
->>>>>>> e2922ff4f5dcd3e642727533a388248b05a967e7
 # variables['Zlep1']  = {  'name': 'Zlep1',
 #                          'range': (20,-1.5,1.5),
 #                          'xaxis': 'Z^{lep}_{1}',
@@ -95,28 +79,18 @@ variables['btag_first']  = {   'name'  : 'btag_first',
 #                                 'fold'  : 3
 #                             }
 variables['dR_jl1'] = {	'name' : 'dR_jl1',
-<<<<<<< HEAD
-                        'range' : (50,0,10),
-=======
                         'range' : (100,0,10),
->>>>>>> e2922ff4f5dcd3e642727533a388248b05a967e7
                         'xaxis' : 'R from 1^{st} lep to nearest jet',
                         'fold'  : 3
                             }
 variables['dR_jl2'] = { 'name' : 'dR_jl2',
-<<<<<<< HEAD
-                        'range' : (50,0,10),
-=======
                         'range' : (100,0,10),
->>>>>>> e2922ff4f5dcd3e642727533a388248b05a967e7
                         'xaxis' : 'R from 2^{nd} lep to nearest jet',
                         'fold'  : 3
                             }
-
 variables['DNNoutput_emloose'] = { 'name' : 'DNNoutput_emloose',
                         'cuts' : ['em_loose'],
                         'range' : (30,0,1),
-<<<<<<< HEAD
                         'xaxis' : 'DNN output em_loose'
                             }
 # variables['DNNoutput_emmedium'] = { 'name' : 'DNNoutput_emmedium',
@@ -129,23 +103,6 @@ variables['DNNoutput_emloose'] = { 'name' : 'DNNoutput_emloose',
 #                         'range' : (30,0,1),
 #                         'xaxis' : 'DNN output em_tight'
 #                         }
-=======
-                        'xaxis' : 'DNN output em_loose',
-                        'fold'  : 3
-                            }
-variables['DNNoutput_emmedium'] = { 'name' : 'DNNoutput_emmedium',
-                        'cuts' : ['em_medium'],
-                        'range' : (30,0,1),
-                        'xaxis' : 'DNN output em_medium',
-                        'fold'  : 3
-                        }
-variables['DNNoutput_emtight'] = { 'name' : 'DNNoutput_emtight',
-                        'cuts' : ['em_tight'],
-                        'range' : (30,0,1),
-                        'xaxis' : 'DNN output em_tight',
-                        'fold'  : 3
-                        }
->>>>>>> e2922ff4f5dcd3e642727533a388248b05a967e7
 
 # VARIABILE BDT
 #variables['readBDT'] = {
