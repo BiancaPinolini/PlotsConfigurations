@@ -79,30 +79,30 @@ variables['btag_first']  = {   'name'  : 'btag_first',
 #                                 'fold'  : 3
 #                             }
 variables['dR_jl1'] = {	'name' : 'dR_jl1',
-                        'range' : (100,0,10),
+                        'range' : (50,0,10),
                         'xaxis' : 'R from 1^{st} lep to nearest jet',
                         'fold'  : 3
                             }
 variables['dR_jl2'] = { 'name' : 'dR_jl2',
-                        'range' : (100,0,10),
+                        'range' : (50,0,10),
                         'xaxis' : 'R from 2^{nd} lep to nearest jet',
                         'fold'  : 3
                             }
-variables['DNNoutput_emloose'] = { 'name' : 'DNNoutput_emloose',
-                        'cuts' : ['em_loose'],
-                        'range' : (30,0,1),
-                        'xaxis' : 'DNN output em_loose'
-                            }
+# variables['DNNoutput_emloose'] = { 'name' : 'DNNoutput_emloose',
+#                         'cuts' : ['em_loose'],
+#                         'range' : (30,0,1),
+#                         'xaxis' : 'DNN output em_loose'
+#                             }
 # variables['DNNoutput_emmedium'] = { 'name' : 'DNNoutput_emmedium',
 #                         'cuts' : ['em_medium'],
 #                         'range' : (30,0,1),
 #                         'xaxis' : 'DNN output em_medium'
-#                         }
-# variables['DNNoutput_emtight'] = { 'name' : 'DNNoutput_emtight',
-#                         'cuts' : ['em_tight'],
-#                         'range' : (30,0,1),
-#                         'xaxis' : 'DNN output em_tight'
-#                         }
+                        # }
+variables['DNNoutput_emtight'] = { 'name' : 'DNNoutput_emtight',
+                        'cuts' : ['em_tight'],
+                        'range' : (30,0,1),
+                        'xaxis' : 'DNN output em_tight'
+                        }
 
 # VARIABILE BDT
 #variables['readBDT'] = {

@@ -39,21 +39,22 @@ aliases['R_j2l2'] = {
 
 
 # cuts
-aliases['em_loose'] = {
-    'expr': 'mjj > 100',
-    'samples': mc + ['DATA']
-}
+# aliases['em_loose'] = {
+#     'expr': 'mjj > 100',
+#     'samples': mc + ['DATA']
+# }
 # aliases['em_medium'] = {
 #     'expr': 'mjj > 300 && detajj > 3.5',
 #     'samples': mc + ['DATA']
 # }
-# aliases['em_tight'] = {
-#     'expr': 'mjj > 500 && detajj > 4',
-#     'samples': mc + ['DATA']
-# }
+aliases['em_tight'] = {
+    'expr': 'mjj > 500 && detajj > 4',
+    'samples': mc + ['DATA']
+}
 
 aliases['cut_index'] = {
-    'expr': '(1*em_loose)', #+(2*em_medium)+(4*em_tight)',
+    #'expr': '(1*em_loose)+(2*em_medium)+(4*em_tight)',
+    'expr': '7*em_tight',
     'samples': mc + ['DATA']
 }
 
@@ -111,17 +112,17 @@ aliases['dR_jl2'] = {
 
 # DNN output
 mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/mva/'
-models_path = '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/models_TF'
+models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
-aliases['DNNoutput_emloose'] = {
-    'class': 'MVAReader_emloose_v3',
-    'args': ( models_path +'/em_loose/models/v3/', False, 1),
-    'linesToAdd':[
-        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-        'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mvareader_emloose_v3.cc+', 
-    ],
-}
+# aliases['DNNoutput_emloose'] = {
+#     'class': 'MVAReader_emloose_v3',
+#     'args': ( models_path +'/em_loose/models/v3/', True, 1),
+#     'linesToAdd':[
+#         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+#         'gSystem->Load("libDNNEvaluator.so")',
+#         '.L ' + mva_reader_path + 'mvareader_emloose_v3.cc+', 
+#     ],
+# }
 # aliases['DNNoutput_emmedium'] = {
 #     'class': 'MVAReader_emmedium_v3',
 #     'args': ( models_path +'/em_medium/models/v3/', False, 3),
@@ -131,15 +132,15 @@ aliases['DNNoutput_emloose'] = {
 #         '.L ' + mva_reader_path + 'mvareader_emmedium_v3.cc+', 
 #     ],
 # }
-# aliases['DNNoutput_emtight'] = {
-#     'class': 'MVAReader_emtight_v3',
-#     'args': ( models_path +'/em_tight/models/v3/', False, 7),
-#     'linesToAdd':[
-#         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-#         'gSystem->Load("libDNNEvaluator.so")',
-#         '.L ' + mva_reader_path + 'mvareader_emtight_v3.cc+', 
-#     ],
-# }
+aliases['DNNoutput_emtight'] = {
+    'class': 'MVAReader_emtight_v4',
+    'args': ( models_path +'/em_tight/models/v4/', False, 7),
+    'linesToAdd':[
+        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+        'gSystem->Load("libDNNEvaluator.so")',
+        '.L ' + mva_reader_path + 'mvareader_emtight_v4.cc+', 
+    ],
+}
 
 
 

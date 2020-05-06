@@ -15,8 +15,8 @@ supercut = 'mll>50  \
 '   
 
 ##signal region personalized
-cuts['em_loose'] = 'em_loose'
+# cuts['em_loose'] = 'em_loose'
 
 # cuts['em_medium'] = 'em_medium'
 
-# cuts['em_tight'] = 'em_tight'
+cuts['em_tight'] = 'em_tight'

@@ -11,16 +11,16 @@
 using namespace std;
 using namespace NNEvaluation;
 
-#ifndef MVAReader_emloose_v3_H
-#define MVAReader_emloose_v3_H
+#ifndef MVAReader_emtight_v4_H
+#define MVAReader_emtight_v4_H
 
-class MVAReader_emloose_v3 : public multidraw::TTreeFunction {
+class MVAReader_emtight_v4 : public multidraw::TTreeFunction {
 public:
   
-  MVAReader_emloose_v3(const char* model_path, bool verbose, int cut);
+  MVAReader_emtight_v4(const char* model_path, bool verbose, int cut);
 
-  char const* getName() const override { return "MVAReader_emloose_v3"; }
-  TTreeFunction* clone() const override { return new MVAReader_emloose_v3(model_path_.c_str(), verbose, cut_); }
+  char const* getName() const override { return "MVAReader_emtight_v4"; }
+  TTreeFunction* clone() const override { return new MVAReader_emtight_v4(model_path_.c_str(), verbose, cut_); }
 
   std::string model_path_;
   int cut_;
@@ -44,17 +44,14 @@ protected:
   FloatValueReader* met{};
   FloatValueReader* dphill{};
   TTreeReaderValue<Double_t>* dphijj{};
-  // TTreeReaderValue<Double_t>* Zlep1{};
-  // TTreeReaderValue<Double_t>* Zlep2{};
   FloatValueReader* Mll{};
   TTreeReaderValue<Double_t>* btag_first{};
-  // TTreeReaderValue<Double_t>* btag_second{};
   TTreeReaderValue<Double_t>* dR_jl1{};
   TTreeReaderValue<Double_t>* dR_jl2{};
 };
 
 
-MVAReader_emloose_v3::MVAReader_emloose_v3(const char* model_path, bool verbose, int cut):
+MVAReader_emtight_v4::MVAReader_emtight_v4(const char* model_path, bool verbose, int cut):
     model_path_(model_path), 
     verbose(verbose),
     cut_(cut)
@@ -64,7 +61,7 @@ MVAReader_emloose_v3::MVAReader_emloose_v3(const char* model_path, bool verbose,
 
 
 double 
-MVAReader_emloose_v3::evaluate(unsigned)
+MVAReader_emtight_v4::evaluate(unsigned)
 {
   // Run only if 
   if ((int)(*(cut_index->Get())) != cut_) {
@@ -86,11 +83,8 @@ MVAReader_emloose_v3::evaluate(unsigned)
   input.push_back( *(met->Get()) );
   input.push_back( TMath::Abs(*(dphill->Get())));
   input.push_back( *(dphijj->Get()) );
-  // input.push_back( *(Zlep1->Get()) );
-  // input.push_back( *(Zlep2->Get()) );
   input.push_back( *(Mll->Get()) );
   input.push_back( *(btag_first->Get()) );
-  // input.push_back( *(btag_second->Get()) );
   input.push_back( *(dR_jl1->Get()) );
   input.push_back( *(dR_jl2->Get()) );
 
@@ -101,7 +95,7 @@ MVAReader_emloose_v3::evaluate(unsigned)
 }
 
 void
-MVAReader_emloose_v3::bindTree_(multidraw::FunctionLibrary& _library)
+MVAReader_emtight_v4::bindTree_(multidraw::FunctionLibrary& _library)
 {  
   _library.bindBranch(cut_index, "cut_index");
   _library.bindBranch(detajj, "detajj");
@@ -113,11 +107,8 @@ MVAReader_emloose_v3::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(met, "MET_pt");
   _library.bindBranch(dphill, "dphill");
   _library.bindBranch(dphijj, "dphijj_alias");
-  // _library.bindBranch(Zlep1, "Zlep1");
-  // _library.bindBranch(Zlep2, "Zlep2");
   _library.bindBranch(Mll, "mll");
   _library.bindBranch(btag_first, "btag_first");
-  // _library.bindBranch(btag_second, "btag_second");
   _library.bindBranch(dR_jl1, "dR_jl1");
   _library.bindBranch(dR_jl2, "dR_jl2");
 }
