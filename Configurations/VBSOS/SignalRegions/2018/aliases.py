@@ -112,7 +112,8 @@ aliases['dR_jl2'] = {
 
 # DNN output
 mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/mva/'
-models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
+#models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
+models_path = '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/models_TF'
 
 # aliases['DNNoutput_emloose'] = {
 #     'class': 'MVAReader_emloose_v3',
