@@ -88,7 +88,7 @@ MVAReader_emtight_v4::evaluate(unsigned)
   input.push_back( *(dR_jl1->Get()) );
   input.push_back( *(dR_jl2->Get()) );
 
-  std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
+  // std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
 
   return dnn_tensorflow->analyze(input);
   

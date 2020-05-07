@@ -54,7 +54,7 @@ aliases['em_tight'] = {
 
 aliases['cut_index'] = {
     #'expr': '(1*em_loose)+(2*em_medium)+(4*em_tight)',
-    'expr': '7*em_tight',
+    'expr': '7',
     'samples': mc + ['DATA']
 }
 
@@ -330,55 +330,55 @@ aliases['btagSF'] = {
     'samples': mc
 }
 
-for shift in ['jes','lf','hf','lfstats1','lfstats2','hfstats1','hfstats2','cferr1','cferr2']:
-    aliases['Jet_btagSF_shapeFix_up_%s' % shift] = {
-        'class': 'BtagSF',
-        'args': (btagSFSource, 'up_' + shift),
-        'samples': mc
-    }
-    aliases['Jet_btagSF_shapeFix_down_%s' % shift] = {
-        'class': 'BtagSF',
-        'args': (btagSFSource, 'down_' + shift),
-        'samples': mc
-    }
+# for shift in ['jes','lf','hf','lfstats1','lfstats2','hfstats1','hfstats2','cferr1','cferr2']:
+#     aliases['Jet_btagSF_shapeFix_up_%s' % shift] = {
+#         'class': 'BtagSF',
+#         'args': (btagSFSource, 'up_' + shift),
+#         'samples': mc
+#     }
+#     aliases['Jet_btagSF_shapeFix_down_%s' % shift] = {
+#         'class': 'BtagSF',
+#         'args': (btagSFSource, 'down_' + shift),
+#         'samples': mc
+#     }
 
-    for targ in ['bVeto', 'btag0', 'btagn']:
-        alias = aliases['%sSF%sup' % (targ, shift)] = copy.deepcopy(aliases['%sSF' % targ])
-        #alias['expr'] = alias['expr'].replace('btagSF_shape', 'btagSF_shape_up_%s' % shift)
-        alias['expr'] = alias['expr'].replace('btagSF_shapeFix', 'btagSF_shapeFix_up_%s' % shift)
+#     for targ in ['bVeto', 'btag0', 'btagn']:
+#         alias = aliases['%sSF%sup' % (targ, shift)] = copy.deepcopy(aliases['%sSF' % targ])
+#         #alias['expr'] = alias['expr'].replace('btagSF_shape', 'btagSF_shape_up_%s' % shift)
+#         alias['expr'] = alias['expr'].replace('btagSF_shapeFix', 'btagSF_shapeFix_up_%s' % shift)
 
-        alias = aliases['%sSF%sdown' % (targ, shift)] = copy.deepcopy(aliases['%sSF' % targ])
-        #alias['expr'] = alias['expr'].replace('btagSF_shape', 'btagSF_shape_down_%s' % shift)
-        alias['expr'] = alias['expr'].replace('btagSF_shapeFix', 'btagSF_shapeFix_down_%s' % shift)
+#         alias = aliases['%sSF%sdown' % (targ, shift)] = copy.deepcopy(aliases['%sSF' % targ])
+#         #alias['expr'] = alias['expr'].replace('btagSF_shape', 'btagSF_shape_down_%s' % shift)
+#         alias['expr'] = alias['expr'].replace('btagSF_shapeFix', 'btagSF_shapeFix_down_%s' % shift)
 
-    aliases['btagSF%sup' % shift] = {
-        'expr': 'bVetoSF{shift}up*bVeto + btag0SF{shift}up*btag0 + btagnSF{shift}up*(btag1 + btag2) + (!bVeto && !btag0 && !btag1 && !btag2)'.format(shift = shift),
-        'samples': mc
-    }
+#     aliases['btagSF%sup' % shift] = {
+#         'expr': 'bVetoSF{shift}up*bVeto + btag0SF{shift}up*btag0 + btagnSF{shift}up*(btag1 + btag2) + (!bVeto && !btag0 && !btag1 && !btag2)'.format(shift = shift),
+#         'samples': mc
+#     }
 
-    aliases['btagSF%sdown' % shift] = {
-        'expr': 'bVetoSF{shift}down*bVeto + btag0SF{shift}down*btag0 + btagnSF{shift}down*(btag1 + btag2) + (!bVeto && !btag0 && !btag1 && !btag2)'.format(shift = shift),
-        'samples': mc
-    }
+#     aliases['btagSF%sdown' % shift] = {
+#         'expr': 'bVetoSF{shift}down*bVeto + btag0SF{shift}down*btag0 + btagnSF{shift}down*(btag1 + btag2) + (!bVeto && !btag0 && !btag1 && !btag2)'.format(shift = shift),
+#         'samples': mc
+#     }
 
 
-# PU jet Id SF
+# # PU jet Id SF
 
-puidSFSource = '%s/src/LatinoAnalysis/NanoGardener/python/data/JetPUID_effcyandSF.root' % os.getenv('CMSSW_BASE')
+# puidSFSource = '%s/src/LatinoAnalysis/NanoGardener/python/data/JetPUID_effcyandSF.root' % os.getenv('CMSSW_BASE')
 
-aliases['PUJetIdSF'] = {
-    'linesToAdd': [
-        'gSystem->AddIncludePath("-I%s/src");' % os.getenv('CMSSW_BASE'),
-        '.L %s/patches/pujetidsf_event.cc+' % configurations
-    ],
-    'class': 'PUJetIdEventSF',
-    'args': (puidSFSource, '2018', 'loose'),
-    'samples': mc
-}
+# aliases['PUJetIdSF'] = {
+#     'linesToAdd': [
+#         'gSystem->AddIncludePath("-I%s/src");' % os.getenv('CMSSW_BASE'),
+#         '.L %s/patches/pujetidsf_event.cc+' % configurations
+#     ],
+#     'class': 'PUJetIdEventSF',
+#     'args': (puidSFSource, '2018', 'loose'),
+#     'samples': mc
+# }
 
 # data/MC scale factors
 aliases['SFweight'] = {
-    'expr': ' * '.join(['SFweight2l', 'LepSF2l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut', 'btagSF','PUJetIdSF']),
+    'expr': ' * '.join(['SFweight2l', 'LepSF2l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut', 'btagSF']),     #,'PUJetIdSF']),
     'samples': mc
 }
 # variations
