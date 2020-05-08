@@ -22,5 +22,5 @@ model_version: v7
 plot_config: VBSOS
 samples_version: v7
 test_size: 0.2
-train_time: 8.67008090019226
+train_time: 19.40196681022644
 val_size: 0.0
