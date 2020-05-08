@@ -126,12 +126,12 @@ models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 #     ],
 # }
 aliases['DNNoutput_emtight'] = {
-    'class': 'MVAReader_emtight_v6',
-    'args': ( models_path +'/em_tight/models/v6/', False, 7),
+    'class': 'MVAReader_emtight_v7',
+    'args': ( models_path +'/em_tight/models/v7/', False, 7),
     'linesToAdd':[
         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
         'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mvareader_emtight_v6.cc+', 
+        '.L ' + mva_reader_path + 'mvareader_emtight_v7.cc+', 
     ],
 }
 
