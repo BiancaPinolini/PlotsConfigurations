@@ -64,7 +64,7 @@ MVAReader_emtight_v5::evaluate(unsigned)
   input.push_back( *(eta1->Get()) );
   input.push_back( *(eta2->Get()) );
 
-  std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
+  // std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
 
   return dnn_tensorflow->analyze(input);
   
@@ -75,8 +75,8 @@ MVAReader_emtight_v5::bindTree_(multidraw::FunctionLibrary& _library)
 {  
   _library.bindBranch(cut_index, "cut_index");
   _library.bindBranch(detajj, "detajj");
-  _library.bindBranch(eta1, "Lepton_eta[0]");
-  _library.bindBranch(eta2, "Lepton_eta[1]");
+  _library.bindBranch(eta1, "eta1");
+  _library.bindBranch(eta2, "eta2");
 }
 
 
