@@ -22,6 +22,15 @@ samplesFile = 'samples.py'
 # file with list of plot
 plotFile = 'plot.py'
 
+# file with list of nuisances
+nuisancesFile = 'nuisances.py'
+
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
 outputDirPlots = 'output-plots'
+
+# used by mkDatacards to define output directory for datacards
+outputDirDatacard = 'datacards/200520'
+
+# structure file for datacard
+structureFile = 'structure.py'

@@ -47,14 +47,14 @@ aliases['R_j2l2'] = {
 #     'expr': 'mjj > 300 && detajj > 3.5',
 #     'samples': mc + ['DATA']
 # }
-aliases['em_tight'] = {
-    'expr': 'mjj > 500 && fabs(detajj) > 4',
-    'samples': mc + ['DATA']
-}
+# aliases['em_tight'] = {
+#     'expr': 'mjj > 500 && fabs(detajj) > 4',
+#     'samples': mc + ['DATA']
+# }
 
 aliases['cut_index'] = {
     #'expr': '(1*em_loose)+(2*em_medium)+(4*em_tight)',
-    'expr': '7',
+    'expr': '1',
     'samples': mc + ['DATA']
 }
 
@@ -85,14 +85,14 @@ aliases['dphijj_al'] = {
     'expr': 'fabs(Alt$(CleanJet_phi[0],-9999.)-Alt$(CleanJet_phi[1],-9999.))',
     'samples': mc + ['DATA']
 }
-aliases['btag_first_al'] = {
+aliases['btag_central_al'] = {
     'expr': ' (fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.)))* Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]]',
     'samples': mc + ['DATA']
 }
-# aliases['btag_second_al'] = {
-#     'expr': '(fabs(CleanJet_eta[0]) > fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(CleanJet_eta[0]) <= fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[1]]',
-#     'samples': mc + ['DATA']
-# }
+aliases['btag_forward_al'] = {
+    'expr': ' (fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.)))* Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]]',
+    'samples': mc + ['DATA']
+}
 aliases['dR_jl1_al'] = {
     'expr': '(R_j1l1 < R_j2l1)*R_j1l1+(R_j1l1 >= R_j2l1)*R_j2l1',
     'samples': mc + ['DATA']
@@ -100,6 +100,9 @@ aliases['dR_jl1_al'] = {
 aliases['dR_jl2_al'] = {
     'expr': '(R_j1l2 < R_j2l2)*R_j1l2+(R_j1l2 >= R_j2l2)*R_j2l2',
     'samples': mc + ['DATA']
+}
+aliases['Zeppll_al'] = {
+    'expr' : '0.5*fabs((Lepton_eta[0]+Lepton_eta[1])-(CleanJet_eta[0]+CleanJet_eta[1]))'
 }
 
 # DNN output
@@ -116,30 +119,15 @@ models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 #         '.L ' + mva_reader_path + 'mvareader_emloose_v3.cc+', 
 #     ],
 # }
-# aliases['DNNoutput_emmedium'] = {
-#     'class': 'MVAReader_emmedium_v3',
-#     'args': ( models_path +'/em_medium/models/v3/', False, 3),
-#     'linesToAdd':[
-#         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-#         'gSystem->Load("libDNNEvaluator.so")',
-#         '.L ' + mva_reader_path + 'mvareader_emmedium_v3.cc+', 
-#     ],
-# }
-aliases['DNNoutput_emtight'] = {
-    'class': 'MVAReader_emtight_v7',
-    'args': ( models_path +'/em_tight/models/v7/', False, 7),
+aliases['DNNoutput'] = {
+    'class': 'MVAReader_sr_v0',
+    'args': ( models_path +'/sr/models/v0/', False, 1),
     'linesToAdd':[
         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
         'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mvareader_emtight_v7.cc+', 
+        '.L ' + mva_reader_path + 'mvareader_sr_v0.cc+', 
     ],
 }
-
-
-
-
-
-
 
 eleWP='mvaFall17V1Iso_WP90'
 muWP='cut_Tight_HWWW'

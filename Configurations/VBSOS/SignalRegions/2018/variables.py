@@ -53,7 +53,7 @@ variables['Mll']  = {       'name': 'mll',
                             'xaxis' : 'm_{ll} [GeV]',
                             'fold'  : 3
                         }
-variables['btag_first']  = {   'name'  : 'btag_first_al',
+variables['btag_central']  = {   'name'  : 'btag_central_al',
                                 'range' : (20,0,1),
                                 'xaxis' : 'b-tag of the 1^{st} most central jet',
                                 'fold'  : 3
@@ -68,22 +68,30 @@ variables['dR_jl2'] = { 'name' : '(R_j1l2 < R_j2l2)*R_j1l2+(R_j1l2 >= R_j2l2)*R_
                         'xaxis' : 'R from 2^{nd} lep to nearest jet',
                         'fold'  : 3
                             }
+variables['Zeppll']  = {   'name': 'Zeppll_al',
+                           'range' : (10,0,5),
+                           'xaxis' : 'Zeppenfield_{ll}',
+                           'fold' : 3
+                           }  
+variables['mjj']  = {   'name': 'mjj',
+                        'range' : (10,500,3000),
+                        'xaxis' : 'm_{jj} [GeV]',
+                        'fold' :3
+                        } 
+variables['events']  = {'name': '1',
+                        'range' : (1,0,2),
+                        'xaxis' : 'events',
+                        'fold' : 3
+                        } 
 
-# variables['DNNoutput_emloose'] = { 'name' : 'DNNoutput_emloose',
-#                         'cuts' : ['em_loose'],
-#                         'range' : (30,0,1),
-#                         'xaxis' : 'DNN output em_loose'
-#                             }
-# variables['DNNoutput_emmedium'] = { 'name' : 'DNNoutput_emmedium',
-#                         'cuts' : ['em_medium'],
-#                         'range' : (30,0,1),
-#                         'xaxis' : 'DNN output em_medium'
-                        # }
-variables['DNNoutput_emtight'] = { 
-                        'name' : 'DNNoutput_emtight',
-                        'cuts' : ['em_tight'],
+variables['DNNoutput'] = { 
+                        'name' : 'DNNoutput',
                         'range' : (30,0,1),
-                        'xaxis' : 'DNN output em_tight'
+                        'xaxis' : 'DNN output',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
                         }
 
 # VARIABILE BDT
