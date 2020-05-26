@@ -70,9 +70,21 @@ variables['dR_jl2'] = { 'name' : '(R_j1l2 < R_j2l2)*R_j1l2+(R_j1l2 >= R_j2l2)*R_
                             }
 variables['Zeppll']  = {   'name': 'Zeppll_al',
                            'range' : (10,0,5),
-                           'xaxis' : 'Zeppenfield_{ll}',
+                           'xaxis' : 'Zeppenfeld_{ll}',
                            'fold' : 3
                            }  
+variables['Zepp1']  = {   'name': 'Zepp1_al',
+                           'range' : (10,-5,5),
+                           'xaxis' : 'Zeppenfeld_{1}',
+                           'fold' :0
+                           }
+
+variables['Zepp2']  = {   'name': 'Zepp2_al',
+                           'range' : (10,-5,5),
+                           'xaxis' : 'Zeppenfeld_{2}',
+                           'fold' :0
+                           }
+
 variables['mjj']  = {   'name': 'mjj',
                         'range' : (10,500,3000),
                         'xaxis' : 'm_{jj} [GeV]',
@@ -84,7 +96,25 @@ variables['events']  = {'name': '1',
                         'fold' : 3
                         } 
 
-variables['DNNoutput'] = { 
+variables['DNNoutput_15'] = { 
+                        'name' : 'DNNoutput',
+                        'range' : (15,0,1),
+                        'xaxis' : 'DNN output',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
+                        }
+variables['DNNoutput_25'] = { 
+                        'name' : 'DNNoutput',
+                        'range' : (25,0,1),
+                        'xaxis' : 'DNN output',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
+                        }
+variables['DNNoutput_30'] = { 
                         'name' : 'DNNoutput',
                         'range' : (30,0,1),
                         'xaxis' : 'DNN output',
@@ -93,6 +123,34 @@ variables['DNNoutput'] = {
                             "sr": [0.5,1]
                             }
                         }
+variables['DNNoutput_35'] = { 
+                        'name' : 'DNNoutput',
+                        'range' : (35,0,1),
+                        'xaxis' : 'DNN output',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
+                        }
+variables['DNNoutput_50'] = { 
+                        'name' : 'DNNoutput',
+                        'range' : (50,0,1),
+                        'xaxis' : 'DNN output',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
+                        }
+variables['DNNoutput_70'] = { 
+                        'name' : 'DNNoutput',
+                        'range' : (70,0,1),
+                        'xaxis' : 'DNN output',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
+                        }
+
 
 # VARIABILE BDT
 #variables['readBDT'] = {

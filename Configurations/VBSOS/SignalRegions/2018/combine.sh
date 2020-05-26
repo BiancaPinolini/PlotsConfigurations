@@ -5,8 +5,8 @@ eval `scramv1 runtime -sh`
 cd -
 
 ## work directory
-date=200520
-var=jetpt1
+date=250520
+var=DNNoutput_35
 workDir=/afs/cern.ch/user/r/rdfexp/bianca/CMSSW_10_2_15_patch2/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/datacards
 datacardDir=${workDir}/${date}
 workspaceDir=${datacardDir}/workspace
@@ -15,7 +15,7 @@ output=combine_${var}
 cd $workDir
 
 combineCards.py   sr=${datacardDir}/sr/${var}/datacard.txt \
-                  cr_top=${datacardDir}/top/DNNoutput/datacard.txt \
+                  cr_top=${datacardDir}/top_cr/events/datacard.txt \
 > ${workspaceDir}/${output}.txt
 
 text2workspace.py ${workspaceDir}/${output}.txt -P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel --PO 'map=.*/WWewk:r_vbs[1,-10,10]' -o ${workspaceDir}/${output}.root

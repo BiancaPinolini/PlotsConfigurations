@@ -7,20 +7,44 @@
 # Groups of samples to improve the plots.
 # If not defined, normal plots is used
 #
-groupPlot['others']  = {  
-                  'nameHR' : 'Others',
-                  'isSignal' : 0,
-                  'color': 851, # kAzure -9 
-                  'samples'  : ['WW', 'ggWW','VVV','VZ','Vg', 'VgS_H', 'VgS_L','qqH_hww', 'ggH_hww']
-            }
-            
 groupPlot['DY']  = {  
                   'nameHR' : "DY",
                   'isSignal' : 0,
                   'color': 418,    # kGreen+2
                   'samples'  : ['DY']
               }
+groupPlot['VVV']  = {  
+                  'nameHR' : 'VVV',
+                  'isSignal' : 0,
+                  'color': 857, # kAzure -3  
+                  'samples'  : ['VVV']
+              }
+groupPlot['VZ']  = {  
+                  'nameHR' : "VZ",
+                  'isSignal' : 0,
+                  'color'    : 617,   # kViolet + 1  
+                  'samples'  : ['VZ']
+              }
+groupPlot['Vg']  = {  
+                  'nameHR' : "V#gamma(*)",
+                  'isSignal' : 0,
+                  'color'    : 631, # kRed -1
+                  'samples'  : ['Vg', 'VgS_H', 'VgS_L']
+              }
+groupPlot['Higgs']  = {  
+                  'nameHR' : 'Higgs',
+                  'isSignal' : 0,
+                  'color': 632, 
+		  'samples'  : [ 'qqH_hww', 'ggH_hww']
+  
 
+            }
+groupPlot['WW']  = {  
+                  'nameHR' : 'WW',
+                  'isSignal' : 0,
+                  'color': 851, # kAzure -9 
+                  'samples'  : ['WW', 'ggWW']
+              }
 groupPlot['top']  = {  
                   'nameHR' : 'Top',
                   'isSignal' : 0,
@@ -125,7 +149,7 @@ plot['DATA']  = {
                 'color': 1 ,  
                 'isSignal' : 0,
                'isData'   : 1,
-               'isBlind'  : 1
+               'isBlind'  : 0
           }
 
           

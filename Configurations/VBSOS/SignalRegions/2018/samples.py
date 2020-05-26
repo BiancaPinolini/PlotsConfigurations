@@ -205,7 +205,7 @@ samples['ggWW'] = {
 ######## Vg ########
 
 files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
-    nanoGetSampleFiles(mcDirectory, 'Zg')
+    nanoGetSampleFiles(mcDirectory, 'ZGToLLG')
 
 samples['Vg'] = {
     'name': files,
@@ -213,14 +213,14 @@ samples['Vg'] = {
     'FilesPerJob': 4
 }
 # the following is needed in both v5 and v6
-addSampleWeight(samples, 'Vg', 'Zg', '0.448')
+addSampleWeight(samples, 'Vg', 'ZGToLLG', '0.448')
 
 
 
 ######## VgS ########
 
 files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
-    nanoGetSampleFiles(mcDirectory, 'Zg') + \
+    nanoGetSampleFiles(mcDirectory, 'ZGToLLG') + \
     nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
 
 samples['VgS'] = {
@@ -233,11 +233,11 @@ samples['VgS'] = {
     }
 }
 addSampleWeight(samples, 'VgS', 'Wg_MADGRAPHMLM', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
-addSampleWeight(samples, 'VgS', 'Zg', '(Gen_ZGstar_mass > 0)*0.448')
+addSampleWeight(samples, 'VgS', 'ZGToLLG', '(Gen_ZGstar_mass > 0)*0.448')
 addSampleWeight(samples, 'VgS', 'WZTo3LNu_mllmin01', '(Gen_ZGstar_mass > 0.1)')
 
 
-############ VZ ############
+########### VZ ############
 
 files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext1') + \
     nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Q') + \
