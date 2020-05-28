@@ -278,7 +278,7 @@ aliases['btag2'] = {
 # CR definitions
 
 aliases['topcr'] = {
-      'expr': '((zeroJet && !bVeto) || bReq) && !bVetoForward'
+      'expr': 'mjj > 200 && fabs(detajj) > 2 && mth > 60 && !bVetoForward'
 }
 
 # aliases['dycr'] = {
@@ -291,7 +291,7 @@ aliases['topcr'] = {
 
 # SR definition
 
-aliases['sr'] = {
+aliases['our_sr'] = {
     'expr': 'mjj > 200 && fabs(detajj) > 2 && mth > 60 && bVetoForward'
 }
 

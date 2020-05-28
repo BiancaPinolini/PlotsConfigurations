@@ -150,6 +150,16 @@ variables['DNNoutput_70'] = {
                             "sr": [0.5,1]
                             }
                         }
+variables['DNNoutput_var'] = { 
+                        'name' : 'DNNoutput',
+                        'range' : ([0,0.03,0.06,0.09,0.12,0.15,0.18,0.21,0.24,0.27,0.3,0.35,0.40,0.45,0.50,0.60,0.70,0.80,0.83,0.86,0.89,0.92,0.95,0.98,1],),
+                        'xaxis' : 'DNN output',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
+                        }
+
 
 
 # VARIABILE BDT

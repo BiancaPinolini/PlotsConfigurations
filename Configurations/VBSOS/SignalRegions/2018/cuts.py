@@ -12,4 +12,4 @@ supercut = 'mll>50 \
 cuts['sr'] = 'mjj > 200 && fabs(detajj) > 2 && mth > 60 && bVetoForward'   #mjj and detajj to suppress the top, mth to suppress the DY
 
 ## Top control regions
-cuts['top_cr']  = '((zeroJet && !bVeto) || bReq) && !bVetoForward'
+cuts['top_cr']  = 'mjj > 200 && fabs(detajj) > 2 && mth > 60 && !bVetoForward'
