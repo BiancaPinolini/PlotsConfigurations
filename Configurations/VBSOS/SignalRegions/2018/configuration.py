@@ -17,9 +17,11 @@ variablesFile = 'variables.py'
 cutsFile = 'cuts.py'
 
 # file with list of samples
+# samplesFile = 'samples.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
+# plotFile = 'plot.py'
 plotFile = 'plot.py'
 
 # file with list of nuisances
@@ -30,7 +32,7 @@ nuisancesFile = 'nuisances.py'
 outputDirPlots = 'output-plots'
 
 # used by mkDatacards to define output directory for datacards
-outputDirDatacard = 'datacards/270520'
+outputDirDatacard = 'datacards/091820'
 
 # # structure file for datacard
 structureFile = 'structure.py'

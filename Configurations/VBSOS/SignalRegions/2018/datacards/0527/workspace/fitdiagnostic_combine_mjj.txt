@@ -1,0 +1,11 @@
+mjj: 
+ <<< Combine >>> 
+>>> including systematics
+>>> method used is FitDiagnostics
+>>> random number generator seed is 123456
+Set Default Value of Parameter r_vbs To : 1
+Computing results starting from expected outcome (a-priori)
+
+ --- FitDiagnostics ---
+Best fit r_vbs: 1  -0.368162/+0.404511  (68% CL)
+Done in 0.02 min (cpu), 0.03 min (real)

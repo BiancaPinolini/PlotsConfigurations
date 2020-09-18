@@ -1,0 +1,11 @@
+mjj: 
+ <<< Combine >>> 
+>>> including systematics
+>>> method used is Significance
+>>> random number generator seed is 123456
+Set Default Value of Parameter r_vbs To : 1
+Computing results starting from expected outcome (a-priori)
+
+ -- Significance -- 
+Significance: 2.85593
+Done in 0.00 min (cpu), 0.01 min (real)

@@ -9,7 +9,11 @@ supercut = 'mll>50 \
             && Alt$(CleanJet_pt[0],0.)>30 && Alt$(CleanJet_pt[1],0.)>30 \
 '
 ##signal region
-cuts['sr'] = 'mjj > 200 && fabs(detajj) > 2 && mth > 60 && bVetoForward'   #mjj and detajj to suppress the top, mth to suppress the DY
+cuts['sr'] = 'mjj > 200 && detajj > 2 && Zeppll_al < 1 && mth > 60 && bVeto'
 
-## Top control regions
-cuts['top_cr']  = 'mjj > 200 && fabs(detajj) > 2 && mth > 60 && !bVetoForward'
+#bVetoForward 
+
+# Top control regions
+cuts['top_cr']  = 'mjj > 200 && detajj > 2 && Zeppll_al < 1 && mth > 60 && ((zeroJet && !bVeto) || bReq)'
+
+

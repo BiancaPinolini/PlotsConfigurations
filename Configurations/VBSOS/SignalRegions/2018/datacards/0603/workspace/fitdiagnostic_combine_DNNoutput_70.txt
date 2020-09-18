@@ -1,0 +1,11 @@
+DNNoutput_70: 
+ <<< Combine >>> 
+>>> including systematics
+>>> method used is FitDiagnostics
+>>> random number generator seed is 123456
+Set Default Value of Parameter r_vbs To : 1
+Computing results starting from expected outcome (a-priori)
+
+ --- FitDiagnostics ---
+Best fit r_vbs: 1  -0.750074/+0.788395  (68% CL)
+Done in 0.04 min (cpu), 0.04 min (real)
