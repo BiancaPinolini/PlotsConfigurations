@@ -5,7 +5,7 @@ eval `scramv1 runtime -sh`
 cd -
 
 ## work directory
-date=091820
+date=0917
 var=DNNoutput_35
 
 workDir=/afs/cern.ch/user/r/rdfexp/bianca/CMSSW_10_2_15_patch2/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/datacards

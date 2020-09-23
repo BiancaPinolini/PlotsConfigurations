@@ -27,17 +27,6 @@ from LatinoAnalysis.Tools.HiggsXSection import HiggsXSection
 HiggsXS = HiggsXSection()
 
 
-cuts0j = []
-cuts1j = []
-cuts2j = []
-
-for k in cuts:
-  for cat in cuts[k]['categories']:
-    if '0j' in cat: cuts0j.append(k+'_'+cat)
-    elif '1j' in cat: cuts1j.append(k+'_'+cat)
-    elif '2j' in cat: cuts2j.append(k+'_'+cat)
-    else: print 'WARNING: name of category does not contain either 0j,1j,2j'
-
 ################################ EXPERIMENTAL UNCERTAINTIES  #################################
 
 #### Luminosity
@@ -75,61 +64,61 @@ nuisances['lumi_CurrCalib'] = {
 #### FAKES
 
 ## FIXME: check the 30% lnN
-nuisances['fake_syst_e'] = {
-    'name': 'CMS_fake_syst_e',
-    'type': 'lnN',
-    'samples': {
-        'Fake_e': '1.3'
-    },
-    'cutspost': lambda self, cuts: [cut for cut in cuts if '20me' not in cut],
-    'perRecoBin': True
-}
+# nuisances['fake_syst_e'] = {
+#     'name': 'CMS_fake_syst_e',
+#     'type': 'lnN',
+#     'samples': {
+#         'Fake_e': '1.3'
+#     },
+#     'cutspost': lambda self, cuts: [cut for cut in cuts if '20me' not in cut],
+#     'perRecoBin': True
+# }
 
-nuisances['fake_syst_m'] = {
-    'name': 'CMS_fake_syst_m',
-    'type': 'lnN',
-    'samples': {
-        'Fake_m': '1.3'
-    },
-    'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
-    'perRecoBin': True
-}
+# nuisances['fake_syst_m'] = {
+#     'name': 'CMS_fake_syst_m',
+#     'type': 'lnN',
+#     'samples': {
+#         'Fake_m': '1.3'
+#     },
+#     'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
+#     'perRecoBin': True
+# }
 
-nuisances['fake_ele'] = {
-    'name': 'CMS_fake_e_2018',
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': {
-        'Fake': ['fakeWEleUp', 'fakeWEleDown'],
-    }
-}
+# nuisances['fake_ele'] = {
+#     'name': 'CMS_fake_e_2018',
+#     'kind': 'weight',
+#     'type': 'shape',
+#     'samples': {
+#         'Fake': ['fakeWEleUp', 'fakeWEleDown'],
+#     }
+# }
 
-nuisances['fake_ele_stat'] = {
-    'name': 'CMS_fake_stat_e_2018',
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': {
-        'Fake': ['fakeWStatEleUp', 'fakeWStatEleDown']
-    }
-}
+# nuisances['fake_ele_stat'] = {
+#     'name': 'CMS_fake_stat_e_2018',
+#     'kind': 'weight',
+#     'type': 'shape',
+#     'samples': {
+#         'Fake': ['fakeWStatEleUp', 'fakeWStatEleDown']
+#     }
+# }
 
-nuisances['fake_mu'] = {
-    'name': 'CMS_fake_m_2018',
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': {
-        'Fake': ['fakeWMuUp', 'fakeWMuDown'],
-    }
-}
+# nuisances['fake_mu'] = {
+#     'name': 'CMS_fake_m_2018',
+#     'kind': 'weight',
+#     'type': 'shape',
+#     'samples': {
+#         'Fake': ['fakeWMuUp', 'fakeWMuDown'],
+#     }
+# }
 
-nuisances['fake_mu_stat'] = {
-    'name': 'CMS_fake_stat_m_2018',
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': {
-        'Fake': ['fakeWStatMuUp', 'fakeWStatMuDown'],
-    }
-}
+# nuisances['fake_mu_stat'] = {
+#     'name': 'CMS_fake_stat_m_2018',
+#     'kind': 'weight',
+#     'type': 'shape',
+#     'samples': {
+#         'Fake': ['fakeWStatMuUp', 'fakeWStatMuDown'],
+#     }
+# }
 
 ##### B-tagger
 
@@ -199,21 +188,7 @@ nuisances['muonpt'] = {
     'folderDown': makeMCDirectory('MupTdo_suffix'),
     'AsLnN': '1'
 }
-
 ##### Jet energy scale
-
-#nuisances['jes'] = {
-#    'name': 'CMS_scale_j_2018',
-#    'kind': 'suffix',
-#    'type': 'shape',
-#    'mapUp': 'JESup',
-#    'mapDown': 'JESdo',
-#    'samples': dict((skey, ['1', '1']) for skey in mc),
-#    'folderUp': makeMCDirectory('JESup_suffix'),
-#    'folderDown': makeMCDirectory('JESdo_suffix'),
-#    'AsLnN': '1'
-#}
-
 jes_systs = ['JESAbsolute','JESAbsolute_2018','JESBBEC1','JESBBEC1_2018','JESEC2','JESEC2_2018','JESFlavorQCD','JESHF','JESHF_2018','JESRelativeBal','JESRelativeSample_2018']
 
 for js in jes_systs:
@@ -289,7 +264,6 @@ nuisances['UE']  = {
                 'AsLnN'      : '1',
                 'synchronized': False
 }
-
 ####### Generic "cross section uncertainties"
 
 apply_on = {
@@ -736,14 +710,14 @@ nuisances['DYttnorm1j']  = {
                'cuts'  : cuts1j
               }
 '''
-nuisances['DYnorm2j']  = {
-                 'name'  : 'CMS_hww_DYnorm2j_2018',
-                 'samples'  : {
-                     'DY' : '1.00',
-                     },
-                 'type'  : 'rateParam',
-                 'cuts'  : cuts2j
-                }
+# nuisances['DYnorm2j']  = {
+#                  'name'  : 'CMS_hww_DYnorm2j_2018',
+#                  'samples'  : {
+#                      'DY' : '1.00',
+#                      },
+#                  'type'  : 'rateParam',
+#                  'cuts'  : cuts2j
+#                 }
 
 '''
 nuisances['WWnorm0j']  = {
@@ -787,8 +761,8 @@ nuisances['WWnorm2j']  = {
                'samples'  : {
                    'WW' : '1.00',
                    },
-               'type'  : 'rateParam',
-               'cuts'  : cuts2j
+               'type'  : 'rateParam'#,
+               #'cuts'  : cuts2j
               }
 
 nuisances['ggWWnorm2j']  = {
@@ -796,8 +770,8 @@ nuisances['ggWWnorm2j']  = {
                'samples'  : {
                    'ggWW' : '1.00',
                    },
-               'type'  : 'rateParam',
-               'cuts'  : cuts2j
+               'type'  : 'rateParam'#,
+               #'cuts'  : cuts2j
               }
 '''
 nuisances['Topnorm0j']  = {
@@ -823,8 +797,8 @@ nuisances['Topnorm2j']  = {
                'samples'  : {
                    'top' : '1.00',
                    },
-               'type'  : 'rateParam',
-               'cuts'  : cuts2j
+               'type'  : 'rateParam'#,
+               #'cuts'  : cuts2j
               }
 
 

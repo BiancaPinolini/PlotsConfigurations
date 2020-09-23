@@ -1,5 +1,5 @@
 variables['detajj']  = {   'name': 'fabs(detajj)',
-                           'range' : (20,3.5,9),
+                           'range' : (20,2,9),
                            'xaxis' : '#Delta#eta_{jj}',
                            'fold' : 3
                         }
@@ -91,7 +91,7 @@ variables['Zepp2']  = {   'name': 'Zepp2_al',
                            }
 
 variables['mjj']  = {   'name': 'mjj',
-                        'range' : (10,400,3000),
+                        'range' : (10,200,3000),
                         'xaxis' : 'm_{jj} [GeV]',
                         'fold' :3
                         } 
@@ -101,17 +101,17 @@ variables['events']  = {'name': '1',
                         'fold' : 3
                         } 
 
-# variables['qgl_forward'] = { 'name': 'qgl_forward',
-#                          'range' : (50, 0, 1),
-#                          'xaxis' : 'Quark vs Gluon likelihood discriminator - Forward jet',
-#                          'fold' : 3
-#                        }
+variables['qgl_forward'] = { 'name': 'qgl_forward',
+                         'range' : (50, 0, 1),
+                         'xaxis' : 'Quark vs Gluon likelihood discriminator - Forward jet',
+                         'fold' : 3
+                       }
                        
-# variables['qgl_central'] = { 'name': 'qgl_central',
-#                          'range' : (50, 0, 1),
-#                          'xaxis' : 'Quark vs Gluon likelihood discriminator - Central jet',
-#                          'fold' : 3
-#                        }
+variables['qgl_central'] = { 'name': 'qgl_central',
+                         'range' : (50, 0, 1),
+                         'xaxis' : 'Quark vs Gluon likelihood discriminator - Central jet',
+                         'fold' : 3
+                       }
                        
   
 # variables['DNNoutput_15'] = { 

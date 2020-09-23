@@ -15,22 +15,22 @@ structure['Wjets']  = {
                   'isData'   : 0 
               }
 
-structure['Fake']  = {  
-                  'isSignal' : 0,
-                  'isData'   : 0 
-              }
+# structure['Fake']  = {  
+#                   'isSignal' : 0,
+#                   'isData'   : 0 
+#               }
 
-structure['Fake_e']  = {  
-                  'isSignal' : 0,
-                  'isData'   : 0,
-#                  'removeFromCuts' : [ k for k in cuts if 'me' in k],
-              }
+# structure['Fake_e']  = {  
+#                   'isSignal' : 0,
+#                   'isData'   : 0,
+# #                  'removeFromCuts' : [ k for k in cuts if 'me' in k],
+#               }
 
-structure['Fake_m']  = {  
-                  'isSignal' : 0,
-                  'isData'   : 0,
-#                  'removeFromCuts' : [ k for k in cuts if 'em' in k],
-              }
+# structure['Fake_m']  = {  
+#                   'isSignal' : 0,
+#                   'isData'   : 0,
+# #                  'removeFromCuts' : [ k for k in cuts if 'em' in k],
+#               }
 
 structure['ttbar'] = {   
                   'isSignal' : 0,

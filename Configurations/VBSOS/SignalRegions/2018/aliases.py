@@ -17,7 +17,7 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'v0/'
+model_version = 'v4/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
@@ -105,13 +105,13 @@ aliases['btag_forward']  = {
     'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]]',
     'samples': mc + ['DATA']
 }
-aliases['bVetoForward'] = {
-    'expr': '(pT_forward>20. && eta_forward<2.5 && btag_forward>0.1241)==0',
-    'samples': mc + ['DATA']
-}
-aliases['bReqForward'] = {
-    'expr': '(pT_forward > 30. && eta_forward < 2.5 && btag_forward > 0.1241) >= 1'
-}
+# aliases['bVetoForward'] = {
+#     'expr': '(pT_forward>20. && eta_forward<2.5 && btag_forward>0.1241)==0',
+#     'samples': mc + ['DATA']
+# }
+# aliases['bReqForward'] = {
+#     'expr': '(pT_forward > 30. && eta_forward < 2.5 && btag_forward > 0.1241) >= 1'
+# }
 
 aliases['qgl_forward'] = {
     'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_qgl[0],-9999.) + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_qgl[1],-9999.)',
@@ -124,7 +124,8 @@ aliases['qgl_central'] = {
 
 
 aliases['bVeto'] = {
-    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) == 0'
+    #'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) == 0'
+    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
 }
 
 aliases['cut_index'] = {
@@ -165,44 +166,44 @@ aliases['gstarHigh'] = {
     'samples': 'VgS'
 }
 
-# Fake leptons transfer factor 
-aliases['fakeW'] = {
-    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP,
-    'samples': ['Fake']
-}
-# And variations - already divided by central values in formulas !
-aliases['fakeWEleUp'] = {
-    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_EleUp',
-    'samples': ['Fake']
-}
-aliases['fakeWEleDown'] = {
-    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_EleDown',
-    'samples': ['Fake']
-}
-aliases['fakeWMuUp'] = {
-    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_MuUp',
-    'samples': ['Fake']
-}
-aliases['fakeWMuDown'] = {
-    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_MuDown',
-    'samples': ['Fake']
-}
-aliases['fakeWStatEleUp'] = {
-    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statEleUp',
-    'samples': ['Fake']
-}
-aliases['fakeWStatEleDown'] = {
-    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statEleDown',
-    'samples': ['Fake']
-}
-aliases['fakeWStatMuUp'] = {
-    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statMuUp',
-    'samples': ['Fake']
-}
-aliases['fakeWStatMuDown'] = {
-    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statMuDown',
-    'samples': ['Fake']
-}
+# # Fake leptons transfer factor 
+# aliases['fakeW'] = {
+#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP,
+#     'samples': ['Fake']
+# }
+# # And variations - already divided by central values in formulas !
+# aliases['fakeWEleUp'] = {
+#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_EleUp',
+#     'samples': ['Fake']
+# }
+# aliases['fakeWEleDown'] = {
+#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_EleDown',
+#     'samples': ['Fake']
+# }
+# aliases['fakeWMuUp'] = {
+#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_MuUp',
+#     'samples': ['Fake']
+# }
+# aliases['fakeWMuDown'] = {
+#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_MuDown',
+#     'samples': ['Fake']
+# }
+# aliases['fakeWStatEleUp'] = {
+#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statEleUp',
+#     'samples': ['Fake']
+# }
+# aliases['fakeWStatEleDown'] = {
+#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statEleDown',
+#     'samples': ['Fake']
+# }
+# aliases['fakeWStatMuUp'] = {
+#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statMuUp',
+#     'samples': ['Fake']
+# }
+# aliases['fakeWStatMuDown'] = {
+#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statMuDown',
+#     'samples': ['Fake']
+# }
 
 # gen-matching to prompt only (GenLepMatch2l matches to *any* gen lepton)
 aliases['PromptGenLepMatch2l'] = {
@@ -229,16 +230,6 @@ aliases['isSingleTop'] = {
     'expr': 'Sum$(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 1' % lastcopy,
     'samples': ['top']
 }
-
-#aliases['topGenPtOTF'] = {
-#    'expr': 'Sum$((GenPart_pdgId == 6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-#    'samples': ['top']
-#}
-#
-#aliases['antitopGenPtOTF'] = {
-#    'expr': 'Sum$((GenPart_pdgId == -6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-#    'samples': ['top']
-#}
 
 aliases['Top_pTrw'] = {
     'expr': 'isTTbar * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPt) * TMath::Exp(0.0615 - 0.0005 * antitopGenPt))) + isSingleTop',
@@ -279,8 +270,8 @@ aliases['multiJet'] = {
 # B tagging
 
 aliases['bReq'] = {
-    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 1'
-    #'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
+    # 'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 1'
+    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
 }
 
 # CR definitions
