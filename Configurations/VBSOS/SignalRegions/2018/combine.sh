@@ -17,6 +17,7 @@ cd $workDir
 
 combineCards.py   sr=${datacardDir}/sr/${var}/datacard.txt \
                   cr_top=${datacardDir}/top_cr/events/datacard.txt \
+                  cr_dy=${datacardDir}/dy_cr/events/datacard.txt \
 > ${workspaceDir}/${output}.txt
 
 text2workspace.py ${workspaceDir}/${output}.txt -P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel --PO 'map=.*/WWewk:r_vbs[1,-10,10]' -o ${workspaceDir}/${output}.root
