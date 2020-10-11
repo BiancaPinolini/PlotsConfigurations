@@ -9,17 +9,17 @@ variables['ptll']    = {    'name': 'ptll',
                             'fold' : 3 
                         }
 variables['eta1']  = {   'name': 'Lepton_eta[0]',
-                        'range' : (40,-3.14,3.14),
-                        'xaxis' : 'p_{T} 1st lep',
+                        'range' : (20,-3.14,3.14),
+                        'xaxis' : '#eta 1st lep',
                         'fold' : 3
                         }
 variables['eta2']  = {  'name': 'Lepton_eta[1]',
-                        'range' : (40,-3.14,3.14),
-                        'xaxis' : 'p_{T} 2nd lep',
+                        'range' : (20,-3.14,3.14),
+                        'xaxis' : '#eta 2nd lep',
                         'fold' : 3
                         }     
 variables['detall']  = {   'name': 'fabs(Lepton_eta[0]-Lepton_eta[1])',
-                           'range' : (20,0,6),
+                           'range' : (15,0,6),
                            'xaxis' : '#Delta#eta_{ll}',
                            'fold'  : 3
                         }
@@ -37,7 +37,7 @@ variables['jetpt2']  = {   'name': 'Alt$(CleanJet_pt[1],-9999.)',
                            }
 
 variables['met']  = {   'name': 'MET_pt',            
-                        'range' : (50,0,250),    
+                        'range' : (30,0,250),    
                         'xaxis' : 'MET [GeV]',
                         'fold'  : 3
                         }
@@ -49,7 +49,7 @@ variables['dphill']  = {'name': 'fabs(dphill)',
                         }
 
 variables['dphijj']  = {'name': 'fabs(Alt$(CleanJet_phi[0],-9999.)-Alt$(CleanJet_phi[1],-9999.))',
-                        'range' : (20,0,9),
+                        'range' : (20,0,7),
                         'xaxis' : '#Delta#Phi_{jj}',
                         'fold'  : 3
                         }
@@ -64,12 +64,12 @@ variables['btag_central']  = {   'name'  : 'btag_central_al',
                                 'fold'  : 3
                             }
 variables['dR_jl1'] = {	'name' : '(R_j1l1 < R_j2l1)*R_j1l1+(R_j1l1 >= R_j2l1)*R_j2l1',
-                        'range' : (50,0,10),
+                        'range' : (20,0,7),
                         'xaxis' : 'R from 1^{st} lep to nearest jet',
                         'fold'  : 3
                             }
 variables['dR_jl2'] = { 'name' : '(R_j1l2 < R_j2l2)*R_j1l2+(R_j1l2 >= R_j2l2)*R_j2l2',
-                        'range' : (50,0,10),
+                        'range' : (20,0,7),
                         'xaxis' : 'R from 2^{nd} lep to nearest jet',
                         'fold'  : 3
                             }
@@ -90,28 +90,39 @@ variables['Zepp2']  = {   'name': 'Zepp2_al',
                            'fold' :0
                            }
 
-variables['mjj']  = {   'name': 'mjj',
-                        'range' : (10,200,3000),
+variables['mjj_100']  = {   'name': 'mjj',
+                        'range' : (100,200,3000),
                         'xaxis' : 'm_{jj} [GeV]',
                         'fold' :3
                         } 
+variables['mjj_200']  = {   'name': 'mjj',
+                        'range' : (200,200,3000),
+                        'xaxis' : 'm_{jj} [GeV]',
+                        'fold' :3
+                        } 
+variables['mjj_20']  = {   'name': 'mjj',
+                        'range' : (100,200,3000),
+                        'xaxis' : 'm_{jj} [GeV]',
+                        'fold' :3
+                        }                                                 
+
 variables['events']  = {'name': '1',
                         'range' : (1,0,2),
                         'xaxis' : 'events',
                         'fold' : 3
                         } 
 
-variables['qgl_forward'] = { 'name': 'qgl_forward',
-                         'range' : (50, 0, 1),
-                         'xaxis' : 'Quark vs Gluon likelihood discriminator - Forward jet',
-                         'fold' : 3
-                       }
+# variables['qgl_forward'] = { 'name': 'qgl_forward',
+#                          'range' : (20, 0, 1),
+#                          'xaxis' : 'Quark vs Gluon likelihood discriminator - Forward jet',
+#                          'fold' : 3
+#                        }
                        
-variables['qgl_central'] = { 'name': 'qgl_central',
-                         'range' : (50, 0, 1),
-                         'xaxis' : 'Quark vs Gluon likelihood discriminator - Central jet',
-                         'fold' : 3
-                       }
+# variables['qgl_central'] = { 'name': 'qgl_central',
+#                          'range' : (20, 0, 1),
+#                          'xaxis' : 'Quark vs Gluon likelihood discriminator - Central jet',
+#                          'fold' : 3
+#                        }
                        
   
 # variables['DNNoutput_15'] = { 

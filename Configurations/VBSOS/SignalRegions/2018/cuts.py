@@ -7,11 +7,15 @@ supercut = 'mll>50 \
             && (MET_pt > 20 || PuppiMET_pt>20) \
             && Alt$(Lepton_pdgId[0]*Lepton_pdgId[1],0)==-11*13 \
             && Alt$(CleanJet_pt[0],0.)>30 && Alt$(CleanJet_pt[1],0.)>30 \
-            && mjj > 200 && detajj > 2 && Zeppll_al < 1 && mth > 60 \
+            && mjj > 200 && detajj > 2 \
+            && DNNoutput < 0.1 \
 '
 
 ##signal region
-cuts['sr'] = 'bVeto'
+cuts['sr'] = 'bVeto && Zeppll_al < 1 && mth > 60 '
 
-# Top control regions
+# Top control region
 cuts['top_cr']  = '((zeroJet && !bVeto) || bReq)'
+
+# DY control region
+cuts['dy_cr'] = 'mth < 60 && bVeto && mll < 80'

@@ -277,13 +277,17 @@ aliases['bReq'] = {
 # CR definitions
 
 aliases['topcr'] = {
-    'expr': 'mjj > 200 && detajj > 2 && Zeppll_al < 1 && mth > 60 && ((zeroJet && !bVeto) || bReq)'
+    'expr': '((zeroJet && !bVeto) || bReq)'
 }
 
 # SR definition
 
-aliases['sr'] = {
-    'expr': 'mjj > 200 && detajj > 2 && Zeppll_al < 1 && mth > 60 && bVeto'
+aliases['sigr'] = {
+    'expr': 'Zeppll_al < 1 && mth > 60 && bVeto'
+}
+
+aliases['dycr'] = {
+    'expr': 'mth<60 && bVeto'
 }
 
 aliases['centralVeto'] = {
