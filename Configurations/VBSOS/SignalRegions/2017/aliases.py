@@ -115,6 +115,30 @@ aliases['cut_index'] = {
     'expr': '1'
 }
 
+## Variables for DNN
+
+conf_DNN = os.getenv("CMSSW_BASE") + "/src/PlotsConfigurations/Configurations/"
+
+aliases['is_TopSample'] =  {
+    'expr' : 'getSampleName()',
+    'linesToAdd' : [
+        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+        '.L {}/VBSOS/SignalRegions/2017/samples_DNN.cc+'.format(conf_DNN)
+    ]
+}
+
+aliases['btag_central_DNN'] = {
+    'expr': ' (is_TopSample)*0.7+(!is_TopSample)*((fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.)))* Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
+}
+aliases['btag_forward_DNN']  = {
+    'expr'  : '(is_TopSample)*0.7+(!is_TopSample)*((fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
+}
+aliases['Zeppll_DNN'] = {
+    'expr' : '(is_TopSample)*0.5+(!is_TopSample)*(0.5*fabs((Lepton_eta[0]+Lepton_eta[1])-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))))'
+}
+
+## DNN
+
 mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/mva/'
 models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 

@@ -131,11 +131,11 @@ MVAReader_sr_v2::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(dphill, "dphill");
   _library.bindBranch(dphijj, "dphijj_al");
   _library.bindBranch(Mll, "mll");
-  _library.bindBranch(btag_central, "btag_central_al");
-  _library.bindBranch(btag_forward, "btag_forward_al");
+  _library.bindBranch(btag_central, "btag_central_DNN");
+  _library.bindBranch(btag_forward, "btag_forward_DNN");
   _library.bindBranch(dR_jl1, "dR_jl1_al");
   _library.bindBranch(dR_jl2, "dR_jl2_al");
-  _library.bindBranch(Zeppll, "Zeppll_al");
+  _library.bindBranch(Zeppll, "Zeppll_DNN");
   _library.bindBranch(Zepp1, "Zepp1_al");
   _library.bindBranch(Zepp2, "Zepp2_al");
   _library.bindBranch(mjj, "mjj");

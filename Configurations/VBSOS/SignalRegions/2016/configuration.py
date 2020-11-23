@@ -1,6 +1,6 @@
 # example of configuration file
 
-tag = 'ML_clas'
+tag = 'ML_clas_2016'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
