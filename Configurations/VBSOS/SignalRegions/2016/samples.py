@@ -318,7 +318,7 @@ samples['ggH_hww'] = {
     'weight': [mcCommonWeight, {'class': 'Weight2MINLO', 'args': '%s/src/LatinoAnalysis/Gardener/python/data/powheg2minlo/NNLOPS_reweight.root' % os.getenv('CMSSW_BASE')}],
     'FilesPerJob': 4,
 #    'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations]
-    'linesToAdd' : ['.L /afs/cern.ch/work/m/mlizzo/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/Differential/weight2MINLO.cc+']
+    'linesToAdd': ['.L %s/src/PlotsConfigurations/Configurations/Differential/weight2MINLO.cc+' % os.getenv('CMSSW_BASE')]
 }
 
 ####signals.append('ggH_hww')
