@@ -63,62 +63,58 @@ nuisances['lumi_CurrCalib'] = {
 
 #### FAKES
 
-## FIXME: check the 30% lnN
-# nuisances['fake_syst_e'] = {
-#     'name': 'CMS_fake_syst_e',
-#     'type': 'lnN',
-#     'samples': {
-#         'Fake_e': '1.3'
-#     },
-#     'cutspost': lambda self, cuts: [cut for cut in cuts if '20me' not in cut],
-#     'perRecoBin': True
-# }
+# FIXME: check the 30% lnN
+nuisances['fake_syst_e'] = {
+    'name': 'CMS_fake_syst_e',
+    'type': 'lnN',
+    'samples': {
+        'Fake_e': '1.3'
+    }
+}
 
-# nuisances['fake_syst_m'] = {
-#     'name': 'CMS_fake_syst_m',
-#     'type': 'lnN',
-#     'samples': {
-#         'Fake_m': '1.3'
-#     },
-#     'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
-#     'perRecoBin': True
-# }
+nuisances['fake_syst_m'] = {
+    'name': 'CMS_fake_syst_m',
+    'type': 'lnN',
+    'samples': {
+        'Fake_m': '1.3'
+    }
+}
 
-# nuisances['fake_ele'] = {
-#     'name': 'CMS_fake_e_2018',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'Fake': ['fakeWEleUp', 'fakeWEleDown'],
-#     }
-# }
+nuisances['fake_ele'] = {
+    'name': 'CMS_fake_e_2018',
+    'kind': 'weight',
+    'type': 'shape',
+    'samples': {
+        'Fake': ['fakeWEleUp', 'fakeWEleDown'],
+    }
+}
 
-# nuisances['fake_ele_stat'] = {
-#     'name': 'CMS_fake_stat_e_2018',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'Fake': ['fakeWStatEleUp', 'fakeWStatEleDown']
-#     }
-# }
+nuisances['fake_ele_stat'] = {
+    'name': 'CMS_fake_stat_e_2018',
+    'kind': 'weight',
+    'type': 'shape',
+    'samples': {
+        'Fake': ['fakeWStatEleUp', 'fakeWStatEleDown']
+    }
+}
 
-# nuisances['fake_mu'] = {
-#     'name': 'CMS_fake_m_2018',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'Fake': ['fakeWMuUp', 'fakeWMuDown'],
-#     }
-# }
+nuisances['fake_mu'] = {
+    'name': 'CMS_fake_m_2018',
+    'kind': 'weight',
+    'type': 'shape',
+    'samples': {
+        'Fake': ['fakeWMuUp', 'fakeWMuDown'],
+    }
+}
 
-# nuisances['fake_mu_stat'] = {
-#     'name': 'CMS_fake_stat_m_2018',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'Fake': ['fakeWStatMuUp', 'fakeWStatMuDown'],
-#     }
-# }
+nuisances['fake_mu_stat'] = {
+    'name': 'CMS_fake_stat_m_2018',
+    'kind': 'weight',
+    'type': 'shape',
+    'samples': {
+        'Fake': ['fakeWStatMuUp', 'fakeWStatMuDown'],
+    }
+}
 
 ##### B-tagger
 

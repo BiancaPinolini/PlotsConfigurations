@@ -17,71 +17,52 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'v4/'
+model_version = 'v0/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Lepton_eta[0],2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Lepton_phi[0],2))',
-        'samples': mc + ['DATA']
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Lepton_eta[0],2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Lepton_phi[0],2))'
 }
 
 aliases['R_j2l1'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Lepton_eta[0],2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Lepton_phi[0],2))',
-        'samples': mc + ['DATA']
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Lepton_eta[0],2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Lepton_phi[0],2))'
 }
 
 aliases['R_j1l2'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Lepton_eta[1],2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Lepton_phi[1],2))',
-        'samples': mc + ['DATA']
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Lepton_eta[1],2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Lepton_phi[1],2))'
 }
 
 aliases['R_j2l2'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Lepton_eta[1],2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Lepton_phi[1],2))',
-        'samples': mc + ['DATA']
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Lepton_eta[1],2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Lepton_phi[1],2))'
 }
 
-
-
-# variables
+# TRAINING VARIABLES
 aliases['detall_al'] = {
-    'expr': 'fabs(Lepton_eta[0]-Lepton_eta[1])',
-    'samples': mc + ['DATA']
+    'expr': 'fabs(Lepton_eta[0]-Lepton_eta[1])'
 }
 aliases['jetpt1_al'] = {
-    'expr': 'Alt$(CleanJet_pt[0],-9999.)',
-    'samples': mc + ['DATA']
+    'expr': 'Alt$(CleanJet_pt[0],-9999.)'
 }
 aliases['jetpt2_al'] = {
-    'expr': 'Alt$(CleanJet_pt[1],-9999.)',
-    'samples': mc + ['DATA']
+    'expr': 'Alt$(CleanJet_pt[1],-9999.)'
 }
 aliases['eta1_al'] = {
-    'expr': 'Lepton_eta[0]',
-    'samples': mc + ['DATA']
+    'expr': 'Lepton_eta[0]'
 }
 aliases['eta2_al'] = {
-    'expr': 'Lepton_eta[1]',
-    'samples': mc + ['DATA']
+    'expr': 'Lepton_eta[1]'
 }
 aliases['dphijj_al'] = {
-    'expr': 'fabs(Alt$(CleanJet_phi[0],-9999.)-Alt$(CleanJet_phi[1],-9999.))',
-    'samples': mc + ['DATA']
-}
-aliases['btag_central_al'] = {
-    'expr': ' (fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.)))* Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]]',
-    'samples': mc + ['DATA']
+    'expr': 'fabs(Alt$(CleanJet_phi[0],-9999.)-Alt$(CleanJet_phi[1],-9999.))'
 }
 
 aliases['dR_jl1_al'] = {
-    'expr': '(R_j1l1 < R_j2l1)*R_j1l1+(R_j1l1 >= R_j2l1)*R_j2l1',
-    'samples': mc + ['DATA']
+    'expr': '(R_j1l1 < R_j2l1)*R_j1l1+(R_j1l1 >= R_j2l1)*R_j2l1'
 }
 aliases['dR_jl2_al'] = {
-    'expr': '(R_j1l2 < R_j2l2)*R_j1l2+(R_j1l2 >= R_j2l2)*R_j2l2',
-    'samples': mc + ['DATA']
+    'expr': '(R_j1l2 < R_j2l2)*R_j1l2+(R_j1l2 >= R_j2l2)*R_j2l2'
 }
 
-# Zeppenfeld variables
 aliases['Zeppll_al'] = {
     'expr' : '0.5*fabs((Lepton_eta[0]+Lepton_eta[1])-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.)))'
 }
@@ -92,45 +73,46 @@ aliases['Zepp2_al'] = {
     'expr' : 'Lepton_eta[1]-0.5*(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))'
 }
 
-# bVeto forward
-aliases['pT_forward']  = {
-    'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(CleanJet_pt[0],-9999.) + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(CleanJet_pt[1],-9999.)',
-    'samples': mc + ['DATA']
+aliases['btag_central_al'] = {
+    'expr': ' (fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.)))* Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]]'
 }
-aliases['eta_forward']  = {
-    'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * abs(Alt$(CleanJet_eta[0],-9999.)) + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * abs(Alt$(CleanJet_eta[1],-9999.))',
-    'samples': mc + ['DATA']
-}
-aliases['btag_forward']  = {
-    'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]]',
-    'samples': mc + ['DATA']
-}
-# aliases['bVetoForward'] = {
-#     'expr': '(pT_forward>20. && eta_forward<2.5 && btag_forward>0.1241)==0',
-#     'samples': mc + ['DATA']
-# }
-# aliases['bReqForward'] = {
-#     'expr': '(pT_forward > 30. && eta_forward < 2.5 && btag_forward > 0.1241) >= 1'
-# }
 
-aliases['qgl_forward'] = {
+aliases['btag_forward_al']  = {
+    'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]]'
+}
+
+aliases['qgl_central'] = {
     'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_qgl[0],-9999.) + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_qgl[1],-9999.)',
     'samples': mc + ['DATA']
 }
-aliases['qgl_central'] = {
-    'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_qgl[1],-9999.) + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_qgl[0],-9999.)',
+
+aliases['qgl_forward'] = {
+    'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_qgl[0],-9999.) + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_qgl[1],-9999.)',
     'samples': mc + ['DATA']
 }
 
+aliases['area_central'] = {
+    'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_area[0],-9999.) + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_area[1],-9999.)',
+    'samples': mc + ['DATA']
+}
 
-aliases['bVeto'] = {
-    #'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) == 0'
-    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
+aliases['area_forward'] = {
+    'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_area[0],-9999.) + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_area[1],-9999.)',
+    'samples': mc + ['DATA']
+}
+
+aliases['Jet_nConst_central'] = {
+    'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_nConstituents[0],-9999.) + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_nConstituents[1],-9999.)',
+    'samples': mc + ['DATA']
+}
+
+aliases['Jet_nConst_forward'] = {
+    'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_nConstituents[0],-9999.) + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_nConstituents[1],-9999.)',
+    'samples': mc + ['DATA']
 }
 
 aliases['cut_index'] = {
-    'expr': '1',
-    'samples': mc + ['DATA']
+    'expr': '1'
 }
 
 mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/mva/'
@@ -166,44 +148,44 @@ aliases['gstarHigh'] = {
     'samples': 'VgS'
 }
 
-# # Fake leptons transfer factor 
-# aliases['fakeW'] = {
-#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP,
-#     'samples': ['Fake']
-# }
-# # And variations - already divided by central values in formulas !
-# aliases['fakeWEleUp'] = {
-#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_EleUp',
-#     'samples': ['Fake']
-# }
-# aliases['fakeWEleDown'] = {
-#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_EleDown',
-#     'samples': ['Fake']
-# }
-# aliases['fakeWMuUp'] = {
-#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_MuUp',
-#     'samples': ['Fake']
-# }
-# aliases['fakeWMuDown'] = {
-#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_MuDown',
-#     'samples': ['Fake']
-# }
-# aliases['fakeWStatEleUp'] = {
-#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statEleUp',
-#     'samples': ['Fake']
-# }
-# aliases['fakeWStatEleDown'] = {
-#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statEleDown',
-#     'samples': ['Fake']
-# }
-# aliases['fakeWStatMuUp'] = {
-#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statMuUp',
-#     'samples': ['Fake']
-# }
-# aliases['fakeWStatMuDown'] = {
-#     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statMuDown',
-#     'samples': ['Fake']
-# }
+# Fake leptons transfer factor 
+aliases['fakeW'] = {
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP,
+    'samples': ['Fake']
+}
+# And variations - already divided by central values in formulas !
+aliases['fakeWEleUp'] = {
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_EleUp',
+    'samples': ['Fake']
+}
+aliases['fakeWEleDown'] = {
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_EleDown',
+    'samples': ['Fake']
+}
+aliases['fakeWMuUp'] = {
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_MuUp',
+    'samples': ['Fake']
+}
+aliases['fakeWMuDown'] = {
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_MuDown',
+    'samples': ['Fake']
+}
+aliases['fakeWStatEleUp'] = {
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statEleUp',
+    'samples': ['Fake']
+}
+aliases['fakeWStatEleDown'] = {
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statEleDown',
+    'samples': ['Fake']
+}
+aliases['fakeWStatMuUp'] = {
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statMuUp',
+    'samples': ['Fake']
+}
+aliases['fakeWStatMuDown'] = {
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statMuDown',
+    'samples': ['Fake']
+}
 
 # gen-matching to prompt only (GenLepMatch2l matches to *any* gen lepton)
 aliases['PromptGenLepMatch2l'] = {
@@ -259,20 +241,42 @@ aliases['zeroJet'] = {
     'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
 }
 
-aliases['oneJet'] = {
-    'expr': 'Alt$(CleanJet_pt[0], 0) > 30.'
-}
+# aliases['oneJet'] = {
+#     'expr': 'Alt$(CleanJet_pt[0], 0) > 30.'
+# }
 
-aliases['multiJet'] = {
-    'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
-}
+# aliases['multiJet'] = {
+#     'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
+# }
 
 # B tagging
+aliases['bVeto'] = {
+    #'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) == 0'
+    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
+}
 
 aliases['bReq'] = {
     # 'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 1'
     'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
 }
+
+# bVeto forward
+# aliases['pT_forward']  = {
+#     'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(CleanJet_pt[0],-9999.) + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(CleanJet_pt[1],-9999.)'
+# }
+# aliases['eta_forward']  = {
+#     'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * abs(Alt$(CleanJet_eta[0],-9999.)) + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * abs(Alt$(CleanJet_eta[1],-9999.))'
+# }
+# aliases['btag_forward_al']  = {
+#     'expr'  : '(fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]]'
+# }
+# aliases['bVetoForward'] = {
+#     'expr': '(pT_forward>20. && eta_forward<2.5 && btag_forward>0.1241)==0',
+#     'samples': mc + ['DATA']
+# }
+# aliases['bReqForward'] = {
+#     'expr': '(pT_forward > 30. && eta_forward < 2.5 && btag_forward > 0.1241) >= 1'
+# }
 
 # CR definitions
 
@@ -282,17 +286,17 @@ aliases['topcr'] = {
 
 # SR definition
 
-aliases['sigr'] = {
-    'expr': 'Zeppll_al < 1 && mth > 60 && bVeto'
-}
+# aliases['sigr'] = {
+#     'expr': 'Zeppll_al < 1 && mth > 60 && bVeto'
+# }
 
-aliases['dycr'] = {
-    'expr': 'mth<60 && bVeto'
-}
+# aliases['dycr'] = {
+#     'expr': 'mth<60 && bVeto'
+# }
 
-aliases['centralVeto'] = {
-    'expr': 'Sum$(CleanJet_pt > 30 && CleanJet_eta > TMath::Min(CleanJet_eta[0], CleanJet_eta[1]) && CleanJet_eta < TMath::Max(CleanJet_eta[0], CleanJet_eta[1]) && abs(CleanJet_eta - CleanJet_eta[0]) > 1 && abs(CleanJet_eta - CleanJet_eta[1]) > 1) == 0'        
-}
+# aliases['centralVeto'] = {
+#     'expr': 'Sum$(CleanJet_pt > 30 && CleanJet_eta > TMath::Min(CleanJet_eta[0], CleanJet_eta[1]) && CleanJet_eta < TMath::Max(CleanJet_eta[0], CleanJet_eta[1]) && abs(CleanJet_eta - CleanJet_eta[0]) > 1 && abs(CleanJet_eta - CleanJet_eta[1]) > 1) == 0'        
+# }
 
 # B tag scale factors
 

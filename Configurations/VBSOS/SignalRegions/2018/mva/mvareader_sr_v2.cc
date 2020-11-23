@@ -47,14 +47,19 @@ protected:
   TTreeReaderValue<Double_t>* dphijj{};
   FloatValueReader* Mll{};
   TTreeReaderValue<Double_t>* btag_central{};
+  TTreeReaderValue<Double_t>* btag_forward{};
   TTreeReaderValue<Double_t>* dR_jl1{};
   TTreeReaderValue<Double_t>* dR_jl2{};
   TTreeReaderValue<Double_t>* Zeppll{};
   TTreeReaderValue<Double_t>* Zepp1{};
   TTreeReaderValue<Double_t>* Zepp2{};
   FloatValueReader* mjj{};
-  // TTreeReaderValue<Double_t>* qgl_forward{};
-  // TTreeReaderValue<Double_t>* qgl_central{};
+  TTreeReaderValue<Double_t>* qgl_forward{};
+  TTreeReaderValue<Double_t>* qgl_central{};
+  TTreeReaderValue<Double_t>* Jet_nConst_central{};
+  TTreeReaderValue<Double_t>* Jet_nConst_forward{};
+  TTreeReaderValue<Double_t>* area_forward{};
+  TTreeReaderValue<Double_t>* area_central{};
   
 };
 
@@ -91,14 +96,19 @@ MVAReader_sr_v2::evaluate(unsigned)
   input.push_back( *(dphijj->Get()) );
   input.push_back( *(Mll->Get()) );
   input.push_back( *(btag_central->Get()) );
+  input.push_back( *(btag_forward->Get()) );
   input.push_back( *(dR_jl1->Get()) );
   input.push_back( *(dR_jl2->Get()) );
   input.push_back( *(Zeppll->Get()) );
   input.push_back( *(Zepp1->Get()) );
   input.push_back( *(Zepp2->Get()) );
   input.push_back( *(mjj->Get()) );
-  // input.push_back( *(qgl_forward->Get()) );
-  // input.push_back( *(qgl_central->Get()) );
+  input.push_back( *(qgl_forward->Get()) );
+  input.push_back( *(qgl_central->Get()) );
+  input.push_back( *(Jet_nConst_central->Get()) );
+  input.push_back( *(Jet_nConst_forward->Get()) );
+  input.push_back( *(area_forward->Get()) );
+  input.push_back( *(area_central->Get()) );
 
   // std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
 
@@ -122,15 +132,20 @@ MVAReader_sr_v2::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(dphijj, "dphijj_al");
   _library.bindBranch(Mll, "mll");
   _library.bindBranch(btag_central, "btag_central_al");
+  _library.bindBranch(btag_forward, "btag_forward_al");
   _library.bindBranch(dR_jl1, "dR_jl1_al");
   _library.bindBranch(dR_jl2, "dR_jl2_al");
   _library.bindBranch(Zeppll, "Zeppll_al");
   _library.bindBranch(Zepp1, "Zepp1_al");
   _library.bindBranch(Zepp2, "Zepp2_al");
   _library.bindBranch(mjj, "mjj");
-  // _library.bindBranch(qgl_forward, "qgl_forward");
-  // _library.bindBranch(qgl_central, "qgl_central");
+  _library.bindBranch(qgl_forward, "qgl_forward");
+  _library.bindBranch(qgl_central, "qgl_central");
+  _library.bindBranch(Jet_nConst_central, "Jet_nConst_central");
+  _library.bindBranch(Jet_nConst_forward, "Jet_nConst_forward");
+  _library.bindBranch(area_forward, "area_forward");
+  _library.bindBranch(area_central, "area_central");
 }
 
 
-#endif 
+#endif

@@ -16,6 +16,13 @@ groupPlot['Higgs']  = {
                   'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
               }
 
+groupPlot['DY']  = {  
+                  'nameHR' : "DY",
+                  'isSignal' : 0,
+                  'color': 418,    # kGreen+2
+                  'samples'  : ['DY']
+              }
+
 groupPlot['Multiboson']  = {  
                   'nameHR' : 'Multiboson',
                   'isSignal' : 0,
@@ -23,12 +30,12 @@ groupPlot['Multiboson']  = {
                   'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
               }
 
-groupPlot['DY']  = {  
-                  'nameHR' : "DY",
+groupPlot['Fake']  = {
+                  'nameHR' : 'nonprompt',
                   'isSignal' : 0,
-                  'color': 418,    # kGreen+2
-                  'samples'  : ['DY']
-              }
+                  'color': 921,    # kGray + 1
+                  'samples'  : ['Fake_m', 'Fake_e']
+}
 
 groupPlot['WW']  = {  
                   'nameHR' : 'WW',
@@ -37,12 +44,7 @@ groupPlot['WW']  = {
                   'samples'  : ['WW', 'ggWW']
               }
 
-# groupPlot['Fake']  = {
-#                   'nameHR' : 'nonprompt',
-#                   'isSignal' : 0,
-#                   'color': 921,    # kGray + 1
-#                   'samples'  : ['Fake_m', 'Fake_e']
-# }
+
 
 groupPlot['top']  = {  
                   'nameHR' : 'tW and t#bar{t}',
@@ -106,20 +108,20 @@ plot['DY']  = {
               }
 
 
-# plot['Fake_m']  = {  
-#                   'color': 921,    # kGray + 1
-#                   'isSignal' : 0,
-#                   'isData'   : 0,
-#                   'scale'    : 1.0                  
-#               }
+plot['Fake_m']  = {  
+                  'color': 921,    # kGray + 1
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  'scale'    : 1.0                  
+              }
 
 
-# plot['Fake_e']  = {  
-#                   'color': 921,    # kGray + 1
-#                   'isSignal' : 0,
-#                   'isData'   : 0,
-#                   'scale'    : 1.0                  
-#               }
+plot['Fake_e']  = {  
+                  'color': 921,    # kGray + 1
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  'scale'    : 1.0                  
+              }
 
               
 plot['top'] = {   
@@ -321,13 +323,13 @@ plot['ttH_hww'] = {
 
 # data
 
-plot['DATA']  = { 
-                  'nameHR' : 'Data',
-                  'color': 1 ,  
-                  'isSignal' : 0,
-                  'isData'   : 1 ,
-                  'isBlind'  : 0
-              }
+# plot['DATA']  = { 
+#                   'nameHR' : 'Data',
+#                   'color': 1 ,  
+#                   'isSignal' : 0,
+#                   'isData'   : 1 ,
+#                   'isBlind'  : 0
+#               }
 
 # additional options
 
