@@ -299,6 +299,7 @@ nuisances['UE']  = {
                 'AsLnN'      : '1',
                 'synchronized': False
 }
+
 ####### Generic "cross section uncertainties"
 
 apply_on = {
@@ -471,6 +472,7 @@ nuisances['QCDscale_VV'] = {
         'VgS': variations,
     }
 }
+
 
 # ggww and interference
 nuisances['QCDscale_ggVV'] = {

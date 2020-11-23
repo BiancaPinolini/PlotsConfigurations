@@ -142,26 +142,26 @@ CombineBaseW(samples, 'DY', ['DYJetsToLL_M-4to50_HT-200to400',  'DYJetsToLL_M-4t
 CombineBaseW(samples, 'DY', ['DYJetsToLL_M-4to50_HT-400to600',  'DYJetsToLL_M-4to50_HT-400to600_ext1'])
 CombineBaseW(samples, 'DY', ['DYJetsToLL_M-4to50_HT-600toInf',  'DYJetsToLL_M-4to50_HT-600toInf_ext1'])
 
-addSampleWeight(samples, 'DY', 'DYJetsToTT_MuEle_M-50',                 'DY_NLO_pTllrw*DiffFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-10to50-LO',                'DY_LO_pTllrw*DiffFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50',                       'DY_NLO_pTllrw*(LHE_HT < 100)*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_ext1',                  'DY_NLO_pTllrw*(LHE_HT < 100)*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-10to50-LO',                'DY_LO_pTllrw*(LHE_HT < 100)*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-100to200',           'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-200to400',           'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-400to600_ext1',      'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-600to800',           'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-800to1200',          'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-1200to2500',         'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-2500toInf',          'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-100to200',        'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-100to200_ext1',   'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-200to400',        'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-200to400_ext1',   'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-400to600',        'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-400to600_ext1',   'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-600toInf',        'DY_LO_pTllrw*SameFlav')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-600toInf_ext1',   'DY_LO_pTllrw*SameFlav')
+addSampleWeight(samples, 'DY', 'DYJetsToTT_MuEle_M-50',                 'DY_NLO_pTllrw')#*DiffFlav')
+addSampleWeight(samples, 'DY', 'DYJetsToLL_M-10to50-LO',                'DY_LO_pTllrw')#*DiffFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50',                       'DY_NLO_pTllrw*(LHE_HT < 100)*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_ext1',                  'DY_NLO_pTllrw*(LHE_HT < 100)*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-10to50-LO',                'DY_LO_pTllrw*(LHE_HT < 100)*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-100to200',           'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-200to400',           'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-400to600_ext1',      'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-600to800',           'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-800to1200',          'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-1200to2500',         'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-2500toInf',          'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-100to200',        'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-100to200_ext1',   'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-200to400',        'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-200to400_ext1',   'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-400to600',        'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-400to600_ext1',   'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-600toInf',        'DY_LO_pTllrw*SameFlav')
+# addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-600toInf_ext1',   'DY_LO_pTllrw*SameFlav')
 
 ###### Zjj EWK #######
 
@@ -181,8 +181,8 @@ files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
     nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop') + \
     nanoGetSampleFiles(mcDirectory, 'ST_t-channel_top') + \
     nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_tW_top') + \
-    nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu_PSWeights')
+    nanoGetSampleFiles(mcDirectory, 'ST_tW_top')
+    # nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu_PSWeights')
 
 samples['top'] = {
     'name': files,
