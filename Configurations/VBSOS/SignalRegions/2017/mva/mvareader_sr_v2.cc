@@ -53,7 +53,8 @@ protected:
   TTreeReaderValue<Double_t>* Zeppll{};
   TTreeReaderValue<Double_t>* Zepp1{};
   TTreeReaderValue<Double_t>* Zepp2{};
-  FloatValueReader* mjj{};
+  TTreeReaderValue<Double_t>* mjj{};
+  // FloatValueReader* mjj{};
   TTreeReaderValue<Double_t>* qgl_forward{};
   TTreeReaderValue<Double_t>* qgl_central{};
   TTreeReaderValue<Double_t>* Jet_nConst_central{};
@@ -80,7 +81,7 @@ MVAReader_sr_v2::evaluate(unsigned)
     return -999.;
   }
 
-  // std::cout << "cut_index = " << (int)(*(cut_index->Get())) << "; cut =  " << cut_ << std::endl;
+  std::cout << "cut_index = " << (int)(*(cut_index->Get())) << "; cut =  " << cut_ << std::endl;
 
   std::vector<float> input{};
 
@@ -110,7 +111,7 @@ MVAReader_sr_v2::evaluate(unsigned)
   input.push_back( *(area_forward->Get()) );
   input.push_back( *(area_central->Get()) );
 
-  // std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
+  std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
 
   return dnn_tensorflow->analyze(input);
   
@@ -125,8 +126,8 @@ MVAReader_sr_v2::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(eta1, "eta1_al");
   _library.bindBranch(eta2, "eta2_al");
   _library.bindBranch(detall, "detall_al");
-  _library.bindBranch(jetpt1, "jetpt1_al");
-  _library.bindBranch(jetpt2, "jetpt2_al");
+  _library.bindBranch(jetpt1, "log_jetpt1_al");
+  _library.bindBranch(jetpt2, "log_jetpt2_al");
   _library.bindBranch(met, "MET_pt");
   _library.bindBranch(dphill, "dphill");
   _library.bindBranch(dphijj, "dphijj_al");
@@ -138,7 +139,7 @@ MVAReader_sr_v2::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(Zeppll, "Zeppll_DNN");
   _library.bindBranch(Zepp1, "Zepp1_al");
   _library.bindBranch(Zepp2, "Zepp2_al");
-  _library.bindBranch(mjj, "mjj");
+  _library.bindBranch(mjj, "log_mjj_al");
   _library.bindBranch(qgl_forward, "qgl_forward");
   _library.bindBranch(qgl_central, "qgl_central");
   _library.bindBranch(Jet_nConst_central, "Jet_nConst_central");
