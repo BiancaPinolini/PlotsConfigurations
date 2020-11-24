@@ -336,7 +336,3 @@ plot['ttH_hww'] = {
 legend['lumi'] = 'L = 59.7/fb'
 
 legend['sqrt'] = '#sqrt{s} = 13 TeV'
-
-
-
-

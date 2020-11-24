@@ -30,7 +30,7 @@ nuisancesFile = 'nuisances.py'
 outputDirPlots = 'output-plots'
 
 # used by mkDatacards to define output directory for datacards
-outputDirDatacard = 'datacards/1123'
+outputDirDatacard = 'datacards/1124'
 
 # structure file for datacard
 structureFile = 'structure.py'

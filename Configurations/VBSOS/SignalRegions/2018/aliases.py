@@ -107,24 +107,36 @@ aliases['Jet_nConst_forward'] = {
 
 ## Variables for DNN
 
-conf_DNN = os.getenv("CMSSW_BASE") + "/src/PlotsConfigurations/Configurations/"
+aliases['bVeto'] = {
+    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
+}
 
-aliases['is_TopSample'] =  {
-    'expr' : 'getSampleName()',
-    'linesToAdd' : [
-        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-        '.L {}/VBSOS/SignalRegions/2018/samples_DNN.cc+'.format(conf_DNN)
-    ]
+aliases['bReq'] = {
+    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
+}
+
+aliases['zeroJet'] = {
+    'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
+}
+
+aliases['srr'] = {
+    'expr':'bVeto && Zeppll_al < 1 && mth > 60'
+}
+
+aliases['topcr'] = {
+     'expr': '((zeroJet && !bVeto) || bReq)'
 }
 
 aliases['btag_central_DNN'] = {
-    'expr': ' (is_TopSample)*0.7+(!is_TopSample)*((fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.)))* Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
+    'expr': ' topcr * 0.7 + (!topcr) * ((fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.)))* Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
 }
+
 aliases['btag_forward_DNN']  = {
-    'expr'  : '(is_TopSample)*0.7+(!is_TopSample)*((fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
+    'expr'  : 'topcr * 0.7 + (!topcr) *((fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
 }
+
 aliases['Zeppll_DNN'] = {
-    'expr' : '(is_TopSample)*0.5+(!is_TopSample)*(0.5*fabs((Lepton_eta[0]+Lepton_eta[1])-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))))'
+    'expr' : '(!srr) * 0.5 + srr *(0.5*fabs((Lepton_eta[0]+Lepton_eta[1])-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))))'
 }
 
 
@@ -256,9 +268,9 @@ aliases['DY_LO_pTllrw'] = {
 # using Alt$(CleanJet_pt[n], 0) instead of Sum$(CleanJet_pt >= 30) because jet pt ordering is not strictly followed in JES-varied samples
 
 # No jet with pt > 30 GeV
-aliases['zeroJet'] = {
-    'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
-}
+# aliases['zeroJet'] = {
+#     'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
+# }
 
 # aliases['oneJet'] = {
 #     'expr': 'Alt$(CleanJet_pt[0], 0) > 30.'
@@ -269,15 +281,15 @@ aliases['zeroJet'] = {
 # }
 
 # B tagging
-aliases['bVeto'] = {
-    #'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) == 0'
-    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
-}
+# aliases['bVeto'] = {
+#     #'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) == 0'
+#     'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
+# }
 
-aliases['bReq'] = {
-    # 'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 1'
-    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
-}
+# aliases['bReq'] = {
+#     # 'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 1'
+#     'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
+# }
 
 # bVeto forward
 # aliases['pT_forward']  = {
@@ -299,34 +311,14 @@ aliases['bReq'] = {
 
 # Flavour definitions
 
-aliases['SameFlav'] = {
-    'expr': '(Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)',
-    'samples': mc
-}
-
-aliases['DiffFlav'] = {
-    'expr': 'Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13',
-    'samples': mc
-}
-
-# CR definitions
-
-aliases['topcr'] = {
-    'expr': '((zeroJet && !bVeto) || bReq)'
-}
-
-# SR definition
-
-# aliases['sigr'] = {
-#     'expr': 'Zeppll_al < 1 && mth > 60 && bVeto'
+# aliases['SameFlav'] = {
+#     'expr': '(Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)',
+#     'samples': mc
 # }
 
-# aliases['dycr'] = {
-#     'expr': 'mth<60 && bVeto'
-# }
-
-# aliases['centralVeto'] = {
-#     'expr': 'Sum$(CleanJet_pt > 30 && CleanJet_eta > TMath::Min(CleanJet_eta[0], CleanJet_eta[1]) && CleanJet_eta < TMath::Max(CleanJet_eta[0], CleanJet_eta[1]) && abs(CleanJet_eta - CleanJet_eta[0]) > 1 && abs(CleanJet_eta - CleanJet_eta[1]) > 1) == 0'        
+# aliases['DiffFlav'] = {
+#     'expr': 'Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13',
+#     'samples': mc
 # }
 
 # B tag scale factors
