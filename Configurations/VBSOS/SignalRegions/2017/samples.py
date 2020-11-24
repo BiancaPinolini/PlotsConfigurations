@@ -190,9 +190,9 @@ samples['top'] = {
     'FilesPerJob': 1,
 }
 
-TTTo2L2Nu_baseW = getBaseWnAOD(mcDirectory, mcProduction, ['TTTo2L2Nu', 'TTTo2L2Nu_PSWeights'])
+TTTo2L2Nu_baseW = getBaseWnAOD(mcDirectory, mcProduction, ['TTTo2L2Nu'])#, 'TTTo2L2Nu_PSWeights'])
 addSampleWeight(samples, 'top', 'TTTo2L2Nu', TTTo2L2Nu_baseW + "/baseW")
-addSampleWeight(samples, 'top', 'TTTo2L2Nu_PSWeights', TTTo2L2Nu_baseW + "/baseW")
+#addSampleWeight(samples, 'top', 'TTTo2L2Nu_PSWeights', TTTo2L2Nu_baseW + "/baseW")
 #addSampleWeight(samples,'top','TTTo2L2Nu', 'Top_pTrw')
 #addSampleWeight(samples, 'top', 'TTTo2L2Nu_PSWeights', 'Top_pTrw')
 
@@ -430,4 +430,3 @@ for _, sd in DataRun:
     files = nanoGetSampleFiles(dataDirectory, pd + '_' + sd)
     samples['DATA']['name'].extend(files)
     samples['DATA']['weights'].extend([DataTrig[pd]] * len(files))
-

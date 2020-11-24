@@ -8,12 +8,12 @@ cd -
 date=1123
 var=DNNoutput_70
 
-workDir=/afs/cern.ch/user/r/rdfexp/bianca/CMSSW_10_2_15_patch2/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/datacards
-datacardDir=${workDir}/${date}
-workspaceDir=${datacardDir}/workspace
+workDir=datacards
+datacardDir=${workDir}/${date}  datacards/1123
+workspaceDir=${datacardDir}/workspace   datacards/1123/workspace
 
-output=combine_${var}
-cd $workDir
+output=combine_${var}   combine_DNNoutput_70
+cd $workDir cd datacards
 
 combineCards.py   sr=${datacardDir}/sr/${var}/datacard.txt \
                   cr_top=${datacardDir}/top_cr/events/datacard.txt \

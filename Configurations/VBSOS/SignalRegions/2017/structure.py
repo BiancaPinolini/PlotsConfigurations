@@ -9,6 +9,16 @@ structure['DY']  = {
                   'isData'   : 0
               }
 
+# structure['DY_highZ']  = {  
+#                   'isSignal' : 0,
+#                   'isData'   : 0
+#               }
+
+structure['Zjj']  = {  
+                  'isSignal' : 0,
+                  'isData'   : 0
+              }
+
 
 structure['Wjets']  = {  
                   'isSignal' : 0,

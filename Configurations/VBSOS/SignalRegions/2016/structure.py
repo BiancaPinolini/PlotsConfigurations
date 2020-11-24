@@ -4,12 +4,7 @@
 
 # keys here must match keys in samples.py    
 #                    
-structure['DY_lowZ']  = {  
-                  'isSignal' : 0,
-                  'isData'   : 0
-              }
-
-structure['DY_highZ']  = {  
+structure['DY']  = {  
                   'isSignal' : 0,
                   'isData'   : 0
               }

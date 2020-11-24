@@ -83,16 +83,35 @@
 #                             'xaxis' : 'm_{ll} [GeV]',
 #                             'fold'  : 3
 #                         }
-# variables['btag_central']  = {   'name'  : 'btag_central_al',
-#                                 'range' : (20,0,1),
-#                                 'xaxis' : 'b-tag of the central jet',
-#                                 'fold'  : 3
-#                             }
-# variables['btag_forward']  = {   'name'  : 'btag_forward_al',
-#                                 'range' : (20,0,1),
-#                                 'xaxis' : 'b-tag of the forward jet',
-#                                 'fold'  : 3
-#                             }
+variables['btag_central']  = {   'name'  : 'btag_central_al',
+                                'range' : (20,0,1),
+                                'xaxis' : 'b-tag of the central jet',
+                                'fold'  : 3
+                            }
+variables['btag_forward']  = {   'name'  : 'btag_forward_al',
+                                'range' : (20,0,1),
+                                'xaxis' : 'b-tag of the forward jet',
+                                'fold'  : 3
+                            }
+
+variables['btag_central_DNN'] = {   'name'  : 'btag_central_DNN',
+                                'range' : (20,0,1),
+                                'xaxis' : 'b-tag of the central jet used for the DNN',
+                                'fold'  : 3
+                            }
+
+variables['btag_forward_DNN'] = {   'name'  : 'btag_forward_DNN',
+                                'range' : (20,0,1),
+                                'xaxis' : 'b-tag of the forward jet used for the DNN',
+                                'fold'  : 3
+                            }
+
+variables['Zeppll_DNN'] = {   'name'  : 'Zeppll_DNN',
+                              'range' : (10,0,1),
+                              'xaxis' : 'Zeppenfeld_{ll} used for the DNN',
+                              'fold' : 3
+                           }  
+
 # variables['dR_jl1'] = {	'name' : '(R_j1l1 < R_j2l1)*R_j1l1+(R_j1l1 >= R_j2l1)*R_j2l1',
 #                         'range' : (20,0,6),
 #                         'xaxis' : 'R from 1^{st} lep to nearest jet',
@@ -103,11 +122,11 @@
 #                         'xaxis' : 'R from 2^{nd} lep to nearest jet',
 #                         'fold'  : 3
 #                             }
-# variables['Zeppll']  = {   'name': 'Zeppll_al',
-#                            'range' : (10,0,1),
-#                            'xaxis' : 'Zeppenfeld_{ll}',
-#                            'fold' : 3
-#                            }  
+variables['Zeppll']  = {   'name': 'Zeppll_al',
+                           'range' : (10,0,1),
+                           'xaxis' : 'Zeppenfeld_{ll}',
+                           'fold' : 3
+                           }  
 # variables['Zepp1']  = {   'name': 'Zepp1_al',
 #                            'range' : (10,-5,5),
 #                            'xaxis' : 'Zeppenfeld_{1}',
