@@ -53,8 +53,7 @@ protected:
   TTreeReaderValue<Double_t>* Zeppll{};
   TTreeReaderValue<Double_t>* Zepp1{};
   TTreeReaderValue<Double_t>* Zepp2{};
-  TTreeReaderValue<Double_t>* mjj{};
-  // FloatValueReader* mjj{};
+  FloatValueReader* mjj{};
   TTreeReaderValue<Double_t>* qgl_forward{};
   TTreeReaderValue<Double_t>* qgl_central{};
   TTreeReaderValue<Double_t>* Jet_nConst_central{};
@@ -81,7 +80,7 @@ MVAReader_sr_v2::evaluate(unsigned)
     return -999.;
   }
 
-  std::cout << "cut_index = " << (int)(*(cut_index->Get())) << "; cut =  " << cut_ << std::endl;
+  // std::cout << "cut_index = " << (int)(*(cut_index->Get())) << "; cut =  " << cut_ << std::endl;
 
   std::vector<float> input{};
 
@@ -90,20 +89,23 @@ MVAReader_sr_v2::evaluate(unsigned)
   input.push_back( *(eta1->Get()) );
   input.push_back( *(eta2->Get()) );
   input.push_back( *(detall->Get()) );
-  input.push_back( *(jetpt1->Get()) );
-  input.push_back( *(jetpt2->Get()) );
+  input.push_back( TMath::Log(*(jetpt1->Get()) ));
+  input.push_back( TMath::Log(*(jetpt2->Get()) ));
   input.push_back( *(met->Get()) );
   input.push_back( TMath::Abs(*(dphill->Get())));
   input.push_back( *(dphijj->Get()) );
   input.push_back( *(Mll->Get()) );
   input.push_back( *(btag_central->Get()) );
+  std::cout << "btag_central = " << *(btag_central->Get()) << std::endl;
   input.push_back( *(btag_forward->Get()) );
+  std::cout << "btag_forward = " << *(btag_forward->Get()) << std::endl;
   input.push_back( *(dR_jl1->Get()) );
   input.push_back( *(dR_jl2->Get()) );
   input.push_back( *(Zeppll->Get()) );
+  std::cout << "Zeppll = " << *(Zeppll->Get()) << std::endl;
   input.push_back( *(Zepp1->Get()) );
   input.push_back( *(Zepp2->Get()) );
-  input.push_back( *(mjj->Get()) );
+  input.push_back( TMath::Log(*(mjj->Get()) ));
   input.push_back( *(qgl_forward->Get()) );
   input.push_back( *(qgl_central->Get()) );
   input.push_back( *(Jet_nConst_central->Get()) );
@@ -111,7 +113,8 @@ MVAReader_sr_v2::evaluate(unsigned)
   input.push_back( *(area_forward->Get()) );
   input.push_back( *(area_central->Get()) );
 
-  std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
+  // std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
+  // std::cout << "#####" << std::endl;
 
   return dnn_tensorflow->analyze(input);
   
@@ -126,8 +129,8 @@ MVAReader_sr_v2::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(eta1, "eta1_al");
   _library.bindBranch(eta2, "eta2_al");
   _library.bindBranch(detall, "detall_al");
-  _library.bindBranch(jetpt1, "log_jetpt1_al");
-  _library.bindBranch(jetpt2, "log_jetpt2_al");
+  _library.bindBranch(jetpt1, "jetpt1_al");
+  _library.bindBranch(jetpt2, "jetpt2_al");
   _library.bindBranch(met, "MET_pt");
   _library.bindBranch(dphill, "dphill");
   _library.bindBranch(dphijj, "dphijj_al");
@@ -139,7 +142,7 @@ MVAReader_sr_v2::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(Zeppll, "Zeppll_DNN");
   _library.bindBranch(Zepp1, "Zepp1_al");
   _library.bindBranch(Zepp2, "Zepp2_al");
-  _library.bindBranch(mjj, "log_mjj_al");
+  _library.bindBranch(mjj, "mjj");
   _library.bindBranch(qgl_forward, "qgl_forward");
   _library.bindBranch(qgl_central, "qgl_central");
   _library.bindBranch(Jet_nConst_central, "Jet_nConst_central");

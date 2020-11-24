@@ -5,7 +5,7 @@ outputDir = 'RootFiles'
 treeName = 'Events'
 
 # luminosity to normalize to
-lumi = 41.52
+lumi = 41.5
 
 # file with TTree aliases
 aliasesFile = 'aliases.py'
@@ -23,14 +23,14 @@ samplesFile = 'samples.py'
 plotFile = 'plot.py'
 
 # file with list of nuisances
-nuisancesFile = 'nuisances.py'
+# nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
 outputDirPlots = 'output-plots'
 
-# used by mkDatacards to define output directory for datacards
-outputDirDatacard = 'datacards/1124'
+# # used by mkDatacards to define output directory for datacards
+# outputDirDatacard = 'datacards/1124'
 
-# structure file for datacard
-structureFile = 'structure.py'
+# # structure file for datacard
+# structureFile = 'structure.py'
