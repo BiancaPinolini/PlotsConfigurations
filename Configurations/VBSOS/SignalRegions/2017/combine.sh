@@ -6,14 +6,15 @@ cd -
 
 ## work directory
 date=1124
-var=DNNoutput_40
+var=DNNoutput_30
+#10 40 20 25 30
 
-workDir=datacards
-datacardDir=${workDir}/${date}  datacards/1123
-workspaceDir=${datacardDir}/workspace   datacards/1123/workspace
+workDir=/afs/cern.ch/user/r/rdfexp/bianca/CMSSW_10_2_15_patch2/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/datacards
+datacardDir=${workDir}/${date}
+workspaceDir=${datacardDir}/workspace
 
 output=combine_${var}
-cd $workDir cd datacards
+cd $workDir
 
 combineCards.py   sr=${datacardDir}/sr/${var}/datacard.txt \
                   cr_top=${datacardDir}/top_cr/events/datacard.txt \
