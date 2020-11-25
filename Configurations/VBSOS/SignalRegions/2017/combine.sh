@@ -5,14 +5,14 @@ eval `scramv1 runtime -sh`
 cd -
 
 ## work directory
-date=1123
-var=DNNoutput_70
+date=1124
+var=DNNoutput_40
 
 workDir=datacards
 datacardDir=${workDir}/${date}  datacards/1123
 workspaceDir=${datacardDir}/workspace   datacards/1123/workspace
 
-output=combine_${var}   combine_DNNoutput_70
+output=combine_${var}
 cd $workDir cd datacards
 
 combineCards.py   sr=${datacardDir}/sr/${var}/datacard.txt \

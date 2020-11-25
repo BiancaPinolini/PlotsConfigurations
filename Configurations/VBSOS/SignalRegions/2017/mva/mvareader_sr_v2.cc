@@ -89,8 +89,6 @@ MVAReader_sr_v2::evaluate(unsigned)
 
   input.push_back( TMath::Abs(*(detajj->Get())));
   input.push_back( *(ptll->Get()) );
-  input.push_back( *(eta1->Get()) );
-  input.push_back( *(eta2->Get()) );
   input.push_back( *(detall->Get()) );
   input.push_back( TMath::Log(*(jetpt1->Get()) ));
   input.push_back( TMath::Log(*(jetpt2->Get()) ));
@@ -98,32 +96,36 @@ MVAReader_sr_v2::evaluate(unsigned)
   input.push_back( TMath::Abs(*(dphill->Get())));
   input.push_back( *(dphijj->Get()) );
   input.push_back( *(Mll->Get()) );
-  input.push_back( *(dR_jl1->Get()) );
-  input.push_back( *(dR_jl2->Get()) );
-  input.push_back( *(Zepp1->Get()) );
-  input.push_back( *(Zepp2->Get()) );
-  input.push_back( TMath::Log(*(mjj->Get()) ));
-  input.push_back( *(qgl_forward->Get()) );
-  input.push_back( *(qgl_central->Get()) );
-  input.push_back( *(Jet_nConst_central->Get()) );
-  input.push_back( *(Jet_nConst_forward->Get()) );
-  input.push_back( *(area_forward->Get()) );
-  input.push_back( *(area_central->Get()) );
-
   if(*(topcr->Get())) input.push_back((float)0.7);
   else input.push_back(*(btag_central->Get()));
-
   if(*(topcr->Get())) input.push_back((float)0.7);
   else input.push_back(*(btag_forward->Get()));
-
+  input.push_back( *(dR_jl1->Get()) );
+  input.push_back( *(dR_jl2->Get()) );
   if(*(srr->Get())) input.push_back(*(Zeppll->Get()));
   else input.push_back((float)0.5);
-
+  input.push_back( TMath::Log(*(mjj->Get()) ));
+  input.push_back( *(Zepp1->Get()) );
+  input.push_back( *(Zepp2->Get()) );
+  input.push_back( *(eta1->Get()) );
+  input.push_back( *(eta2->Get()) );
+  input.push_back( *(Jet_nConst_central->Get()) );
+  input.push_back( *(Jet_nConst_forward->Get()) );
+  input.push_back( *(qgl_forward->Get()) );
+  input.push_back( *(qgl_central->Get()) );
+  input.push_back( *(area_forward->Get()) );
+  input.push_back( *(area_central->Get()) );
+  
   // std::cout << "srr = " << *(srr->Get()) << std::endl;
   // std::cout << "btag = " << btag << std::endl;
   // std::cout << "btag_central = " << *(btag_central->Get()) << std::endl;
 
-  // std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
+  // if(*(srr->Get())) {
+  //   std::cout << "btag_central = " << *(btag_central->Get()) << std::endl;
+  //   std::cout << "btag_forward = " << *(btag_forward->Get()) << std::endl;
+  //   std::cout << "Jet_nConst_central = " << *(Jet_nConst_central->Get()) << std::endl;
+    // std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
+  // }
 
   return dnn_tensorflow->analyze(input);
   

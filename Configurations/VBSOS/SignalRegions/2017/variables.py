@@ -121,11 +121,11 @@
 #                         'fold' :3
 #                         }
 
-# variables['events']  = {'name': '1',
-#                         'range' : (1,0,2),
-#                         'xaxis' : 'events',
-#                         'fold' : 3
-#                         } 
+variables['events']  = {'name': '1',
+                        'range' : (1,0,2),
+                        'xaxis' : 'events',
+                        'fold' : 3
+                        } 
 
 
 
@@ -163,70 +163,52 @@
 #                          'xaxis' : 'Jet_nConst_central',
 #                          'fold' : 3
 #                        }
-# variables['DNNoutput_15'] = { 
-#                         'name' : 'DNNoutput',
-#                         'range' : (15,0,1),
-#                         'xaxis' : 'DNN output',
-#                         'fold' : 3,
-#                         'blind' : {
-#                             "sr": [0.5,1]
-#                             }
-#                         }
-# variables['DNNoutput_25'] = { 
-#                         'name' : 'DNNoutput',
-#                         'range' : (25,0,1),
-#                         'xaxis' : 'DNN output',
-#                         'fold' : 3,
-#                         'blind' : {
-#                             "sr": [0.5,1]
-#                             }
-#                         }
-variables['DNNoutput_30'] = { 
+variables['DNNoutput_10'] = { 
                         'name' : 'DNNoutput',
-                        'range' : (30,0,1),
-                        'xaxis' : 'DNN output',
+                        'range' : (10,0,1),
+                        'xaxis' : 'DNN score',
                         'fold' : 3,
                         'blind' : {
                             "sr": [0.5,1]
                             }
                         }
-# variables['DNNoutput_35'] = { 
-#                         'name' : 'DNNoutput',
-#                         'range' : (35,0,1),
-#                         'xaxis' : 'DNN output',
-#                         'fold' : 3,
-#                         'blind' : {
-#                             "sr": [0.5,1]
-#                             }
-#                         }
-# variables['DNNoutput_50'] = { 
-#                         'name' : 'DNNoutput',
-#                         'range' : (50,0,1),
-#                         'xaxis' : 'DNN output',
-#                         'fold' : 3,
-#                         'blind' : {
-#                             "sr": [0.5,1]
-#                             }
-#                         }
-# variables['DNNoutput_70'] = { 
-#                         'name' : 'DNNoutput',
-#                         'range' : (70,0,1),
-#                         'xaxis' : 'DNN output',
-#                         'fold' : 3,
-#                         'blind' : {
-#                             "sr": [0.5,1]
-#                             }
-#                         }
-# variables['DNNoutput_var'] = { 
-#                         'name' : 'DNNoutput',
-#                         'range' : ([0,0.03,0.06,0.09,0.12,0.15,0.18,0.21,0.24,0.27,0.3,0.35,0.40,0.45,0.50,0.60,0.70,0.80,0.83,0.86,0.89,0.92,0.95,0.98,1],),
-#                         'xaxis' : 'DNN output',
-#                         'fold' : 3,
-#                         'blind' : {
-#                             "sr": [0.5,1]
-#                             }
-#                         }
+variables['DNNoutput_20'] = { 
+                        'name' : 'DNNoutput',
+                        'range' : (20,0,1),
+                        'xaxis' : 'DNN score',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
+                        }
+variables['DNNoutput_25'] = { 
+                        'name' : 'DNNoutput',
+                        'range' : (25,0,1),
+                        'xaxis' : 'DNN score',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
+                        }
+variables['DNNoutput_30'] = { 
+                        'name' : 'DNNoutput',
+                        'range' : (30,0,1),
+                        'xaxis' : 'DNN score',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
+                        }
 
+variables['DNNoutput_40'] = { 
+                        'name' : 'DNNoutput',
+                        'range' : (40,0,1),
+                        'xaxis' : 'DNN score',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
+                        }
 
 
 # VARIABILE BDT
