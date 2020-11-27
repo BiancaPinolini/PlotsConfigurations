@@ -18,7 +18,7 @@ btag_algo="deepcsv"#deepcsv
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'v0/'
+model_version = 'v1/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
@@ -151,7 +151,7 @@ aliases['cut_index'] = {
     'expr': '1'
 }
 
-mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/mva/'
+mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/combine-conf/mva/'
 models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
 aliases['DNNoutput'] = {

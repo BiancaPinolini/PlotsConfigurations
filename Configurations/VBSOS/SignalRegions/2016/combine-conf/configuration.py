@@ -1,6 +1,6 @@
 # example of configuration file
 
-tag = 'ML_clas_2016'
+tag = 'DNN_comb_2016'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
@@ -30,7 +30,7 @@ nuisancesFile = 'nuisances.py'
 outputDirPlots = 'output-plots'
 
 # used by mkDatacards to define output directory for datacards
-outputDirDatacard = 'datacards/1124'
+outputDirDatacard = 'datacards/1126'
 
 # # structure file for datacard
 structureFile = 'structure.py'
