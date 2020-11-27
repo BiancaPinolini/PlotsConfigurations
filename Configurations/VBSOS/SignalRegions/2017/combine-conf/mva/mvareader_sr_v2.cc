@@ -120,12 +120,12 @@ MVAReader_sr_v2::evaluate(unsigned)
   // std::cout << "btag = " << btag << std::endl;
   // std::cout << "btag_central = " << *(btag_central->Get()) << std::endl;
 
-  // if(*(srr->Get())) {
+  //  if(*(srr->Get())) {
   //   std::cout << "btag_central = " << *(btag_central->Get()) << std::endl;
   //   std::cout << "btag_forward = " << *(btag_forward->Get()) << std::endl;
-  //   std::cout << "Jet_nConst_central = " << *(Jet_nConst_central->Get()) << std::endl;
-    // std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
-  // }
+   //  std::cout << "Jet_nConst_central = " << *(Jet_nConst_central->Get()) << std::endl;
+  //    std::cout << "output = " << dnn_tensorflow->analyze(input) << std::endl;
+  //  }
 
   return dnn_tensorflow->analyze(input);
   
