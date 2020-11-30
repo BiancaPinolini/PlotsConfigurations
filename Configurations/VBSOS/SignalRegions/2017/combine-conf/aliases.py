@@ -17,7 +17,7 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'v1/'
+model_version = 'v15/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {

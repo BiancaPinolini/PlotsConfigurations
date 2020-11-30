@@ -18,7 +18,7 @@ btag_algo="deepcsv"#deepcsv
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'v1/'
+model_version = 'v15/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
