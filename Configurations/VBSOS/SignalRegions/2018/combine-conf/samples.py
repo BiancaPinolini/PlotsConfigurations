@@ -88,15 +88,6 @@ DataTrig = {
 mcCommonWeightNoMatch = 'XSWeight*SFweight*METFilter_MC'
 mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC'
 
-############################################
-############ MORE MC STAT ##################
-############################################
-
-def CombineBaseW(samples, proc, samplelist):
-    newbaseW = getBaseWnAOD(mcDirectory, mcProduction, samplelist)
-    for s in samplelist:
-        addSampleWeight(samples, proc, s, newbaseW+'/baseW')
-
 ###########################################
 #############  BACKGROUNDS  ###############
 ###########################################
@@ -115,9 +106,6 @@ samples['DY'] = {
                                      Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )',
     'FilesPerJob': 6,
 }
-
-CombineBaseW(samples,       'DY',   ['DYJetsToLL_M-50'            , 'DYJetsToLL_M-50_ext2'])
-CombineBaseW(samples,       'DY',   ['DYJetsToLL_M-50_HT-400to600', 'DYJetsToLL_M-50_HT-400to600_ext2'])
 
 addSampleWeight(samples,    'DY',   'DYJetsToTT_MuEle_M-50',            'DY_NLO_pTllrw')
 addSampleWeight(samples,    'DY',   'DYJetsToLL_M-10to50-LO',           'DY_LO_pTllrw')

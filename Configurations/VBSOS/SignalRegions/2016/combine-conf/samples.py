@@ -103,15 +103,6 @@ DataTrig = {
 mcCommonWeightNoMatch = 'XSWeight*SFweight*METFilter_MC'
 mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC'
 
-############################################
-############ MORE MC STAT ##################
-############################################
-
-def CombineBaseW(samples, proc, samplelist):
-    newbaseW = getBaseWnAOD(mcDirectory, mcProduction, samplelist)
-    for s in samplelist:
-        addSampleWeight(samples, proc, s, newbaseW+'/baseW')
-
 ###########################################
 #############  BACKGROUNDS  ###############
 ###########################################
@@ -128,14 +119,6 @@ samples['DY'] = {
     'weight': mcCommonWeight + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0))',
     'FilesPerJob': 4
 }
-
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50_HT-100to200'   , 'DYJetsToLL_M-50_HT-100to200_ext1'])
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50_HT-200to400'   , 'DYJetsToLL_M-50_HT-200to400_ext1'])
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50_HT-400to600'   , 'DYJetsToLL_M-50_HT-400to600_ext1'])
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-5to50_HT-100to200', 'DYJetsToLL_M-5to50_HT-100to200_ext1'])
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-5to50_HT-200to400', 'DYJetsToLL_M-5to50_HT-200to400_ext1'])
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-5to50_HT-400to600', 'DYJetsToLL_M-5to50_HT-400to600_ext1'])
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-5to50_HT-600toinf', 'DYJetsToLL_M-5to50_HT-600toinf_ext1'])
 
 addSampleWeight(samples, 'DY', 'DYJetsToTT_MuEle_M-50',                 'DY_NLO_pTllrw')
 addSampleWeight(samples, 'DY', 'DYJetsToLL_M-10to50-LO',                'DY_LO_pTllrw')
@@ -426,4 +409,3 @@ for _, sd in DataRun:
     
     samples['DATA']['name'].extend(files)
     samples['DATA']['weights'].extend([DataTrig[pd]] * len(files))
-
