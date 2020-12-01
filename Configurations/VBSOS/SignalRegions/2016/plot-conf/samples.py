@@ -118,10 +118,6 @@ samples['DY'] = {
     'name': files,
     'weight': mcCommonWeight + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0))',
     'FilesPerJob': 4,
-    # 'subsamples': {
-    #   'lowZ'    : 'lowZ',
-    #   'highZ'   : 'highZ'
-    # }
 }
 
 addSampleWeight(samples, 'DY', 'DYJetsToTT_MuEle_M-50',                 'DY_NLO_pTllrw')
