@@ -34,6 +34,12 @@ aliases['R_j2l2'] = {
         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
 }
 
+
+# Zeppenfeld variable
+aliases['Zeppll_al'] = {
+    'expr' : '0.5*fabs((Lepton_eta[0]+Lepton_eta[1])-(Alt(CleanJet_eta,0,-9999.)+Alt(CleanJet_eta,1,-9999.)))'
+}
+
 ###### END ######
 
 eleWP = 'mva_90p_Iso2016'
@@ -195,8 +201,16 @@ if btag_algo == "deepcsv":
 
 # CR definitions
 
+aliases['srr'] = {
+    'expr':'bVeto && Zeppll_al < 1 && mth > 60'
+}
+
 aliases['topcr'] = {
      'expr': '((zeroJet && !bVeto) || bReq)'
+}
+
+aliases['dycr'] = {
+     'expr': 'mth < 60 && bVeto && mll < 80'
 }
 
 # aliases['centralVeto'] = {

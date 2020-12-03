@@ -18,7 +18,7 @@ btag_algo="deepcsv"#deepcsv
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'v15/'
+model_version = 'v2/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
@@ -133,17 +133,17 @@ aliases['dycr'] = {
      'expr': 'mth < 60 && bVeto && mll < 80'
 }
 
-# aliases['btag_central_DNN'] = {
-#     'expr': ' (topcr) * 0.7 + (srr || dycr) * ((fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.)))* Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
-# }
+aliases['btag_central_DNN'] = {
+    'expr': '(topcr) * 0.7 + (srr || dycr) * ((fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.)))* Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
+}
 
-# aliases['btag_forward_DNN']  = {
-#     'expr'  : '(topcr) * 0.7 + (srr || dycr) *((fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
-# }
+aliases['btag_forward_DNN'] = {
+    'expr': '(topcr) * 0.7 + (srr || dycr) *((fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
+}
 
-# aliases['Zeppll_DNN'] = {
-#     'expr' : '(!srr) * 0.5 + (srr) *(0.5*fabs((Lepton_eta[0]+Lepton_eta[1])-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))))'
-# }
+aliases['Zeppll_DNN'] = {
+    'expr': '(!srr) * 0.5 + (srr) *(0.5*fabs((Lepton_eta[0]+Lepton_eta[1])-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))))'
+}
 
 ## DNN
 

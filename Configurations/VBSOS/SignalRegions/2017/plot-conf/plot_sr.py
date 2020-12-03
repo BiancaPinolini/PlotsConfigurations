@@ -8,12 +8,6 @@
 # If not defined, normal plots is used
 #
 
-groupPlot['Zjj']  = {  
-                  'nameHR': 'Zjj',
-                  'isSignal' : 0,
-                  'color': 600,    # kBlue
-                  'samples'    : ['Zjj']
-              }
 groupPlot['Higgs']  = {
                   'nameHR' : 'Higgs',
                   'isSignal' : 0,
@@ -21,24 +15,20 @@ groupPlot['Higgs']  = {
                   'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','bbH_hww','ttH_hww','ZH_htt', 'ggZH_htt', 'WH_htt', 'ggH_htt','bbH_htt','ttH_htt', 'qqH_htt' ]
                   #'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
               }
+
 groupPlot['Multiboson']  = {  
                   'nameHR' : 'Multiboson',
                   'isSignal' : 0,
                   'color': 617, # kViolet + 1  
                   'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
-              }   
-groupPlot['DY']  = {  
+              }
+
+groupPlot['DY QCD and EWK']  = {  
                   'nameHR' : "DY",
                   'isSignal' : 0,
                   'color': 418,    # kGreen+2
-                  'samples'  : ['DY']
-              }  
-groupPlot['WW']  = {  
-                  'nameHR' : 'WW_QCD',
-                  'isSignal' : 0,
-                  'color': 851, # kAzure -9 
-                  'samples'  : ['WW', 'ggWW']
-              }                                     
+                  'samples'  : ['DY', 'Zjj']
+              }
 
 groupPlot['Fake']  = {
                   'nameHR' : 'nonprompt',
@@ -46,12 +36,11 @@ groupPlot['Fake']  = {
                   'color': 921,    # kGray + 1
                   'samples'  : ['Fake_m', 'Fake_e']
 }
-
-groupPlot['top']  = {  
-                  'nameHR' : 'tW and t#bar{t}',
+groupPlot['WW']  = {  
+                  'nameHR' : 'WW_QCD',
                   'isSignal' : 0,
-                  'color': 400,   # kYellow
-                  'samples'  : ['top']
+                  'color': 851, # kAzure -9 
+                  'samples'  : ['WW', 'ggWW']
               }
 
 
@@ -84,14 +73,14 @@ groupPlot['VgS']  = {
                   'color'    : 409,   # kGreen - 9
                   'samples'  : ['VgS_H','VgS_L']
               }
-
 '''
 
-
-
-
-
-
+groupPlot['top']  = {  
+                  'nameHR' : 'tW and t#bar{t}',
+                  'isSignal' : 0,
+                  'color': 400,   # kYellow
+                  'samples'  : ['top']
+              }
 
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
@@ -101,16 +90,23 @@ groupPlot['VBS']  = {
               }
 
 
-#plot = {}
+### PLOT
 
-# keys here must match keys in samples.py    
-#                    
+
+
+plot['top'] = {   
+                  'color': 400,   # kYellow
+                  'isSignal' : 0,
+                  'isData'   : 0, 
+                  'scale'    : 1.0
+                  }
+
 plot['DY']  = {  
                   'color': 418,    # kGreen+2
                   'isSignal' : 0,
                   'isData'   : 0, 
-                  'scale'    : 1.0
-}
+                  'scale'    : 1.0,
+              }
 
 plot['Zjj']  = {  
                   'color': 600,    # kBlue
@@ -118,7 +114,6 @@ plot['Zjj']  = {
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
-
 
 plot['Fake_m']  = {  
                   'color': 921,    # kGray + 1
@@ -134,14 +129,6 @@ plot['Fake_e']  = {
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
-
-              
-plot['top'] = {   
-                  'color': 400,   # kYellow
-                  'isSignal' : 0,
-                  'isData'   : 0, 
-                  'scale'    : 1.0,
-                  }
 
 
 plot['WW']  = {
@@ -159,7 +146,7 @@ plot['ggWW']  = {
                   }
 
 plot['WWewk']  = {
-                  'color': 851, # kAzure -9 
+                  'color': 888, # kAzure -9 
                   'isSignal' : 1,
                   'isData'   : 0,
                   'scale'    : 1.0   # ele/mu trigger efficiency   datadriven
@@ -347,7 +334,7 @@ plot['DATA']  = {
 
 # additional options
 
-legend['lumi'] = 'L = 35.9/fb'
+legend['lumi'] = 'L = 41.5/fb'
 
 legend['sqrt'] = '#sqrt{s} = 13 TeV'
 

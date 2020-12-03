@@ -8,13 +8,6 @@
 # If not defined, normal plots is used
 #
 
-groupPlot['Zjj']  = {  
-                  'nameHR' : "Zjj",
-                  'isSignal' : 0,
-                  'color': 600,    # kBlue
-                  'samples'  : ['Zjj']
-              }
-
 groupPlot['Higgs']  = {
                   'nameHR' : 'Higgs',
                   'isSignal' : 0,
@@ -30,12 +23,6 @@ groupPlot['Multiboson']  = {
                   'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
               }
 
-groupPlot['DY']  = {  
-                  'nameHR' : "DY",
-                  'isSignal' : 0,
-                  'color': 418,    # kGreen+2
-                  'samples'  : ['DY']
-              }
 
 groupPlot['WW']  = {  
                   'nameHR' : 'WW_QCD',
@@ -87,6 +74,12 @@ groupPlot['top']  = {
                   'isSignal' : 0,
                   'color': 400,   # kYellow
                   'samples'  : ['top']
+              }
+groupPlot['DY QCD and EWK']  = {  
+                  'nameHR' : "DY",
+                  'isSignal' : 0,
+                  'color': 418,    # kGreen+2
+                  'samples'  : ['DY', 'Zjj']
               }
 
 groupPlot['VBS']  = {

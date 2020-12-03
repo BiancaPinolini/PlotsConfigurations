@@ -586,8 +586,8 @@ nuisances['CRSR_accept_DY'] = {
     'name': 'CMS_hww_CRSR_accept_DY',
     'type': 'lnN',
     'samples': {'DY': '1.02'},
-    #'samples': {'DY': '1.1'},
-    #'perRecoBin': True
+    'cuts': [cut for cut in cuts if '_CR_' in cut],
+    'cutspost': (lambda self, cuts: [cut for cut in cuts if '_dy_' in cut]),
 }
 
 # Uncertainty on SR/CR ratio

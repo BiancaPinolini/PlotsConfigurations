@@ -5,7 +5,7 @@ eval `scramv1 runtime -sh`
 cd -
 
 ## work directory
-date=1128
+date=1201
 var=DNNoutput_10
 #10 20 25 30 40 50
 
