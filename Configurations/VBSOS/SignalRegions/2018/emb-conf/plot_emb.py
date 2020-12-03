@@ -6,22 +6,23 @@
 # 
 # Groups of samples to improve the plots.
 # If not defined, normal plots is used
+#
 
 
 groupPlot['Higgs']  = {
                   'nameHR' : 'Higgs',
                   'isSignal' : 0,
                   'color': 632, # kRed 
-                  #'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','bbH_hww','ttH_hww','ZH_htt', 'ggZH_htt', 'WH_htt', 'ggH_htt','bbH_htt','ttH_htt', 'qqH_htt' ]
-                  'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
+                  'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','bbH_hww','ttH_hww','ZH_htt', 'ggZH_htt', 'WH_htt', 'ggH_htt','bbH_htt','ttH_htt', 'qqH_htt' ]
+                  #'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
               }
 
 groupPlot['DY']  = {  
                   'nameHR' : "DY",
                   'isSignal' : 0,
                   'color': 418,    # kGreen+2
-                  'samples'  : ['DY']
-              }
+                  'samples'  : ['DY', 'Dyemb']
+              }    
 
 groupPlot['Multiboson']  = {  
                   'nameHR' : 'Multiboson',
@@ -43,10 +44,11 @@ groupPlot['WW']  = {
                   'color': 851, # kAzure -9 
                   'samples'  : ['WW', 'ggWW']
               }
+
 groupPlot['top']  = {  
                   'nameHR' : 'tW and t#bar{t}',
                   'isSignal' : 0,
-                  'color': 400,   
+                  'color': 400,   # kYellow
                   'samples'  : ['top']
               }
 '''
@@ -81,11 +83,10 @@ groupPlot['VgS']  = {
 '''
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
-                  'isSignal' : 1,
-                  'color': 888, #632
+                  'isSignal' : 2,
+                  'color': 888, #666,
                   'samples'  : ['WWewk']#,'qqH_hww', 'ZH_hww', 'WH_hww', ']
               }
-
 
 
 
@@ -102,7 +103,12 @@ plot['DY']  = {
                   'scale'    : 1.0,
               }
 
-
+plot['Dyemb']  = {  
+                  'color': 418,    # kGreen+2
+                  'isSignal' : 0,
+                  'isData'   : 0, 
+                  'scale'    : 1.0,
+              }
 plot['Fake_m']  = {  
                   'color': 921,    # kGray + 1
                   'isSignal' : 0,
@@ -121,7 +127,7 @@ plot['Fake_e']  = {
               
 plot['top'] = {   
                   'nameHR' : 'tW and t#bar{t}',
-                  'color': 400,  
+                  'color': 400,   # kYellow
                   'isSignal' : 0,
                   'isData'   : 0, 
                   'scale'    : 1.0,
@@ -143,8 +149,8 @@ plot['ggWW']  = {
                   }
 
 plot['WWewk']  = {
-                  'color': 888, #632
-                  'isSignal' : 1,
+                  'color': 851, # kAzure -9 
+                  'isSignal' : 2,
                   'isData'   : 0,
                   'scale'    : 1.0   # ele/mu trigger efficiency   datadriven
                   }
@@ -299,7 +305,7 @@ plot['ggH_hww'] = {
                   'scale'    : 1    #
                   }
 
-# plot['bbH_hww'] = {
+#plot['bbH_hww'] = {
 #                  'nameHR' : 'bbH',
 #                  'color': 632+5, # kRed+5 
 #                  'isSignal' : 1,
@@ -307,14 +313,14 @@ plot['ggH_hww'] = {
 #                  'scale'    : 1    #
 #                  }
 
-plot['ttH_hww'] = {
-                 'nameHR' : 'ttH',
-                 'color': 632+6, # kRed+6
-                 'isSignal' : 1,
-                 'isData'   : 0,
-                 'scale'    : 1    #
-                 }
-
+#plot['ttH_hww'] = {
+#                  'nameHR' : 'ttH',
+#                  'color': 632+6, # kRed+6
+#                  'isSignal' : 1,
+#                  'isData'   : 0,
+#                  'scale'    : 1    #
+#                  }
+#
 
 # data
 
@@ -326,8 +332,14 @@ plot['DATA']  = {
                   'isBlind'  : 0
               }
 
+
+
+
 # additional options
 
 legend['lumi'] = 'L = 59.7/fb'
 
 legend['sqrt'] = '#sqrt{s} = 13 TeV'
+
+
+

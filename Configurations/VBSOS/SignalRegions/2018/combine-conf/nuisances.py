@@ -10,7 +10,6 @@
 # cuts
 
 from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
-
 def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
