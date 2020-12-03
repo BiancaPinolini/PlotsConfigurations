@@ -8,7 +8,7 @@ treeName = 'Events'
 lumi = 59.74
 
 # file with TTree aliases
-aliasesFile = 'aliases_emb.py'
+aliasesFile = 'aliases.py'
 
 # file with list of variables
 variablesFile = 'variables.py'
@@ -17,20 +17,20 @@ variablesFile = 'variables.py'
 cutsFile = 'cuts.py'
 
 # file with list of samples
-samplesFile = 'samples_emb.py'
+samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot_emb.py'
+plotFile = 'plot_dycr.py'
 
 # file with list of nuisances
-nuisancesFile = 'nuisances_emb.py'
+nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
 outputDirPlots = 'output-plots'
 
 # used by mkDatacards to define output directory for datacards
-outputDirDatacard = 'datacards/1202'
+outputDirDatacard = 'datacards/1203'
 
 # structure file for datacard
-structureFile = 'structure_emb.py'
+structureFile = 'structure.py'

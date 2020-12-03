@@ -17,7 +17,14 @@ structure['Dyemb']  = {
 structure['Dyveto']  = {
                   'isSignal' : 0,
                   'isData'   : 0,
+                  'removeFromCuts' : [ k for k in cuts ],
               }
+              
+structure['Zjj']  = {  
+                  'isSignal' : 0,
+                  'isData'   : 0
+              }
+              
 structure['top']  = { 
      'isSignal' : 0,
      'isData'   : 0
@@ -56,14 +63,15 @@ structure['ggWW']  = {
                   'isSignal' : 0,
                   'isData'   : 0
               }
-structure['Fake_em']  = { 
-                 'isSignal' : 0,
-                 'isData'   : 0 
-             }
-structure['Fake_me']  = {  
-                 'isSignal' : 0,
-                 'isData'   : 0 
-             }
+structure['Fake_e']  = {  
+                  'isSignal' : 0,
+                  'isData'   : 0,
+}
+
+structure['Fake_m']  = {  
+                  'isSignal' : 0,
+                  'isData'   : 0,
+}
 
 
 structure['qqH_hww'] = {
@@ -76,10 +84,27 @@ structure['ggH_hww'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
+structure['WH_hww'] = {
+                  'isSignal' : 0,
+                  'isData'   : 0    
+                  }
+structure['ZH_hww'] = {
+                  'isSignal' : 0,
+                  'isData'   : 0    
+                  }
+structure['ggZH_hww'] = {
+                  'isSignal' : 0,
+                  'isData'   : 0    
+                  }      
+structure['ttH_hww'] = {
+                  'isSignal' : 0,
+                  'isData'   : 0    
+                  }                                 
 structure['DATA']  = {   
                 'isSignal' : 0,
                'isData'   : 1 
           }
+
 structure['WWewk']  = {
                   'isSignal' : 1,
                   'isData'   : 0 ,
