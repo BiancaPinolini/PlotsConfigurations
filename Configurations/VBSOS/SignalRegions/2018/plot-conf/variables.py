@@ -37,13 +37,13 @@ variables['jetpt2']  = {   'name': 'Alt$(CleanJet_pt[1],-9999.)',
                            'fold'  : 3
                            }
 
-variables['log-jetpt1']  = {   'name': 'TMath::Log(Alt$(CleanJet_pt[0],-9999.))',
+variables['log_jetpt1']  = {   'name': 'TMath::Log(Alt$(CleanJet_pt[0],-9999.))',
                            'range' : (24,2,8),
                            'xaxis' : 'Logarithm of p_{T} 1^{st} jet [GeV]',
                            'fold'  : 3
                            }
 
-variables['log-jetpt2']  = {   'name': 'TMath::Log(Alt$(CleanJet_pt[1],-9999.))',
+variables['log_jetpt2']  = {   'name': 'TMath::Log(Alt$(CleanJet_pt[1],-9999.))',
                            'range' : (24,2,8),
                            'xaxis' : 'Logarithm of p_{T} 2^{nd} jet [GeV]',
                            'fold'  : 3
@@ -133,19 +133,19 @@ variables['qgl_central'] = { 'name': '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) 
                          'fold' : 3
                        }
                        
-variables['btag_central_DNN'] = { 'name': '(topcr) * 0.7 + (srr || dycr) * ((fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.)))* Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
+variables['btag_central_DNN'] = { 'name': '(topcr) * 0.7 + (srr || dycr) * ((fabs(Alt$(CleanJet_eta[0],-9999.)) <= fabs(Alt$(CleanJet_eta[1],-9999.)))* Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) < fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])',
                          'range' : (20, 0, 1),
                          'xaxis' : 'btag_central_DNN',
                          'fold' : 3
                        }
 
-variables['btag_forward_DNN'] = { 'name': '(topcr) * 0.7 + (srr || dycr) *((fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])'
+variables['btag_forward_DNN'] = { 'name': '(topcr) * 0.7 + (srr || dycr) *((fabs(Alt$(CleanJet_eta[0],-9999.)) > fabs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(Alt$(CleanJet_eta[1],-9999.)) >= fabs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]])',
                          'range' : (20, 0, 1),
                          'xaxis' : 'btag_forward_DNN',
                          'fold' : 3
                        }
 
-variables['Zeppll_DNN'] = { 'name': '(!srr) * 0.5 + (srr) *(0.5*fabs((Lepton_eta[0]+Lepton_eta[1])-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))))'
+variables['Zeppll_DNN'] = { 'name': '(!srr) * 0.5 + (srr) *(0.5*fabs((Lepton_eta[0]+Lepton_eta[1])-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))))',
                          'range' : (20, 0, 1),
                          'xaxis' : 'Zeppll_DNN',
                          'fold' : 3

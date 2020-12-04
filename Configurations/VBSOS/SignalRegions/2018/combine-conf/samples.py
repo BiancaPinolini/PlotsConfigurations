@@ -112,7 +112,7 @@ addSampleWeight(samples,    'DY',   'DYJetsToLL_M-10to50-LO',           'DY_LO_p
 
 ###### Zjj EWK #######
 
-files = nanoGetSzampleFiles(mcDirectory, 'EWKZ2Jets_ZToLL_M-50')
+files = nanoGetSampleFiles(mcDirectory, 'EWKZ2Jets_ZToLL_M-50')
 
 samples['Zjj'] = {
         'name': files,

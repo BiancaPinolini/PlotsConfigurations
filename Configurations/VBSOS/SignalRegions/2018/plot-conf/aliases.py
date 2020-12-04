@@ -32,7 +32,33 @@ aliases['R_j1l2'] = {
 aliases['R_j2l2'] = {
         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
 }
+aliases['Zeppll_al'] = {
+    'expr' : '0.5*TMath::Abs((Alt$(Lepton_eta[0],-9999.)+Alt$(Lepton_eta[1],-9999.))-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.)))'
+}
 
+# B tagging
+aliases['bVeto'] = {
+    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
+}
+
+aliases['bReq'] = {
+    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
+}
+
+aliases['zeroJet'] = {
+    'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
+}
+
+aliases['srr'] = {
+    'expr':'bVeto && Zeppll_al < 1 && mth > 60'
+}
+
+aliases['topcr'] = {
+     'expr': '((zeroJet && !bVeto) || bReq)'
+}
+aliases['dycr'] = {
+     'expr': 'mth < 60 && bVeto && mll < 80'
+}
 ###### END ######
 
 eleWP='mvaFall17V1Iso_WP90'
@@ -151,9 +177,7 @@ aliases['DY_LO_pTllrw'] = {
 # using Alt$(CleanJet_pt[n], 0) instead of Sum$(CleanJet_pt >= 30) because jet pt ordering is not strictly followed in JES-varied samples
 
 # No jet with pt > 30 GeV
-aliases['zeroJet'] = {
-    'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
-}
+
 
 # aliases['oneJet'] = {
 #     'expr': 'Alt$(CleanJet_pt[0], 0) > 30.'
@@ -163,16 +187,7 @@ aliases['zeroJet'] = {
 #     'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
 # }
 
-# B tagging
-aliases['bVeto'] = {
-    #'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) == 0'
-    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
-}
 
-aliases['bReq'] = {
-    # 'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 1'
-    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
-}
 
 
 # bVeto forward

@@ -8,7 +8,7 @@ treeName = 'Events'
 lumi = 59.74
 
 # file with TTree aliases
-aliasesFile = 'aliases-emb.py'
+aliasesFile = 'aliases.py'
 
 # file with list of variables
 variablesFile = 'variables.py'
@@ -20,7 +20,7 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot.py'
+plotFile = 'plot_sr.py'
 
 # file with list of nuisances
 # nuisancesFile = 'nuisances.py'
