@@ -1,14 +1,14 @@
 #!/bin/bash
 
 ## FIXME this is where the Combine framework is installed
-cd /afs/cern.ch/user/r/rdfexp/bianca/CMSSW_8_1_0/
+cd /afs/cern.ch/user/b/bpinolin/CMSSW_8_1_0/
 eval `scramv1 runtime -sh`
 cd -
 
 ## FIXME this is your work directory
-workDir=/afs/cern.ch/user/r/rdfexp/bianca/CMSSW_10_2_15_patch2/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/emb-conf/datacards
-date=1203
-var=DNNoutput_15
+date=201205
+workDir=/afs/cern.ch/user/b/bpinolin/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/emb-conf/datacards
+var=DNNoutput_10
 
 datacardDir=${workDir}/${date}
 workspaceDir=${datacardDir}/workspace

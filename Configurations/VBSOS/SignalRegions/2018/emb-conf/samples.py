@@ -94,15 +94,6 @@ DataTrig = {
 mcCommonWeightNoMatch = 'XSWeight*SFweight*METFilter_MC'
 mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC'
 
-############################################
-############ MORE MC STAT ##################
-############################################
-
-def CombineBaseW(samples, proc, samplelist):
-    newbaseW = getBaseWnAOD(mcDirectory, mcProduction, samplelist)
-    for s in samplelist:
-        addSampleWeight(samples, proc, s, newbaseW+'/baseW')
-
 ###########################################
 #############  BACKGROUNDS  ###############
 ###########################################
@@ -173,10 +164,6 @@ if useEmbeddedDY:
 # We need to keep DY MC as well, because only embedded events passing the ElMu trigger are considered
 # Events failing ElMu but passing one of the other triggers are included in the DY MC
 
-
-
-
-##### DY #######
 ptllDYW_NLO = '(0.87*(gen_ptll<10)+(0.379119+0.099744*gen_ptll-0.00487351*gen_ptll**2+9.19509e-05*gen_ptll**3-6.0212e-07*gen_ptll**4)*(gen_ptll>=10 && gen_ptll<45)+(9.12137e-01+1.11957e-04*gen_ptll-3.15325e-06*gen_ptll**2-4.29708e-09*gen_ptll**3+3.35791e-11*gen_ptll**4)*(gen_ptll>=45 && gen_ptll<200) + 1*(gen_ptll>200))'
 ptllDYW_LO = '((0.632927+0.0456956*gen_ptll-0.00154485*gen_ptll*gen_ptll+2.64397e-05*gen_ptll*gen_ptll*gen_ptll-2.19374e-07*gen_ptll*gen_ptll*gen_ptll*gen_ptll+6.99751e-10*gen_ptll*gen_ptll*gen_ptll*gen_ptll*gen_ptll)*(gen_ptll>0)*(gen_ptll<100)+(1.41713-0.00165342*gen_ptll)*(gen_ptll>=100)*(gen_ptll<300)+1*(gen_ptll>=300))'
 
@@ -192,6 +179,16 @@ samples['DY'] = {
 
 addSampleWeight(samples,    'DY',   'DYJetsToTT_MuEle_M-50',            'DY_NLO_pTllrw'+embed_tautauveto)
 addSampleWeight(samples,    'DY',   'DYJetsToLL_M-10to50-LO',           'DY_LO_pTllrw'+embed_tautauveto)
+
+###### Zjj EWK #######
+
+files = nanoGetSampleFiles(mcDirectory, 'EWKZ2Jets_ZToLL_M-50')
+
+samples['Zjj'] = {
+        'name': files,
+        'weight': mcCommonWeight,
+        'FilesPerJob': 1,
+        }
 
 ##### Top #######
 
@@ -211,14 +208,6 @@ samples['top'] = {
 addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
 
 ###### WW ########
-
-#samples['WW'] = {
-#    'name': nanoGetSampleFiles(mcDirectory, 'WWTo2L2Nu'),
-#    'weight': mcCommonWeight + '*nllW',
-#    'FilesPerJob': 3
-#}
-
-
 samples['WW'] = {
     'name': nanoGetSampleFiles(mcDirectory, 'WpWmJJ_QCD_noTop'),
     'weight': mcCommonWeight+embed_tautauveto, #+ '*nllW',
@@ -399,11 +388,6 @@ samples['ttH_hww'] = {
 #}
 #
 #signals.append('WH_htt')
-samples['Zjj'] = {
-    'name':  nanoGetSampleFiles(mcDirectory, 'EWKZ2Jets_ZToLL_M-50') ,
-    'weight': mcCommonWeight+embed_tautauveto,
-    'FilesPerJob': 1 
-}
 
 ############ VBS ##############
 samples['WWewk'] = {

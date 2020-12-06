@@ -10,14 +10,15 @@
 # cuts
 
 from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
-
 def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
 try:
-    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
+    mc_emb = [skey for skey in samples if skey != 'DATA' and skey != 'Dyveto' and not skey.startswith('Fake')]
+    mc = [skey for skey in mc_emb if skey != 'Dyemb']
 except NameError:
     mc = []
+    cuts = {}
     nuisances = {}
     def makeMCDirectory(x=''):
         return ''
@@ -68,7 +69,8 @@ nuisances['fake_syst_e'] = {
     'type': 'lnN',
     'samples': {
         'Fake_e': '1.3'
-    }
+    },
+    'perRecoBin': True
 }
 
 nuisances['fake_syst_m'] = {
@@ -76,7 +78,8 @@ nuisances['fake_syst_m'] = {
     'type': 'lnN',
     'samples': {
         'Fake_m': '1.3'
-    }
+    },
+    'perRecoBin': True
 }
 
 nuisances['fake_ele'] = {
@@ -139,7 +142,7 @@ nuisances['trigg'] = {
     'name': 'CMS_eff_hwwtrigger_2018',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, trig_syst) for skey in mc)
+    'samples': dict((skey, trig_syst) for skey in mc_emb)
 }
 
 ##### Electron Efficiency and energy scale
@@ -148,7 +151,7 @@ nuisances['eff_e'] = {
     'name': 'CMS_eff_e_2018',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc)
+    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc_emb)
 }
 
 nuisances['electronpt'] = {
@@ -162,6 +165,21 @@ nuisances['electronpt'] = {
     'folderDown': makeMCDirectory('ElepTdo_suffix'),
     'AsLnN': '1'
 }
+
+if useEmbeddedDY:
+  nuisances['electronpt_emb'] = {
+    'name': 'CMS_scale_e_2018',
+    'kind': 'suffix',
+    'type': 'shape',
+    'mapUp' : 'ElepTup',
+    'mapDown': 'ElepTdo',
+    'samples': {'Dyemb': ['1', '1']},
+    'folderUp': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbElepTup_suffix/',
+    'folderDown': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbElepTdo_suffix/',
+    'AsLnN': '1'
+  }
+
+
 
 ##### Muon Efficiency and energy scale
 
@@ -183,6 +201,20 @@ nuisances['muonpt'] = {
     'folderDown': makeMCDirectory('MupTdo_suffix'),
     'AsLnN': '1'
 }
+
+if useEmbeddedDY:
+  nuisances['muonpt_emb'] = {
+    'name': 'CMS_scale_m_2018',
+    'kind': 'suffix',
+    'type': 'shape',
+    'mapUp' : 'MupTup',
+    'mapDown': 'MupTdo',
+    'samples': {'Dyemb': ['1', '1']},
+    'folderUp': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbMupTup_suffix/',
+    'folderDown': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbMupTdo_suffix/',
+    'AsLnN': '1'
+  }
+
 ##### Jet energy scale
 jes_systs = ['JESAbsolute','JESAbsolute_2018','JESBBEC1','JESBBEC1_2018','JESEC2','JESEC2_2018','JESFlavorQCD','JESHF','JESHF_2018','JESRelativeBal','JESRelativeSample_2018']
 
@@ -212,6 +244,19 @@ nuisances['met'] = {
     'folderDown': makeMCDirectory('METdo_suffix'),
     'AsLnN': '1'
 }
+
+
+##### Di-Tau vetoing for embedding
+if useEmbeddedDY: 
+  nuisances['embedveto']  = {
+                  'name'  : 'CMS_embed_veto_2018',
+                  'kind'  : 'weight',
+                  'type'  : 'shape',
+                  'samples'  : {
+                     'Dyemb'    : ['1', '1'],
+                     'Dyveto'   : ['0.1', '-0.1'],
+                  }
+  }
 
 ##### Pileup
 
@@ -528,8 +573,8 @@ nuisances['CRSR_accept_DY'] = {
     'name': 'CMS_hww_CRSR_accept_DY',
     'type': 'lnN',
     'samples': {'DY': '1.02'},
-    #'samples': {'DY': '1.1'},
-    #'perRecoBin': True
+    'cuts': [cut for cut in cuts if '_CR_' in cut],
+    'cutspost': (lambda self, cuts: [cut for cut in cuts if '_dy_' in cut]),
 }
 
 # Uncertainty on SR/CR ratio
@@ -538,6 +583,8 @@ nuisances['CRSR_accept_top'] = {
     'type': 'lnN',
     'samples': {'top': '1.01'},
     #'samples': {'top': '1.05'},
+    'cuts': [cut for cut in cuts if '_CR_' in cut],
+    'cutspost': (lambda self, cuts: [cut for cut in cuts if '_top_' in cut]),
 }
 
 # Theory uncertainty for ggH
@@ -702,6 +749,13 @@ nuisances['DYnorm2j']  = {
                  'type'  : 'rateParam'
                 }
 
+nuisances['DYembnorm2j']  = {
+                 'name'  : 'CMS_hww_DYttnorm2j_2018',
+                 'samples'  : {
+                   'Dyemb' : '1.00',
+                     },
+                 'type'  : 'rateParam'
+                }
 '''
 nuisances['WWnorm0j']  = {
                'name'  : 'CMS_hww_WWnorm0j',

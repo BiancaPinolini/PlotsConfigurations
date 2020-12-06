@@ -1,9 +1,3 @@
-'''structure['NAME']  = { # NAME should match the names in samples.py
-     'isSignal' : 0, # 0/1 with obvious meaning
-     'isData'   : 0, # 0/1 with obvious meaning 
-     'removeFromCuts' : []  #OPTIONAL list of cuts that should not be run for this sample (default is empty)
-}
-'''
 structure['DY']  = { 
      'isSignal' : 0,
      'isData'   : 0
@@ -19,13 +13,13 @@ structure['Dyveto']  = {
                   'isData'   : 0,
                   'removeFromCuts' : [ k for k in cuts ],
               }
-              
+
 structure['Zjj']  = {  
                   'isSignal' : 0,
                   'isData'   : 0
               }
               
-structure['top']  = { 
+structure['top'] = {
      'isSignal' : 0,
      'isData'   : 0
 }
@@ -100,13 +94,12 @@ structure['ttH_hww'] = {
                   'isSignal' : 0,
                   'isData'   : 0    
                   }                                 
-structure['DATA']  = {   
-                'isSignal' : 0,
-               'isData'   : 1 
-          }
 
 structure['WWewk']  = {
                   'isSignal' : 1,
                   'isData'   : 0 ,
               }
-
+structure['DATA']  = {   
+                'isSignal' : 0,
+               'isData'   : 1 
+          }

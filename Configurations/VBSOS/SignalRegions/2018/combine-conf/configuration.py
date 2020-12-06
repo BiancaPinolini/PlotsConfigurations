@@ -23,7 +23,7 @@ samplesFile = 'samples.py'
 plotFile = 'plot_sr.py'
 
 # file with list of nuisances
-# nuisancesFile = 'nuisances.py'
+nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy

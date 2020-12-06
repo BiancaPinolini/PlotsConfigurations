@@ -4,6 +4,8 @@ tag = 'DNN_comb_emb_2018'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
+date='201206'
+
 # luminosity to normalize to
 lumi = 59.74
 
@@ -20,17 +22,17 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot_dycr.py'
+plotFile = 'plot/plot_topcr.py'
 
 # file with list of nuisances
-#nuisancesFile = 'nuisances.py'
+nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = 'output-plots'
+outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/'+date
 
 # used by mkDatacards to define output directory for datacards
-outputDirDatacard = 'datacards/1203'
+outputDirDatacard = 'datacards/'+date
 
 # structure file for datacard
 structureFile = 'structure.py'

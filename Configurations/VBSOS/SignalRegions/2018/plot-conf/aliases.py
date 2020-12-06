@@ -17,52 +17,52 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 ###### START ######
 
 # distance between lepton and jet
-aliases['R_j1l1'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_qgl_morphed_eta[0],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_qgl_morphed_phi[0],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
-}
+# aliases['R_j1l1'] = {
+#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
+# }
 
-aliases['R_j2l1'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_qgl_morphed_eta[1],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_qgl_morphed_phi[1],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
-}
+# aliases['R_j2l1'] = {
+#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
+# }
 
-aliases['R_j1l2'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_qgl_morphed_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_qgl_morphed_phi[0],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
-}
+# aliases['R_j1l2'] = {
+#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
+# }
 
-aliases['R_j2l2'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_qgl_morphed_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_qgl_morphed_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
-}
-aliases['Zeppll_al'] = {
-    'expr' : '0.5*TMath::Abs((Alt$(Lepton_eta[0],-9999.)+Alt$(Lepton_eta[1],-9999.))-(Alt$(CleanJet_qgl_morphed_eta[0],-9999.)+Alt$(CleanJet_qgl_morphed_eta[1],-9999.)))'
-}
+# aliases['R_j2l2'] = {
+#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
+# }
+# aliases['Zeppll_al'] = {
+#     'expr' : '0.5*TMath::Abs((Alt$(Lepton_eta[0],-9999.)+Alt$(Lepton_eta[1],-9999.))-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.)))'
+# }
 
 # B tagging
 aliases['bVeto'] = {
-    'expr': 'Sum$(CleanJet_qgl_morphed_pt > 20. && abs(CleanJet_qgl_morphed_eta) < 2.5 && Jet_btagDeepB[CleanJet_qgl_morphed_jetIdx] > 0.4184) == 0'
+    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
 }
 
 aliases['bReq'] = {
-    'expr': 'Sum$(CleanJet_qgl_morphed_pt > 30. && abs(CleanJet_qgl_morphed_eta) < 2.5 && Jet_btagDeepB[CleanJet_qgl_morphed_jetIdx] > 0.4184) >= 1'
+    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
 }
 
 aliases['zeroJet'] = {
-    'expr': 'Alt$(CleanJet_qgl_morphed_pt[0], 0) < 30.'
+    'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
 }
 
-aliases['srr'] = {
-    'expr':'bVeto && Zeppll_al < 1 && mth > 60'
-}
+# aliases['srr'] = {
+#     'expr':'bVeto && Zeppll_al < 1 && mth > 60'
+# }
 
 aliases['topcr'] = {
      'expr': '((zeroJet && !bVeto) || bReq)'
 }
-aliases['dycr'] = {
-     'expr': 'mth < 60 && bVeto && mll < 80'
-}
+# aliases['dycr'] = {
+#      'expr': 'mth < 60 && bVeto && mll < 80'
+# }
 
 ## QGL morphing
 morphing_file = "/afs/cern.ch/user/d/dvalsecc/public/qgl_morphing/morphing_functions_final_2018.root"
-qgl_reader_path = os.getenv('CMSSW_BASE') + 'src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/plot-conf/macro/'
+qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/plot-conf/macro/'
 
 aliases['CleanJet_qgl_morphed'] = {
     'class': 'QGL_morphing',
@@ -200,17 +200,17 @@ aliases['DY_LO_pTllrw'] = {
 }
 
 # Jet bins
-# using Alt$(CleanJet_qgl_morphed_pt[n], 0) instead of Sum$(CleanJet_qgl_morphed_pt >= 30) because jet pt ordering is not strictly followed in JES-varied samples
+# using Alt$(CleanJet_pt[n], 0) instead of Sum$(CleanJet_pt >= 30) because jet pt ordering is not strictly followed in JES-varied samples
 
 # No jet with pt > 30 GeV
 
 
 # aliases['oneJet'] = {
-#     'expr': 'Alt$(CleanJet_qgl_morphed_pt[0], 0) > 30.'
+#     'expr': 'Alt$(CleanJet_pt[0], 0) > 30.'
 # }
 
 # aliases['multiJet'] = {
-#     'expr': 'Alt$(CleanJet_qgl_morphed_pt[1], 0) > 30.'
+#     'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
 # }
 
 
@@ -218,13 +218,13 @@ aliases['DY_LO_pTllrw'] = {
 
 # bVeto forward
 # aliases['pT_forward']  = {
-#     'expr'  : '(TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[1],-9999.))) * Alt$(CleanJet_qgl_morphed_pt[0],-9999.) + (TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[0],-9999.))) * Alt$(CleanJet_qgl_morphed_pt[1],-9999.)'
+#     'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(CleanJet_pt[0],-9999.) + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(CleanJet_pt[1],-9999.)'
 # }
 # aliases['eta_forward']  = {
-#     'expr'  : '(TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[1],-9999.))) * abs(Alt$(CleanJet_qgl_morphed_eta[0],-9999.)) + (TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[0],-9999.))) * abs(Alt$(CleanJet_qgl_morphed_eta[1],-9999.))'
+#     'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * abs(Alt$(CleanJet_eta[0],-9999.)) + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * abs(Alt$(CleanJet_eta[1],-9999.))'
 # }
 # aliases['btag_forward_al']  = {
-#     'expr'  : '(TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_qgl_morphed_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]]'
+#     'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Jet_btagDeepB[CleanJet_jetIdx[1]]'
 # }
 # aliases['bVetoForward'] = {
 #     'expr': '(pT_forward>20. && eta_forward<2.5 && btag_forward>0.1241)==0',
@@ -266,12 +266,12 @@ aliases['topcr'] = {
 }
 
 aliases['bVetoSF'] = {
-    'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_qgl_morphed_pt>20 && abs(CleanJet_qgl_morphed_eta)<2.5)*Jet_btagSF_shape[CleanJet_qgl_morphed_jetIdx]+1*(CleanJet_qgl_morphed_pt<20 || abs(CleanJet_qgl_morphed_eta)>2.5))))',
+    'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx]+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))',
     'samples': mc
 }
 
 aliases['bReqSF'] = {
-    'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_qgl_morphed_pt>30 && abs(CleanJet_qgl_morphed_eta)<2.5)*Jet_btagSF_shape[CleanJet_qgl_morphed_jetIdx]+1*(CleanJet_qgl_morphed_pt<30 || abs(CleanJet_qgl_morphed_eta)>2.5))))',
+    'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>30 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx]+1*(CleanJet_pt<30 || abs(CleanJet_eta)>2.5))))',
     'samples': mc
 }
 
