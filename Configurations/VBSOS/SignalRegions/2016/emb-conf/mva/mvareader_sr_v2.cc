@@ -92,9 +92,9 @@ MVAReader_sr_v2::evaluate(unsigned)
   input.push_back( TMath::Abs(*(dphill->Get())));
   input.push_back( *(dphijj->Get()) );
   input.push_back( *(Mll->Get()) );
-  if (*(topcr->Get())) input.push_back( (float) 0.7);
+  if (*(topcr->Get())) input.push_back( (float) 0.2);
   else                 input.push_back(*(btag_central->Get()));
-  if (*(topcr->Get())) input.push_back( (float) 0.7);
+  if (*(topcr->Get())) input.push_back( (float) 0.2);
   else                 input.push_back(*(btag_forward->Get()));
   input.push_back( *(dR_jl1->Get()) );
   input.push_back( *(dR_jl2->Get()) );
