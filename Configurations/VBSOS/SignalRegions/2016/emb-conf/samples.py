@@ -46,6 +46,10 @@ fakeSteps = 'DATAl1loose2016v6__l2loose__fakeW'
 dataSteps = 'DATAl1loose2016v6__l2loose__l2tightOR2016v6'
 
 embedSteps = 'DATAl1loose2016v6__l2loose__l2tightOR2016v6__Embedding'
+
+eleWP = 'mva_90p_Iso2016'
+muWP = 'cut_Tight80x'
+
 ##############################################
 ###### Tree base directory for the site ######
 ##############################################
@@ -125,7 +129,7 @@ if useEmbeddedDY:
   # Actual embedded data
   samples['Dyemb'] = {
     'name': [],
-    'weight': 'LepSF2l__ele_' + eleWP + '__mu_' + muWP',
+    'weight': 'LepSF2l__ele_' + eleWP + '__mu_' + muWP,
     'weights': [],
     'isData': ['all'],
     'FilesPerJob': 20
@@ -168,8 +172,8 @@ if useEmbeddedDY:
   addSampleWeight(samples, 'Dyveto', 'ZZTo2L2Q', mcCommonWeight + '*1.11')
   addSampleWeight(samples, 'Dyveto', 'ZZTo4L', mcCommonWeight + '*1.11')
   addSampleWeight(samples, 'Dyveto', 'WZTo2L2Q', mcCommonWeight + '*1.11')
-  addSampleWeight(samples, 'Dyveto', 'Zg', ' ( ' + mcCommonWeightNoMatch + '*(!(Gen_ZGstar_mass > 0))' + ' ) + ( ' + mcCommonWeight + ' * ((Gen_ZGstar_mass >0 && Gen_ZGstar_mass < 4) * 0.94 + (Gen_ZGstar_mass <0 || Gen_ZGstar_mass > 4) * 1.14) * (Gen_ZGstar_mass > 0)' + ' ) ') # Vg contribution + VgS contribution
-  addSampleWeight(samples, 'Dyveto', 'WZTo3LNu_mllmin01', mcCommonWeight + '*((Gen_ZGstar_mass >0 && Gen_ZGstar_mass < 4) * 0.94 + (Gen_ZGstar_mass <0 || Gen_ZGstar_mass > 4) * 1.14) * (Gen_ZGstar_mass > 0.1)')
+  addSampleWeight(samples, 'Dyveto', 'Zg', '( ' + mcCommonWeightNoMatch + '*(!(Gen_ZGstar_mass > 0))' + ' ) + ( ' + mcCommonWeight + ' * (gstarLow * 0.94 + gstarHigh * 1.14)' +  '(Gen_ZGstar_mass > 0))') # Vg contribution + VgS contribution
+  addSampleWeight(samples, 'Dyveto', 'WZTo3LNu_mllmin01', mcCommonWeight + '* (gstarLow * 0.94 + gstarHigh * 1.14)' + '(Gen_ZGstar_mass > 0.1)')
 
 
 
