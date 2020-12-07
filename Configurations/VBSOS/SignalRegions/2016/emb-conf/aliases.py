@@ -440,15 +440,6 @@ if btag_algo == "deepcsv":
 #             'expr': aliases['btagSF']['expr'].replace('SF', 'SF' + shift + 'down'),
 #             'samples': mc
 #         }
-
-
-patches_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/patches/'
-
-aliases['ttHMVA_SF_2l'] = {'linesToAdd': ['.L ' + patches_path + 'compute_SF.C+'],
-                           'class': 'compute_SF',
-                           'args' : ('2016', 2, 'total_SF'),
-                           'samples': mc_emb
-                          }
                           
 # data/MC scale factors
 aliases['SFweight'] = {
@@ -472,37 +463,6 @@ aliases['SFweightMuDown'] = {
     'expr': 'LepSF2l__mu_'+muWP+'__Do',
     'samples': mc_emb
 }
-
-
-aliases['ttHMVA_SF_Up_0'] = {'linesToAdd': ['.L ' + patches_path + 'compute_SF.C+'],
-                             'class': 'compute_SF',
-                             'args' : ('2016', 2, 'single_SF_up', 0),
-                             'samples': mc_emb
-                            }
-                            
-aliases['ttHMVA_SF_Up_1'] = {'linesToAdd': ['.L ' + patches_path + 'compute_SF.C+'],
-                             'class': 'compute_SF',
-                             'args' : ('2016', 2, 'single_SF_up', 1),
-                             'samples': mc_emb
-                            }
-aliases['ttHMVA_SF_Down_0'] = {'linesToAdd': ['.L ' + patches_path + 'compute_SF.C+'],
-                               'class': 'compute_SF',
-                               'args' : ('2016', 2, 'single_SF_down', 0),
-                               'samples': mc_emb
-                              }
-aliases['ttHMVA_SF_Down_1'] = {'linesToAdd': ['.L ' + patches_path + 'compute_SF.C+'],
-                               'class': 'compute_SF',
-                               'args' : ('2016', 2, 'single_SF_down', 1),
-                               'samples': mc_emb
-                              }
-aliases['ttHMVA_2l_mu_SF_Up'] = {'expr' : '(ttHMVA_SF_Up_0*(TMath::Abs(Lepton_pdgId[0]) == 13) + (TMath::Abs(Lepton_pdgId[0]) == 11)) *\
-                                           (ttHMVA_SF_Up_1*(TMath::Abs(Lepton_pdgId[1]) == 13) + (TMath::Abs(Lepton_pdgId[1]) == 11))',
-                                 'samples': mc_emb
-                                }
-aliases['ttHMVA_2l_mu_SF_Down'] = {'expr' : '(ttHMVA_SF_Down_0*(TMath::Abs(Lepton_pdgId[0]) == 13) + (TMath::Abs(Lepton_pdgId[0]) == 11)) *\
-                                             (ttHMVA_SF_Down_1*(TMath::Abs(Lepton_pdgId[1]) == 13) + (TMath::Abs(Lepton_pdgId[1]) == 11))',
-                                   'samples': mc_emb
-                                  }
 # In WpWmJJ_EWK and WpWmJJ_QCD events, partons [0] and [1] are always the decay products of the first W
 aliases['lhe_mW1'] = {
     'expr': 'TMath::Sqrt(2. * LHEPart_pt[0] * LHEPart_pt[1] * (TMath::CosH(LHEPart_eta[0] - LHEPart_eta[1]) - TMath::Cos(LHEPart_phi[0] - LHEPart_phi[1])))',
