@@ -23,8 +23,8 @@ groupPlot['Multiboson']  = {
                   'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
               }
 
-groupPlot['DY QCD and EWK']  = {  
-                  'nameHR' : "DY",
+groupPlot['DY']  = {  
+                  'nameHR' : "DY QCD and EWK",
                   'isSignal' : 0,
                   'color': 418,    # kGreen+2
                   'samples'  : ['DY', 'Zjj']
@@ -147,7 +147,7 @@ plot['ggWW']  = {
 
 plot['WWewk']  = {
                   'color': 888, # kAzure -9 
-                  'isSignal' : 1,
+                  'isSignal' : 2,
                   'isData'   : 0,
                   'scale'    : 1.0   # ele/mu trigger efficiency   datadriven
                   }

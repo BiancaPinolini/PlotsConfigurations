@@ -23,20 +23,18 @@ groupPlot['Multiboson']  = {
                   'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
               }
 
-groupPlot['DY QCD and EWK']  = {  
-                  'nameHR' : "DY",
-                  'isSignal' : 0,
-                  'color': 418,    # kGreen+2
-                  'samples'  : ['DY', 'Zjj']
-              }
-
 groupPlot['WW']  = {  
                   'nameHR' : 'WW_QCD',
                   'isSignal' : 0,
                   'color': 851, # kAzure -9 
                   'samples'  : ['WW', 'ggWW']
               }
-
+groupPlot['DY']  = {  
+                  'nameHR' : "DY QCD and EWK",
+                  'isSignal' : 0,
+                  'color': 418,    # kGreen+2
+                  'samples'  : ['DY', 'Zjj', 'Dyemb']
+              }
 groupPlot['Fake']  = {
                   'nameHR' : 'nonprompt',
                   'isSignal' : 0,
@@ -92,7 +90,13 @@ groupPlot['VBS']  = {
 
 ### PLOT
 
-
+if useEmbeddedDY:
+  plot['Dyemb']  = {  
+                  'color': 418,    # kGreen+2
+                  'isSignal' : 0,
+                  'isData'   : 0, 
+                  'scale'    : 1.0,
+              }
 
 plot['top'] = {   
                   'color': 400,   # kYellow
@@ -147,7 +151,7 @@ plot['ggWW']  = {
 
 plot['WWewk']  = {
                   'color': 888, # kAzure -9 
-                  'isSignal' : 1,
+                  'isSignal' : 2,
                   'isData'   : 0,
                   'scale'    : 1.0   # ele/mu trigger efficiency   datadriven
                   }

@@ -75,11 +75,11 @@ groupPlot['top']  = {
                   'color': 400,   # kYellow
                   'samples'  : ['top']
               }
-groupPlot['DY QCD and EWK']  = {  
-                  'nameHR' : "DY",
+groupPlot['DY']  = {  
+                  'nameHR' : "DY QCD and EWK",
                   'isSignal' : 0,
                   'color': 418,    # kGreen+2
-                  'samples'  : ['DY', 'Zjj']
+                  'samples'  : ['DY', 'Zjj', 'Dyemb']
               }
 
 groupPlot['VBS']  = {
@@ -92,7 +92,13 @@ groupPlot['VBS']  = {
 
 ### PLOT
 
-
+if useEmbeddedDY:
+  plot['Dyemb']  = {  
+                  'color': 418,    # kGreen+2
+                  'isSignal' : 0,
+                  'isData'   : 0, 
+                  'scale'    : 1.0,
+              }
 
 plot['top'] = {   
                   'color': 400,   # kYellow
@@ -147,7 +153,7 @@ plot['ggWW']  = {
 
 plot['WWewk']  = {
                   'color': 888, # kAzure -9 
-                  'isSignal' : 1,
+                  'isSignal' : 2,
                   'isData'   : 0,
                   'scale'    : 1.0   # ele/mu trigger efficiency   datadriven
                   }
