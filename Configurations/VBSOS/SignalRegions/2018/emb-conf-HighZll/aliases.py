@@ -17,7 +17,7 @@ mc_emb = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'vHighZll/'
+model_version = 'HighZll_v0/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
