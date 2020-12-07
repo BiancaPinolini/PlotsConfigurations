@@ -85,7 +85,8 @@ aliases['btag_forward_al']  = {
 }
 
 ## QGL REMORPHING
-morphing_file = "/afs/cern.ch/user/d/dvalsecc/public/qgl_morphing/morphing_functions_final_2018.root"
+morphing_file = "/afs/cern.ch/user/d/dvalsecc/public/qgl_morphing/morphing_functions_final_2016.root"
+
 qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/emb-conf/macro/'
 
 aliases['CleanJet_qgl_morphed'] = {

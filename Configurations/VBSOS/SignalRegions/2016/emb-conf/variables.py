@@ -14,6 +14,15 @@ variables['DNNoutput_10'] = {
                             "sr": [0.5,1]
                             }
                         }
+variables['DNNoutput_15'] = { 
+                        'name' : 'DNNoutput',
+                        'range' : (15,0,1),
+                        'xaxis' : 'DNN score',
+                        'fold' : 3,
+                        'blind' : {
+                            "sr": [0.5,1]
+                            }
+                        }                        
 variables['DNNoutput_20'] = { 
                         'name' : 'DNNoutput',
                         'range' : (20,0,1),
