@@ -441,7 +441,10 @@ if btag_algo == "deepcsv":
 #             'samples': mc
 #         }
 
-aliases['ttHMVA_SF_2l'] = {'linesToAdd': ['.L %s/patches/compute_SF.C+' % configurations],
+
+patches_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/patches/'
+
+aliases['ttHMVA_SF_2l'] = {'linesToAdd': ['.L ' + patches_path + 'compute_SF.C+'],
                            'class': 'compute_SF',
                            'args' : ('2016', 2, 'total_SF'),
                            'samples': mc_emb
@@ -470,22 +473,24 @@ aliases['SFweightMuDown'] = {
     'samples': mc_emb
 }
 
-aliases['ttHMVA_SF_Up_0'] = {'linesToAdd': ['.L %s/patches/compute_SF.C+' % configurations],
+
+aliases['ttHMVA_SF_Up_0'] = {'linesToAdd': ['.L ' + patches_path + 'compute_SF.C+'],
                              'class': 'compute_SF',
                              'args' : ('2016', 2, 'single_SF_up', 0),
                              'samples': mc_emb
                             }
-aliases['ttHMVA_SF_Up_1'] = {'linesToAdd': ['.L %s/patches/compute_SF.C+' % configurations],
+                            
+aliases['ttHMVA_SF_Up_1'] = {'linesToAdd': ['.L ' + patches_path + 'compute_SF.C+'],
                              'class': 'compute_SF',
                              'args' : ('2016', 2, 'single_SF_up', 1),
                              'samples': mc_emb
                             }
-aliases['ttHMVA_SF_Down_0'] = {'linesToAdd': ['.L %s/patches/compute_SF.C+' % configurations],
+aliases['ttHMVA_SF_Down_0'] = {'linesToAdd': ['.L ' + patches_path + 'compute_SF.C+'],
                                'class': 'compute_SF',
                                'args' : ('2016', 2, 'single_SF_down', 0),
                                'samples': mc_emb
                               }
-aliases['ttHMVA_SF_Down_1'] = {'linesToAdd': ['.L %s/patches/compute_SF.C+' % configurations],
+aliases['ttHMVA_SF_Down_1'] = {'linesToAdd': ['.L ' + patches_path + 'compute_SF.C+'],
                                'class': 'compute_SF',
                                'args' : ('2016', 2, 'single_SF_down', 1),
                                'samples': mc_emb

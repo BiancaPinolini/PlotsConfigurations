@@ -42,25 +42,17 @@ variables['DNNoutput_30'] = {
                             }
                         }
 
-variables['DNNoutput_40'] = { 
-                        'name' : 'DNNoutput',
-                        'range' : (40,0,1),
-                        'xaxis' : 'DNN score',
-                        'fold' : 3,
-                        'blind' : {
-                            "sr": [0.5,1]
-                            }
-                        }
+variables['qgl_central'] = { 'name': 'qgl_central',
+                         'range' : (20, 0, 1),
+                         'xaxis' : 'Quark vs Gluon likelihood discriminator - Central jet',
+                         'fold' : 3
+                       }
 
-variables['DNNoutput_50'] = { 
-                        'name' : 'DNNoutput',
-                        'range' : (50,0,1),
-                        'xaxis' : 'DNN score',
-                        'fold' : 3,
-                        'blind' : {
-                            "sr": [0.5,1]
-                            }
-                        }
+variables['qgl_forward'] = { 'name': 'qgl_forward',
+                         'range' : (20, 0, 1),
+                         'xaxis' : 'Quark vs Gluon likelihood discriminator - Forward jet',
+                         'fold' : 3
+                       }
 
 # VARIABILE BDT
 #variables['readBDT'] = {

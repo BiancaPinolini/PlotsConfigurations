@@ -29,10 +29,10 @@ nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = 'output-plots'
+outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/2016/emb-conf/'+date
 
 # used by mkDatacards to define output directory for datacards
-outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/2016/emb-conf/'+date
+outputDirDatacard = 'datacards/'+date
 
 # # structure file for datacard
 structureFile = 'structure.py'

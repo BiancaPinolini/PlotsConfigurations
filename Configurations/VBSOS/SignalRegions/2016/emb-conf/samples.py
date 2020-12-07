@@ -45,6 +45,7 @@ fakeSteps = 'DATAl1loose2016v6__l2loose__fakeW'
 
 dataSteps = 'DATAl1loose2016v6__l2loose__l2tightOR2016v6'
 
+embedSteps = 'DATAl1loose2016v6__l2loose__l2tightOR2016v6__Embedding'
 ##############################################
 ###### Tree base directory for the site ######
 ##############################################
