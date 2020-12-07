@@ -4,6 +4,18 @@ variables['events']  = {'name': '1',
                         'fold' : 3
                         } 
 
+## Non metterle in oldRF/201205
+variables['qgl_central'] = { 'name': 'qgl_central',
+                         'range' : (20, 0, 1),
+                         'xaxis' : 'Quark vs Gluon likelihood discriminator - Central jet',
+                         'fold' : 3
+                       }
+
+variables['qgl_forward'] = { 'name': 'qgl_forward',
+                         'range' : (20, 0, 1),
+                         'xaxis' : 'Quark vs Gluon likelihood discriminator - Forward jet',
+                         'fold' : 3
+                       }
 
 variables['DNNoutput_10'] = { 
                         'name' : 'DNNoutput',

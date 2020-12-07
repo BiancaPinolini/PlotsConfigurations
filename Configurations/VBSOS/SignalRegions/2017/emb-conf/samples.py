@@ -119,7 +119,7 @@ if useEmbeddedDY:
   # Actual embedded data
   samples['Dyemb'] = {
     'name': [],
-    'weight': 'LepSF2l__ele_' + eleWP + '__mu_' + muWP,
+    'weight': 'METFilter_DATA*LepWPCut*LepSF2l__ele_' + eleWP + '__mu_' + muWP+'*embedtotal*genWeight*(genWeight<=1)',
     'weights': [],
     'isData': ['all'],
     'FilesPerJob': 20
