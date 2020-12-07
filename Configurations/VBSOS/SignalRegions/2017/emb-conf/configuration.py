@@ -4,7 +4,7 @@ tag = 'DNN_comb_2017'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
-date='201207'
+date='201208'
 
 # luminosity to normalize to
 lumi = 41.5
@@ -22,7 +22,7 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot/plot_sr.py'
+plotFile = 'plot/plot_dycr.py'
 
 # file with list of nuisances
 nuisancesFile = 'nuisances.py'
