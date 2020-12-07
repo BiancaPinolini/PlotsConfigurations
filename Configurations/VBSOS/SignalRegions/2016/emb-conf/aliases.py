@@ -163,12 +163,12 @@ aliases['LepWPCut'] = {
 
 aliases['gstarLow'] = {
     'expr': 'Gen_ZGstar_mass >0 && Gen_ZGstar_mass < 4',
-    'samples': 'VgS'
+    'samples': ['VgS','Dyveto']
 }
 
 aliases['gstarHigh'] = {
     'expr': 'Gen_ZGstar_mass <0 || Gen_ZGstar_mass > 4',
-    'samples': 'VgS'
+    'samples': ['VgS','Dyveto']
 }
 
 aliases['embedtotal'] = {
