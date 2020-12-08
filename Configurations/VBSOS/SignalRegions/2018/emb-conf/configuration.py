@@ -4,7 +4,7 @@ tag = 'DNN_comb_emb_2018'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
-date='201207'
+date='201208'
 
 # luminosity to normalize to
 lumi = 59.74

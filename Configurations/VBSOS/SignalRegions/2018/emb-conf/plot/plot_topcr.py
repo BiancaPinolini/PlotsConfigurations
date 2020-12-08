@@ -51,7 +51,7 @@ groupPlot['top']  = {
               }
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
-                  'isSignal' : 2,
+                  'isSignal' : 1,
                   'color': 888, #666,
                   'samples'  : ['WWewk']#,'qqH_hww', 'ZH_hww', 'WH_hww', ']
               }

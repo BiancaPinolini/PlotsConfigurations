@@ -1,10 +1,10 @@
 # example of configuration file
 
-tag = 'DNN_comb_emb_HighZll_2018'
+tag = 'DNN_comb_HighZll_2018'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
-date='201207'
+date='201208'
 
 # luminosity to normalize to
 lumi = 59.74
@@ -22,7 +22,7 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot/plot_sr.py'
+plotFile = 'plot/plot_dycr.py'
 
 # file with list of nuisances
 nuisancesFile = 'nuisances.py'
