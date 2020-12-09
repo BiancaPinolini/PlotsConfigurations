@@ -12,7 +12,8 @@ configurations = os.path.dirname(configurations) # Configurations
 # imported from samples.py:
 # samples, signals
 
-mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
+mc = [skey for skey in samples if skey not in ('Fake', 'DATA', 'Dyemb')]
+mc_emb = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 
 ###### START ######
 
@@ -33,6 +34,11 @@ aliases['R_j2l2'] = {
         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
 }
 
+
+aliases['Zeppll_al'] = {
+    'expr' : '0.5*TMath::Abs((Alt$(Lepton_eta[0],-9999.)+Alt$(Lepton_eta[1],-9999.))-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.)))'
+}
+
 ###### END ######
 
 eleWP = 'mvaFall17V1Iso_WP90'
@@ -40,19 +46,23 @@ muWP = 'cut_Tight_HWWW'
 
 aliases['LepWPCut'] = {
     'expr': 'LepCut2l__ele_'+eleWP+'__mu_'+muWP,
-    'samples': mc + ['DATA']
+    'samples': mc_emb + ['DATA']
 }
 
 aliases['gstarLow'] = {
     'expr': 'Gen_ZGstar_mass >0 && Gen_ZGstar_mass < 4',
-    'samples': 'VgS'
+    'samples': ['VgS', 'Dyveto']
 }
 
 aliases['gstarHigh'] = {
     'expr': 'Gen_ZGstar_mass <0 || Gen_ZGstar_mass > 4',
-    'samples': 'VgS'
+    'samples': ['VgS', 'Dyveto']
 }
 
+aliases['embedtotal'] = {
+    'expr': 'embed_total_WP90V1',  # wrt. eleWP
+    'samples': 'Dyemb'
+}
 # Fake leptons transfer factor
 aliases['fakeW'] = {
     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP,
@@ -171,8 +181,16 @@ aliases['bReq'] = {
     'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
 }
 
+aliases['srr'] = {
+    'expr':'bVeto && Zeppll_al < 1 && mth > 60'
+}
+
 aliases['topcr'] = {
      'expr': '((zeroJet && !bVeto) || bReq)'
+}
+
+aliases['dycr'] = {
+     'expr': 'mth < 60 && bVeto && mll < 80'
 }
 #B tag scale factors
 
@@ -217,17 +235,17 @@ aliases['SFweight'] = {
 # variations
 aliases['SFweightEleUp'] = {
     'expr': 'LepSF2l__ele_'+eleWP+'__Up',
-    'samples': mc
+    'samples': mc_emb
 }
 aliases['SFweightEleDown'] = {
     'expr': 'LepSF2l__ele_'+eleWP+'__Do',
-    'samples': mc
+    'samples': mc_emb
 }
 aliases['SFweightMuUp'] = {
     'expr': 'LepSF2l__mu_'+muWP+'__Up',
-    'samples': mc
+    'samples': mc_emb
 }
 aliases['SFweightMuDown'] = {
     'expr': 'LepSF2l__mu_'+muWP+'__Do',
-    'samples': mc
+    'samples': mc_emb
 }

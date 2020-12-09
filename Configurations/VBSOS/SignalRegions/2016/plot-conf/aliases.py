@@ -12,8 +12,9 @@ configurations = os.path.dirname(configurations) # Configurations
 # imported from samples.py:
 # samples, signals
 
-mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
-btag_algo="deepcsv"#deepcsv
+mc = [skey for skey in samples if skey not in ('Fake', 'DATA', 'Dyemb')]
+mc_emb = [skey for skey in samples if skey not in ('Fake', 'DATA')]
+btag_algo="deepcsv"
 
 ###### START ######
 
@@ -37,7 +38,7 @@ aliases['R_j2l2'] = {
 
 # Zeppenfeld variable
 aliases['Zeppll_al'] = {
-    'expr' : '0.5*fabs((Lepton_eta[0]+Lepton_eta[1])-(Alt(CleanJet_eta,0,-9999.)+Alt(CleanJet_eta,1,-9999.)))'
+    'expr' : '0.5*TMath::Abs((Alt$(Lepton_eta[0],-9999.)+Alt$(Lepton_eta[1],-9999.))-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.)))'
 }
 
 ###### END ######
@@ -47,17 +48,22 @@ muWP = 'cut_Tight80x'
 
 aliases['LepWPCut'] = {
     'expr': 'LepCut2l__ele_'+eleWP+'__mu_'+muWP,
-    'samples': mc + ['DATA']
+    'samples': mc_emb + ['DATA']
 }
 
 aliases['gstarLow'] = {
     'expr': 'Gen_ZGstar_mass >0 && Gen_ZGstar_mass < 4',
-    'samples': 'VgS'
+    'samples': ['VgS','Dyveto']
 }
 
 aliases['gstarHigh'] = {
     'expr': 'Gen_ZGstar_mass <0 || Gen_ZGstar_mass > 4',
-    'samples': 'VgS'
+    'samples': ['VgS','Dyveto']
+}
+
+aliases['embedtotal'] = {
+    'expr': 'embed_total_mva16',  # wrt. eleWP
+    'samples': 'Dyemb'
 }
 
 # Fake leptons transfer factor
@@ -116,27 +122,27 @@ lastcopy = (1 << 13)
 
 aliases['isTTbar'] = {
     'expr': 'Sum$(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 2' % lastcopy,
-    'samples': ['top']
+    'samples': ['top', 'Dyveto']
 }
 
 aliases['isSingleTop'] = {
     'expr': 'Sum$(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 1' % lastcopy,
-    'samples': ['top']
+    'samples': ['top', 'Dyveto']
 }
 
 aliases['topGenPtOTF'] = {
     'expr': 'Sum$((GenPart_pdgId == 6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-    'samples': ['top']
+    'samples': ['top', 'Dyveto']
 }
 
 aliases['antitopGenPtOTF'] = {
     'expr': 'Sum$((GenPart_pdgId == -6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-    'samples': ['top']
+    'samples': ['top', 'Dyveto']
 }
 
 aliases['Top_pTrw'] = {
     'expr': 'isTTbar * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPtOTF) * TMath::Exp(0.0615 - 0.0005 * antitopGenPtOTF))) + isSingleTop',
-    'samples': ['top']
+    'samples': ['top', 'Dyveto']
 }
 
 handle = open('%s/src/PlotsConfigurations/Configurations/patches/DYrew.py' % os.getenv('CMSSW_BASE'),'r')
@@ -341,32 +347,30 @@ aliases['SFweight'] = {
 # variations
 aliases['SFweightEleUp'] = {
     'expr': 'LepSF2l__ele_'+eleWP+'__Up',
-    'samples': mc
+    'samples': mc_emb
 }
 aliases['SFweightEleDown'] = {
     'expr': 'LepSF2l__ele_'+eleWP+'__Do',
-    'samples': mc
+    'samples': mc_emb
 }
 aliases['SFweightMuUp'] = {
     'expr': 'LepSF2l__mu_'+muWP+'__Up',
-    'samples': mc
+    'samples': mc_emb
 }
 aliases['SFweightMuDown'] = {
     'expr': 'LepSF2l__mu_'+muWP+'__Do',
-    'samples': mc
+    'samples': mc_emb
 }
-
-
 # In WpWmJJ_EWK and WpWmJJ_QCD events, partons [0] and [1] are always the decay products of the first W
 aliases['lhe_mW1'] = {
     'expr': 'TMath::Sqrt(2. * LHEPart_pt[0] * LHEPart_pt[1] * (TMath::CosH(LHEPart_eta[0] - LHEPart_eta[1]) - TMath::Cos(LHEPart_phi[0] - LHEPart_phi[1])))',
-    'samples': ['WWewk', 'WW']
+    'samples': ['WWewk', 'WW', 'Dyveto']
 }
 
 # and [2] [3] are the second W
 aliases['lhe_mW2'] = {
     'expr': 'TMath::Sqrt(2. * LHEPart_pt[2] * LHEPart_pt[3] * (TMath::CosH(LHEPart_eta[2] - LHEPart_eta[3]) - TMath::Cos(LHEPart_phi[2] - LHEPart_phi[3])))',
-    'samples': ['WWewk', 'WW']
+    'samples': ['WWewk', 'WW', 'Dyveto']
 }
 
 # use HTXS_njets30 when moving to NanoAODv5 for all trees

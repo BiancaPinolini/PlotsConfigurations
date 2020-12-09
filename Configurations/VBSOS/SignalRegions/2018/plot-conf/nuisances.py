@@ -63,7 +63,7 @@ nuisances['lumi_CurrCalib'] = {
 
 #### FAKES
 
-# FIXME: check the 30% lnN
+## FIXME: check the 30% lnN
 nuisances['fake_syst_e'] = {
     'name': 'CMS_fake_syst_e',
     'type': 'lnN',
@@ -742,12 +742,12 @@ nuisances['DYttnorm1j']  = {
               }
 '''
 nuisances['DYnorm2j']  = {
-                 'name'  : 'CMS_hww_DYnorm2j_2018',
-                 'samples'  : {
-                     'DY' : '1.00',
-                     },
-                 'type'  : 'rateParam'
-                }
+                'name'  : 'CMS_hww_DYnorm2j_2018',
+                'samples'  : {
+                    'DY' : '1.00',
+                    },
+                'type'  : 'rateParam'
+               }
 
 nuisances['DYembnorm2j']  = {
                  'name'  : 'CMS_hww_DYttnorm2j_2018',

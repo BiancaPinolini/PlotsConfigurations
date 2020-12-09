@@ -8,28 +8,22 @@
 # If not defined, normal plots is used
 #
 
-groupPlot['Higgs']  = {
-                  'nameHR' : 'Higgs',
+groupPlot['DY']  = {  
+                  'nameHR' : "DY QCD and EWK",
                   'isSignal' : 0,
-                  'color': 632, # kRed 
-                  'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','bbH_hww','ttH_hww','ZH_htt', 'ggZH_htt', 'WH_htt', 'ggH_htt','bbH_htt','ttH_htt', 'qqH_htt' ]
-                  #'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
+                  'color': 418,    # kGreen+2
+                  'samples'  : ['DY', 'Zjj', 'Dyemb']
               }
 
-groupPlot['Multiboson']  = {  
-                  'nameHR' : 'Multiboson',
+groupPlot['top']  = {  
+                  'nameHR' : 'tW and t#bar{t}',
                   'isSignal' : 0,
-                  'color': 617, # kViolet + 1  
-                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
+                  'color': 400,   # kYellow
+                  'samples'  : ['top']
               }
 
 
-groupPlot['WW']  = {  
-                  'nameHR' : 'WW_QCD',
-                  'isSignal' : 0,
-                  'color': 851, # kAzure -9 
-                  'samples'  : ['WW', 'ggWW']
-              }
+
 
 groupPlot['Fake']  = {
                   'nameHR' : 'nonprompt',
@@ -37,7 +31,12 @@ groupPlot['Fake']  = {
                   'color': 921,    # kGray + 1
                   'samples'  : ['Fake_m', 'Fake_e']
 }
-
+groupPlot['WW']  = {  
+                  'nameHR' : 'WW_QCD',
+                  'isSignal' : 0,
+                  'color': 851, # kAzure -9 
+                  'samples'  : ['WW', 'ggWW']
+              }
 '''
 groupPlot['VVV']  = {  
                   'nameHR' : 'VVV',
@@ -69,18 +68,20 @@ groupPlot['VgS']  = {
               }
 '''
 
-groupPlot['top']  = {  
-                  'nameHR' : 'tW and t#bar{t}',
+
+groupPlot['Multiboson']  = {  
+                  'nameHR' : 'Multiboson',
                   'isSignal' : 0,
-                  'color': 400,   # kYellow
-                  'samples'  : ['top']
+                  'color': 617, # kViolet + 1  
+                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
               }
-groupPlot['DY QCD and EWK']  = {  
-                  'nameHR' : "DY",
+groupPlot['Higgs']  = {
+                  'nameHR' : 'Higgs',
                   'isSignal' : 0,
-                  'color': 418,    # kGreen+2
-                  'samples'  : ['DY', 'Zjj']
-              }
+                  'color': 632, # kRed 
+                  'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','bbH_hww','ttH_hww','ZH_htt', 'ggZH_htt', 'WH_htt', 'ggH_htt','bbH_htt','ttH_htt', 'qqH_htt' ]
+                  #'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
+              }              
 
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
@@ -92,7 +93,13 @@ groupPlot['VBS']  = {
 
 ### PLOT
 
-
+if useEmbeddedDY:
+  plot['Dyemb']  = {  
+                  'color': 418,    # kGreen+2
+                  'isSignal' : 0,
+                  'isData'   : 0, 
+                  'scale'    : 1.0,
+              }
 
 plot['top'] = {   
                   'color': 400,   # kYellow
@@ -147,7 +154,7 @@ plot['ggWW']  = {
 
 plot['WWewk']  = {
                   'color': 888, # kAzure -9 
-                  'isSignal' : 1,
+                  'isSignal' : 2,
                   'isData'   : 0,
                   'scale'    : 1.0   # ele/mu trigger efficiency   datadriven
                   }

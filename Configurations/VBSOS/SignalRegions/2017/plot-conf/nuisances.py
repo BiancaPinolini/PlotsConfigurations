@@ -15,9 +15,11 @@ def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
 try:
-    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
+    mc_emb = [skey for skey in samples if skey != 'DATA' and skey != 'Dyveto' and not skey.startswith('Fake')]
+    mc = [skey for skey in mc_emb if skey != 'Dyemb']
 except NameError:
     mc = []
+    cuts = {}
     nuisances = {}
     def makeMCDirectory(x=''):
         return ''
@@ -156,7 +158,7 @@ nuisances['trigg'] = {
     'name': 'CMS_eff_hwwtrigger_2017',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, trig_syst) for skey in mc)
+    'samples': dict((skey, trig_syst) for skey in mc_emb)
 }
 
 prefire_syst = ['PrefireWeight_Up/PrefireWeight', 'PrefireWeight_Down/PrefireWeight']
@@ -174,7 +176,7 @@ nuisances['eff_e'] = {
     'name': 'CMS_eff_e_2017',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc)
+    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc_emb)
 }
 
 nuisances['electronpt'] = {
@@ -188,14 +190,25 @@ nuisances['electronpt'] = {
     'folderDown': makeMCDirectory('ElepTdo_suffix'),
     'AsLnN': '1'
 }
-
+if useEmbeddedDY:
+  nuisances['electronpt_emb'] = {
+    'name': 'CMS_scale_e_2017',
+    'kind': 'suffix',
+    'type': 'shape',
+    'mapUp' : 'ElepTup',
+    'mapDown': 'ElepTdo',
+    'samples': {'Dyemb': ['1', '1']},
+    'folderUp': treeBaseDir+'/Embedding2017_102X_nAODv5_Full2017v6/DATAl1loose2017v6__l2loose__l2tightOR2017v6__Embedding__EmbElepTup_suffix/',
+    'folderDown': treeBaseDir+'/Embedding2017_102X_nAODv5_Full2017v6/DATAl1loose2017v6__l2loose__l2tightOR2017v6__Embedding__EmbElepTdo_suffix/',
+    'AsLnN': '1'
+  }
 ##### Muon Efficiency and energy scale
 
 nuisances['eff_m'] = {
     'name': 'CMS_eff_m_2017',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, ['SFweightMuUp', 'SFweightMuDown']) for skey in mc)
+    'samples': dict((skey, ['SFweightMuUp', 'SFweightMuDown']) for skey in mc_emb)
 }
 
 nuisances['muonpt'] = {
@@ -209,7 +222,18 @@ nuisances['muonpt'] = {
     'folderDown': makeMCDirectory('MupTdo_suffix'),
     'AsLnN': '1'
 }
-
+if useEmbeddedDY:
+  nuisances['muonpt_emb'] = {
+    'name': 'CMS_scale_m_2017',
+    'kind': 'suffix',
+    'type': 'shape',
+    'mapUp' : 'MupTup',
+    'mapDown': 'MupTdo',
+    'samples': {'Dyemb': ['1', '1']},
+    'folderUp': treeBaseDir+'/Embedding2017_102X_nAODv5_Full2017v6/DATAl1loose2017v6__l2loose__l2tightOR2017v6__Embedding__EmbMupTup_suffix/',
+    'folderDown': treeBaseDir+'/Embedding2017_102X_nAODv5_Full2017v6/DATAl1loose2017v6__l2loose__l2tightOR2017v6__Embedding__EmbMupTdo_suffix/',
+    'AsLnN': '1'
+  }
 ##### Jet energy scale
 '''
 nuisances['jes'] = {
@@ -252,6 +276,18 @@ nuisances['met'] = {
     'folderDown': makeMCDirectory('METdo_suffix'),
     'AsLnN': '1'
 }
+
+##### Di-Tau vetoing for embedding
+if useEmbeddedDY: 
+  nuisances['embedveto']  = {
+                  'name'  : 'CMS_embed_veto_2017',
+                  'kind'  : 'weight',
+                  'type'  : 'shape',
+                  'samples'  : {
+                     'Dyemb'    : ['1', '1'],
+                     'Dyveto'   : ['0.1', '-0.1'],
+                  }
+  }
 
 ##### Pileup
 
@@ -701,25 +737,6 @@ nuisances['stat'] = {
 }
 
 ## rate parameters
-'''
-nuisances['DYttnorm0j']  = {
-               'name'  : 'CMS_hww_DYttnorm0j',
-               'samples'  : {
-                   'DY' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j 
-              }
-
-nuisances['DYttnorm1j']  = {
-               'name'  : 'CMS_hww_DYttnorm1j',
-               'samples'  : {
-                   'DY' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-'''
 nuisances['DYnorm2j']  = {
                  'name'  : 'CMS_hww_DYnorm2j_2017',
                  'samples'  : {
@@ -727,7 +744,13 @@ nuisances['DYnorm2j']  = {
                      },
                  'type'  : 'rateParam'
                 }
-
+nuisances['DYembnorm2j']  = {
+                 'name'  : 'CMS_hww_DYttnorm2j',
+                 'samples'  : {
+                     'Dyemb' : '1.00',
+                     },
+                 'type'  : 'rateParam'
+                }
 '''
 nuisances['WWnorm0j']  = {
                'name'  : 'CMS_hww_WWnorm0j',
@@ -766,7 +789,7 @@ nuisances['ggWWnorm1j']  = {
               }
 '''
 nuisances['WWnorm2j']  = {
-               'name'  : 'CMS_hww_WWnorm2j',
+               'name'  : 'CMS_hww_WWnorm2j_2017',
                'samples'  : {
                    'WW' : '1.00',
                    },
@@ -774,7 +797,7 @@ nuisances['WWnorm2j']  = {
               }
 
 nuisances['ggWWnorm2j']  = {
-               'name'  : 'CMS_hww_WWnorm2j',
+               'name'  : 'CMS_hww_WWnorm2j_2017',
                'samples'  : {
                    'ggWW' : '1.00',
                    },
@@ -800,7 +823,7 @@ nuisances['Topnorm1j']  = {
               }
 '''
 nuisances['Topnorm2j']  = {
-               'name'  : 'CMS_hww_Topnorm2j',
+               'name'  : 'CMS_hww_Topnorm2j_2017',
                'samples'  : {
                    'top' : '1.00',
                    },

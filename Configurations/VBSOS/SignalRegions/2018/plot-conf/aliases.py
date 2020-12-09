@@ -12,29 +12,30 @@ configurations = os.path.dirname(configurations) # Configurations
 # imported from samples.py:
 # samples, signals
 
-mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
+mc = [skey for skey in samples if skey not in ('Fake', 'DATA', 'Dyemb')]
+mc_emb = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 
 ###### START ######
 
 # distance between lepton and jet
-# aliases['R_j1l1'] = {
-#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
-# }
+aliases['R_j1l1'] = {
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
+}
 
-# aliases['R_j2l1'] = {
-#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
-# }
+aliases['R_j2l1'] = {
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
+}
 
-# aliases['R_j1l2'] = {
-#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
-# }
+aliases['R_j1l2'] = {
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
+}
 
-# aliases['R_j2l2'] = {
-#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
-# }
-# aliases['Zeppll_al'] = {
-#     'expr' : '0.5*TMath::Abs((Alt$(Lepton_eta[0],-9999.)+Alt$(Lepton_eta[1],-9999.))-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.)))'
-# }
+aliases['R_j2l2'] = {
+        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
+}
+aliases['Zeppll_al'] = {
+    'expr' : '0.5*TMath::Abs((Alt$(Lepton_eta[0],-9999.)+Alt$(Lepton_eta[1],-9999.))-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.)))'
+}
 
 # B tagging
 aliases['bVeto'] = {
@@ -49,41 +50,16 @@ aliases['zeroJet'] = {
     'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
 }
 
-# aliases['srr'] = {
-#     'expr':'bVeto && Zeppll_al < 1 && mth > 60'
-# }
+aliases['srr'] = {
+    'expr':'bVeto && Zeppll_al < 1 && mth > 60'
+}
 
 aliases['topcr'] = {
      'expr': '((zeroJet && !bVeto) || bReq)'
 }
-# aliases['dycr'] = {
-#      'expr': 'mth < 60 && bVeto && mll < 80'
-# }
-
-## QGL morphing
-morphing_file = "/afs/cern.ch/user/d/dvalsecc/public/qgl_morphing/morphing_functions_final_2018.root"
-qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/plot-conf/macro/'
-
-aliases['CleanJet_qgl_morphed'] = {
-    'class': 'QGL_morphing',
-    'args': (morphing_file),
-     'linesToAdd' : [
-        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-        '.L ' + qgl_reader_path + 'qgl_morphing.cc+',
-        ] 
+aliases['dycr'] = {
+     'expr': 'mth < 60 && bVeto && mll < 80'
 }
-
-
-
-# aliases['DNNoutput'] = {
-#     'class': 'MVAReader_sr_v2',
-#     'args': ( models_path +'/sr/models/' + model_version, False, 1),
-#     'linesToAdd':[
-#         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-#         'gSystem->Load("libDNNEvaluator.so")',
-#         '.L ' + mva_reader_path + 'mvareader_sr_v2.cc+', 
-#     ],
-# }
 
 ###### END ######
 
@@ -92,17 +68,22 @@ muWP='cut_Tight_HWWW'
 
 aliases['LepWPCut'] = {
     'expr': 'LepCut2l__ele_'+eleWP+'__mu_'+muWP,
-    'samples': mc + ['DATA']
+    'samples': mc_emb + ['DATA']
 }
 
 aliases['gstarLow'] = {
     'expr': 'Gen_ZGstar_mass >0 && Gen_ZGstar_mass < 4',
-    'samples': 'VgS'
+    'samples': ['VgS','Dyveto']
 }
 
 aliases['gstarHigh'] = {
     'expr': 'Gen_ZGstar_mass <0 || Gen_ZGstar_mass > 4',
-    'samples': 'VgS'
+    'samples': ['VgS','Dyveto']
+}
+
+aliases['embedtotal'] = {
+    'expr': 'embed_total_WP90V1',  # wrt. eleWP
+    'samples': 'Dyemb'
 }
 
 # Fake leptons transfer factor 
@@ -161,27 +142,27 @@ lastcopy = (1 << 13)
 
 aliases['isTTbar'] = {
     'expr': 'Sum$(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 2' % lastcopy,
-    'samples': ['top']
+    'samples': ['top', 'Dyveto']
 }
 
 aliases['isSingleTop'] = {
     'expr': 'Sum$(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 1' % lastcopy,
-    'samples': ['top']
+    'samples': ['top', 'Dyveto']
 }
 
 aliases['topGenPtOTF'] = {
     'expr': 'Sum$((GenPart_pdgId == 6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-    'samples': ['top']
+    'samples': ['top', 'Dyveto']
 }
 
 aliases['antitopGenPtOTF'] = {
     'expr': 'Sum$((GenPart_pdgId == -6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-    'samples': ['top']
+    'samples': ['top', 'Dyveto']
 }
 
 aliases['Top_pTrw'] = {
     'expr': 'isTTbar * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPtOTF) * TMath::Exp(0.0615 - 0.0005 * antitopGenPtOTF))) + isSingleTop',
-    'samples': ['top']
+    'samples': ['top', 'Dyveto']
 }
 
 handle = open('%s/src/PlotsConfigurations/Configurations/patches/DYrew.py' % os.getenv('CMSSW_BASE'),'r')
@@ -190,13 +171,13 @@ handle.close()
 aliases['DY_NLO_pTllrw'] = {
     #'expr': '1',
     'expr': '('+DYrew['2018']['NLO'].replace('x', 'gen_ptll')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
-    'samples': ['DY']
+    'samples': ['DY', 'DYtt']
 }
 
 aliases['DY_LO_pTllrw'] = {
     #'expr': '1',
     'expr': '('+DYrew['2018']['LO'].replace('x', 'gen_ptll')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
-    'samples': ['DY']
+    'samples': ['DY', 'DYtt']
 }
 
 # Jet bins
@@ -205,13 +186,13 @@ aliases['DY_LO_pTllrw'] = {
 # No jet with pt > 30 GeV
 
 
-# aliases['oneJet'] = {
-#     'expr': 'Alt$(CleanJet_pt[0], 0) > 30.'
-# }
+aliases['oneJet'] = {
+    'expr': 'Alt$(CleanJet_pt[0], 0) > 30.'
+}
 
-# aliases['multiJet'] = {
-#     'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
-# }
+aliases['multiJet'] = {
+    'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
+}
 
 
 
@@ -261,9 +242,6 @@ aliases['DY_LO_pTllrw'] = {
 #    'args': (btagSFSource,),
 #    'samples': mc
 #}
-aliases['topcr'] = {
-     'expr': '((zeroJet && !bVeto) || bReq)'
-}
 
 aliases['bVetoSF'] = {
     'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx]+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))',
@@ -331,17 +309,17 @@ aliases['SFweight'] = {
 # variations
 aliases['SFweightEleUp'] = {
     'expr': 'LepSF2l__ele_'+eleWP+'__Up',
-    'samples': mc
+    'samples': mc_emb
 }
 aliases['SFweightEleDown'] = {
     'expr': 'LepSF2l__ele_'+eleWP+'__Do',
-    'samples': mc
+    'samples': mc_emb
 }
 aliases['SFweightMuUp'] = {
     'expr': 'LepSF2l__mu_'+muWP+'__Up',
-    'samples': mc
+    'samples': mc_emb
 }
 aliases['SFweightMuDown'] = {
     'expr': 'LepSF2l__mu_'+muWP+'__Do',
-    'samples': mc
+    'samples': mc_emb
 }

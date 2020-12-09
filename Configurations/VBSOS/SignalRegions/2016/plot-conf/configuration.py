@@ -4,6 +4,8 @@ tag = 'DNN_plot_2016'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
+date='201208'
+
 # luminosity to normalize to
 lumi = 35.867
 
@@ -20,11 +22,11 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot.py'
+plotFile = 'plot/plot_dycr.py'
 
 # file with list of nuisances
-#nuisancesFile = 'nuisances.py'
+nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = 'output-plots'
+outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/'+date+'/2016/plot-conf/'

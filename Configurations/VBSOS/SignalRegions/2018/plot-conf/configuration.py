@@ -4,6 +4,8 @@ tag = 'DNN_plot_2018'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
+date='201208'
+
 # luminosity to normalize to
 lumi = 59.74
 
@@ -27,4 +29,4 @@ nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/plot-conf/'+date
+outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/'+date+'/2018/plot-conf/'

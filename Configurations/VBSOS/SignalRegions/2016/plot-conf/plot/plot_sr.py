@@ -21,12 +21,18 @@ groupPlot['Multiboson']  = {
                   'color': 617, # kViolet + 1  
                   'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
               }   
-groupPlot['DY QCD and EWK']  = {  
-                  'nameHR' : "DY",
+groupPlot['DY']  = {  
+                  'nameHR' : "DY QCD and EWK",
                   'isSignal' : 0,
                   'color': 418,    # kGreen+2
-                  'samples'  : ['DY', 'Zjj']
+                  'samples'  : ['DY', 'Zjj', 'Dyemb']
               }
+groupPlot['Fake']  = {
+                  'nameHR' : 'nonprompt',
+                  'isSignal' : 0,
+                  'color': 921,    # kGray + 1
+                  'samples'  : ['Fake_m', 'Fake_e']
+}              
 groupPlot['WW']  = {  
                   'nameHR' : 'WW_QCD',
                   'isSignal' : 0,
@@ -34,12 +40,7 @@ groupPlot['WW']  = {
                   'samples'  : ['WW', 'ggWW']
               }                                     
 
-groupPlot['Fake']  = {
-                  'nameHR' : 'nonprompt',
-                  'isSignal' : 0,
-                  'color': 921,    # kGray + 1
-                  'samples'  : ['Fake_m', 'Fake_e']
-}
+
 
 groupPlot['top']  = {  
                   'nameHR' : 'tW and t#bar{t}',
@@ -113,7 +114,13 @@ plot['Zjj']  = {
                   'scale'    : 1.0                  
               }
 
-
+if useEmbeddedDY:
+  plot['Dyemb']  = {  
+                  'color': 418,    # kGreen+2
+                  'isSignal' : 0,
+                  'isData'   : 0, 
+                  'scale'    : 1.0,
+              }
 plot['Fake_m']  = {  
                   'color': 921,    # kGray + 1
                   'isSignal' : 0,
