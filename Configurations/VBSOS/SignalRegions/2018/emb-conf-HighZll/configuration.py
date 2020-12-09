@@ -22,7 +22,7 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot/plot_dycr.py'
+plotFile = 'plot/plotlin_dycr.py'
 
 # file with list of nuisances
 nuisancesFile = 'nuisances.py'
