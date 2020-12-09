@@ -42,11 +42,11 @@ groupPlot['top']  = {
                   'samples'  : ['top']
               }
 
-groupPlot['DY QCD and EWK']  = {  
-                  'nameHR' : "DY",
+groupPlot['DY']  = {  
+                  'nameHR' : "QCD and EWK",
                   'isSignal' : 0,
                   'color': 418,    # kGreen+2
-                  'samples'  : ['DY', 'Zjj']
+                  'samples'  : ['DY', 'Zjj', 'Dyemb']
               }
 '''
 groupPlot['VVV']  = {  
@@ -104,7 +104,13 @@ plot['DY']  = {
                   'isData'   : 0, 
                   'scale'    : 1.0
 }
-
+if useEmbeddedDY:
+  plot['Dyemb']  = {  
+                  'color': 418,    # kGreen+2
+                  'isSignal' : 0,
+                  'isData'   : 0, 
+                  'scale'    : 1.0,
+              }
 plot['Zjj']  = {  
                   'color': 600,    # kBlue
                   'isSignal' : 0,
