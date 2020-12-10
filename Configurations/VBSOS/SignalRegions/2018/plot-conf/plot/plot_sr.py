@@ -210,16 +210,6 @@ plot['ggH_hww'] = {
                   'scale'    : 1    #
                   }
 
-# data
-
-plot['DATA']  = { 
-                  'nameHR' : 'Data',
-                  'color': 1 ,  
-                  'isSignal' : 0,
-                  'isData'   : 1 ,
-                  'isBlind'  : 0
-              }
-
 
 
 
