@@ -18,7 +18,7 @@ mc_emb = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'v2/'
+model_version = 'temp/v2/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
@@ -85,7 +85,7 @@ aliases['btag_forward_al']  = {
 
 ## QGL REMORPHING
 morphing_file = "/afs/cern.ch/user/d/dvalsecc/public/qgl_morphing/morphing_functions_final_2018.root"
-qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/emb-conf/macro/'
+qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/lowZ_conf/macro/'
 
 aliases['CleanJet_qgl_morphed'] = {
     'class': 'QGL_morphing',
@@ -120,17 +120,17 @@ aliases['zeroJet'] = {
 
 ## cuts
 
-aliases['srr'] = {
-    'expr':'bVeto && Zeppll_al < 1 && mth > 60'
-}
+# aliases['srr'] = {
+#     'expr':'bVeto && Zeppll_al < 1 && mth > 60'
+# }
 
-aliases['topcr'] = {
+aliases['top_cr'] = {
      'expr': '((zeroJet && !bVeto) || bReq)'
 }
 
-aliases['dycr'] = {
-     'expr': 'mth < 60 && bVeto && mll < 80'
-}
+# aliases['dycr'] = {
+#      'expr': 'mth < 60 && bVeto && mll < 80'
+# }
 
 
 ## DNN
@@ -139,7 +139,7 @@ aliases['cut_index'] = {
     'expr': '1'
 }
 
-mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/emb-conf/mva/'
+mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/lowZ_conf/mva/'
 models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
 aliases['DNNoutput'] = {
@@ -262,12 +262,12 @@ handle.close()
 aliases['DY_NLO_pTllrw'] = {
     #'expr': '1',
     'expr': '('+DYrew['2017']['NLO'].replace('x', 'gen_ptll')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
-    'samples': ['DY']
+    'samples': ['DY', 'DYtt']
 }
 aliases['DY_LO_pTllrw'] = {
     #'expr': '1',
     'expr': '('+DYrew['2017']['LO'].replace('x', 'gen_ptll')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
-    'samples': ['DY']
+    'samples': ['DY', 'DYtt']
 }
 
 # Jet bins
@@ -295,7 +295,7 @@ aliases['bReqSF'] = {
 }
 
 aliases['btagSF'] = {
-    'expr': '(bVeto || (topcr && zeroJet))*bVetoSF + (topcr && !zeroJet)*bReqSF',
+    'expr': '(bVeto || (top_cr && zeroJet))*bVetoSF + (top_cr && !zeroJet)*bReqSF',
     'samples': mc
 }
 

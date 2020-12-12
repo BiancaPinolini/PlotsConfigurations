@@ -14,7 +14,19 @@ supercut = 'mll>50 \
 cuts['sr'] = 'bVeto && Zeppll_al < 1 && mth > 60 '
 
 # Top control region
-cuts['top_cr']  = '((zeroJet && !bVeto) || bReq)'
+cuts['topcr']  = {
+    'expr' : '((zeroJet && !bVeto) || bReq)',
+    'categories' : {
+        'lowZ' : ' Zeppll_al < 1',
+        'highZ' : 'Zeppll_al > 1',
+    }
+}
 
 # DY control region
-cuts['dy_cr'] = 'mth < 60 && bVeto && mll < 80'
+cuts['dycr'] = {
+    'expr' : 'mth < 60 && bVeto && mll < 80',
+    'categories' : {
+        'lowZ' : ' Zeppll_al < 1',
+        'highZ' : 'Zeppll_al > 1',
+    }
+}

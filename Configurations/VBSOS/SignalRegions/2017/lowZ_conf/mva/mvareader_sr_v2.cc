@@ -57,9 +57,7 @@ protected:
   TTreeReaderValue<Double_t>* qgl_forward{};
   TTreeReaderValue<Double_t>* qgl_central{};
 
- TTreeReaderValue<Double_t>* topcr{};
- TTreeReaderValue<Double_t>* dycr{};
- TTreeReaderValue<Double_t>* srr{};
+ TTreeReaderValue<Double_t>* top_cr{};
   
 };
 
@@ -92,14 +90,21 @@ MVAReader_sr_v2::evaluate(unsigned)
   input.push_back( TMath::Abs(*(dphill->Get())));
   input.push_back( *(dphijj->Get()) );
   input.push_back( *(Mll->Get()) );
-  if (*(topcr->Get())) input.push_back( (float) 0.2);
-  else                 input.push_back(*(btag_central->Get()));
-  if (*(topcr->Get())) input.push_back( (float) 0.2);
-  else                 input.push_back(*(btag_forward->Get()));
+  if (*(top_cr->Get())) {
+    if (*(btag_central->Get())<0.4184) input.push_back(*(btag_central->Get()));
+    else input.push_back( (float) 0.2);
+  } else {
+    input.push_back(*(btag_central->Get()));
+  }
+  if (*(top_cr->Get())) {
+    if (*(btag_forward->Get())<0.4184) input.push_back(*(btag_forward->Get()));
+    else input.push_back( (float) 0.2);
+  } else {
+    input.push_back(*(btag_forward->Get()));
+  }
   input.push_back( *(dR_jl1->Get()) );
   input.push_back( *(dR_jl2->Get()) );
-  if (*(srr->Get())) input.push_back(*(Zeppll->Get()));
-  else               input.push_back( (float) 0.5);
+  input.push_back(*(Zeppll->Get()));
   input.push_back( TMath::Log(*(mjj->Get()) ));
   input.push_back( *(Zepp1->Get()) );
   input.push_back( *(Zepp2->Get()) );
@@ -140,9 +145,7 @@ MVAReader_sr_v2::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(qgl_forward, "qgl_forward");
   _library.bindBranch(qgl_central, "qgl_central");
 
-  _library.bindBranch(topcr, "topcr");
-  _library.bindBranch(dycr, "dycr");
-  _library.bindBranch(srr, "srr");
+  _library.bindBranch(top_cr, "top_cr");
 }
 
 

@@ -8,11 +8,11 @@ variables['ptll']    = {    'name': 'ptll',
                             'xaxis' : 'pt_{ll} [GeV]',
                             'fold' : 3 
                         }
-variables['eta1']  = {   'name': 'Alt$(Lepton_eta[0],-9999.)',
-                        'range' : (20,5,5),
-                        'xaxis' : '#eta 1^{st} lep',
-                        'fold' : 3
-                        }
+# variables['eta1']  = {   'name': 'Alt$(Lepton_eta[0],-9999.)',
+#                         'range' : (20,-5,5),
+#                         'xaxis' : '#eta 1^{st} lep',
+#                         'fold' : 3
+#                         }
 variables['eta2']  = {  'name': 'Alt$(Lepton_eta[1],-9999.)',
                         'range' : (20,-5,5),
                         'xaxis' : '#eta 2^{nd} lep',

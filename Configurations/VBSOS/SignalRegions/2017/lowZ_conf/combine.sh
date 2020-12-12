@@ -4,7 +4,7 @@ cd /afs/cern.ch/user/b/bpinolin/CMSSW_8_1_0/
 eval `scramv1 runtime -sh`
 cd -
 
-date=201208
+date=201210
 workDir=/afs/cern.ch/user/b/bpinolin/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/emb-conf/datacards
     
 points=(
@@ -26,7 +26,6 @@ do
     cd $workDir
 
     combineCards.py   sr=${datacardDir}/sr/${var}/datacard.txt \
-                    cr_top=${datacardDir}/top_cr/events/datacard.txt \
                     cr_dy=${datacardDir}/dy_cr/events/datacard.txt \
     > ${workspaceDir}/${output}.txt
 
