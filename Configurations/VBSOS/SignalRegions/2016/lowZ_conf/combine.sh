@@ -4,8 +4,8 @@ cd /afs/cern.ch/user/b/bpinolin/CMSSW_8_1_0/
 eval `scramv1 runtime -sh`
 cd -
 
-date=201210
-workDir=/afs/cern.ch/user/b/bpinolin/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/emb-conf/datacards
+date=201212
+workDir=/afs/cern.ch/user/b/bpinolin/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/lowZ_conf/datacards
     
 points=(
 10
@@ -26,7 +26,8 @@ do
     cd $workDir
 
     combineCards.py   sr=${datacardDir}/sr/${var}/datacard.txt \
-                      cr_dy=${datacardDir}/dy_cr/events/datacard.txt \
+                      cr_dy=${datacardDir}/dycr_lowZ/events/datacard.txt \
+                      cr_top=${datacardDir}/topcr_lowZ/events/datacard.txt \
     > ${workspaceDir}/${output}.txt
 
     text2workspace.py ${workspaceDir}/${output}.txt -P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel --PO 'map=.*/WWewk:r_vbs[1,-10,10]' -o ${workspaceDir}/${output}.root

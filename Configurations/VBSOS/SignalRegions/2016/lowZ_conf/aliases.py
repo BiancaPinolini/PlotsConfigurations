@@ -19,7 +19,7 @@ btag_algo="deepcsv"
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'temp/v2/'
+model_version = 'v3/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
@@ -141,12 +141,12 @@ mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurat
 models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
 aliases['DNNoutput'] = {
-    'class': 'MVAReader_sr_v2',
+    'class': 'MVAReader_sr_v3',
     'args': ( models_path +'/sr/models/' + model_version, False, 1),
     'linesToAdd':[
         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
         'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mvareader_sr_v2.cc+', 
+        '.L ' + mva_reader_path + 'mvareader_sr_v3.cc+', 
     ],
 }
 
