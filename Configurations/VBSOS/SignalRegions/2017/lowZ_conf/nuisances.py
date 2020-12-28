@@ -593,13 +593,17 @@ nuisances['CRSR_accept_DY'] = {
     'name': 'CMS_hww_CRSR_accept_DY',
     'type': 'lnN',
     'samples': {'DY': '1.02'},
+    'cuts': [cut for cut in cuts if '_CR_' in cut],
+    'cutspost': (lambda self, cuts: [cut for cut in cuts if '_DY_' in cut]),
 }
 
 # Uncertainty on SR/CR ratio
 nuisances['CRSR_accept_top'] = {
     'name': 'CMS_hww_CRSR_accept_top',
     'type': 'lnN',
-    'samples': {'top': '1.01'}
+    'samples': {'top': '1.01'},
+    'cuts': [cut for cut in cuts if '_CR_' in cut],
+    'cutspost': (lambda self, cuts: [cut for cut in cuts if '_top_' in cut]),
 }
 
 # Theory uncertainty for ggH
@@ -744,6 +748,7 @@ nuisances['DYnorm2j']  = {
                      },
                  'type'  : 'rateParam'
                 }
+
 nuisances['DYembnorm2j']  = {
                  'name'  : 'CMS_hww_DYttnorm2j',
                  'samples'  : {
@@ -789,7 +794,7 @@ nuisances['ggWWnorm1j']  = {
               }
 '''
 nuisances['WWnorm2j']  = {
-               'name'  : 'CMS_hww_WWnorm2j_2017',
+               'name'  : 'CMS_hww_WWnorm2j',
                'samples'  : {
                    'WW' : '1.00',
                    },
@@ -797,7 +802,7 @@ nuisances['WWnorm2j']  = {
               }
 
 nuisances['ggWWnorm2j']  = {
-               'name'  : 'CMS_hww_WWnorm2j_2017',
+               'name'  : 'CMS_hww_WWnorm2j',
                'samples'  : {
                    'ggWW' : '1.00',
                    },
@@ -823,7 +828,7 @@ nuisances['Topnorm1j']  = {
               }
 '''
 nuisances['Topnorm2j']  = {
-               'name'  : 'CMS_hww_Topnorm2j_2017',
+               'name'  : 'CMS_hww_Topnorm2j',
                'samples'  : {
                    'top' : '1.00',
                    },

@@ -18,7 +18,7 @@ mc_emb = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'v3/'
+model_version = 'lowZ/v3_plus/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
@@ -143,12 +143,12 @@ mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurat
 models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
 aliases['DNNoutput'] = {
-    'class': 'MVAReader_sr_v3',
+    'class': 'MVAReader_sr_v3_plus',
     'args': ( models_path +'/sr/models/' + model_version, False, 1),
     'linesToAdd':[
         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
         'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mvareader_sr_v3.cc+', 
+        '.L ' + mva_reader_path + 'mvareader_sr_v3_plus.cc+', 
     ],
 }
 
