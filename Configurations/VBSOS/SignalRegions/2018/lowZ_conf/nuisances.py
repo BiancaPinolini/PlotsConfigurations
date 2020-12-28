@@ -10,6 +10,7 @@
 # cuts
 
 from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
+
 def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
@@ -574,7 +575,7 @@ nuisances['CRSR_accept_DY'] = {
     'type': 'lnN',
     'samples': {'DY': '1.02'},
     'cuts': [cut for cut in cuts if '_CR_' in cut],
-    'cutspost': (lambda self, cuts: [cut for cut in cuts if '_dy_' in cut]),
+    'cutspost': (lambda self, cuts: [cut for cut in cuts if '_DY_' in cut]),
 }
 
 # Uncertainty on SR/CR ratio
@@ -721,28 +722,9 @@ nuisances['stat'] = {
     'samples': {}
 }
 
-##rate parameters
-'''
-nuisances['DYttnorm0j']  = {
-               'name'  : 'CMS_hww_DYttnorm0j',
-               'samples'  : {
-                   'DY' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j
-              }
-
-nuisances['DYttnorm1j']  = {
-               'name'  : 'CMS_hww_DYttnorm1j',
-               'samples'  : {
-                   'DY' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-'''
+## rate parameters
 nuisances['DYnorm2j']  = {
-                'name'  : 'CMS_hww_DYnorm2j_2018',
+                'name'  : 'CMS_hww_DYnorm2j',
                 'samples'  : {
                     'DY' : '1.00',
                     },
@@ -750,7 +732,7 @@ nuisances['DYnorm2j']  = {
                }
 
 nuisances['DYembnorm2j']  = {
-                 'name'  : 'CMS_hww_DYttnorm2j_2018',
+                 'name'  : 'CMS_hww_DYttnorm2j',
                  'samples'  : {
                    'Dyemb' : '1.00',
                      },
