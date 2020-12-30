@@ -272,7 +272,6 @@ nuisances['jes'] = {
     'folderDown': makeMCDirectory('JESdo_suffix'),
     'AsLnN': '1'
 }
-
 nuisances['jes_WW'] = {
     'name': 'CMS_scale_j_2016',
     'kind': 'suffix',
@@ -556,7 +555,6 @@ nuisances['QCDscale_V'] = {
     'samples': {'DY': ['LHEScaleWeight[8]', 'LHEScaleWeight[0]']},
     'AsLnN': '1'
 }
-
 nuisances['QCDscale_VV'] = {
     'name': 'QCDscale_VV',
     'kind': 'weight',
@@ -602,75 +600,6 @@ nuisances['QCDscale_ggVV'] = {
         'ggWW': '1.15',
     },
 }
-
-# NLL resummation variations
-'''
-nuisances['WWresum0j']  = {
-  'name'  : 'CMS_hww_WWresum_0j',
-  'skipCMS' : 1,
-  'kind'  : 'weight',
-  'type'  : 'shape',
-  'samples'  : {
-     'WW'   : ['nllW_Rup/nllW', 'nllW_Rdown/nllW'],
-   },
-  'cutspost'  : lambda self, cuts: [cut for cut in cuts if '0j' in cut]
-} 
-
-nuisances['WWqscale0j']  = {
-   'name'  : 'CMS_hww_WWqscale_0j',
-   'skipCMS' : 1,
-   'kind'  : 'weight',
-   'type'  : 'shape',
-   'samples'  : {
-      'WW'   : ['nllW_Qup/nllW', 'nllW_Qdown/nllW'],
-    },
-   'cutspost'  : lambda self, cuts: [cut for cut in cuts if '0j' in cut]
-}
-
-nuisances['WWresum1j']  = {
-  'name'  : 'CMS_hww_WWresum_1j',
-  'skipCMS' : 1,
-  'kind'  : 'weight',
-  'type'  : 'shape',
-  'samples'  : {
-     'WW'   : ['nllW_Rup/nllW', 'nllW_Rdown/nllW'],
-   },
-  'cutspost'  : lambda self, cuts: [cut for cut in cuts if '1j' in cut]
-} 
-
-nuisances['WWqscale1j']  = {
-   'name'  : 'CMS_hww_WWqscale_1j',
-   'skipCMS' : 1,
-   'kind'  : 'weight',
-   'type'  : 'shape',
-   'samples'  : {
-      'WW'   : ['nllW_Qup/nllW', 'nllW_Qdown/nllW'],
-    },
-   'cutspost'  : lambda self, cuts: [cut for cut in cuts if '1j' in cut]
-}
-
-nuisances['WWresum2j']  = {
-  'name'  : 'CMS_hww_WWresum_2j',
-  'skipCMS' : 1,
-  'kind'  : 'weight',
-  'type'  : 'shape',
-  'samples'  : {
-     'WW'   : ['nllW_Rup/nllW', 'nllW_Rdown/nllW'],
-   },
-  'cutspost'  : lambda self, cuts: [cut for cut in cuts if '2j' in cut]
-} 
-
-nuisances['WWqscale2j']  = {
-   'name'  : 'CMS_hww_WWqscale_2j',
-   'skipCMS' : 1,
-   'kind'  : 'weight',
-   'type'  : 'shape',
-   'samples'  : {
-      'WW'   : ['nllW_Qup/nllW', 'nllW_Qdown/nllW'],
-    },
-   'cutspost'  : lambda self, cuts: [cut for cut in cuts if '2j' in cut]
-}
-'''
 # Uncertainty on SR/CR ratio
 
 nuisances['CRSR_accept_DY'] = {
@@ -826,28 +755,8 @@ nuisances['stat'] = {
 }
 
 ## rate parameters
-'''
-nuisances['DYttnorm0j']  = {
-               'name'  : 'CMS_hww_DYttnorm0j',
-               'samples'  : {
-                   'DY' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j
-              }
-
-nuisances['DYttnorm1j']  = {
-               'name'  : 'CMS_hww_DYttnorm1j',
-               'samples'  : {
-                   'DY' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-'''
-
 nuisances['DYnorm2j']  = {
-                 'name'  : 'CMS_hww_DYnorm2j_2016',
+                 'name'  : 'CMS_hww_DYnorm2j',
                  'samples'  : {
                      'DY' : '1.00',
                      },
@@ -855,7 +764,7 @@ nuisances['DYnorm2j']  = {
                 }
 
 nuisances['DYembnorm2j']  = {
-               'name'  : 'CMS_hww_DYttnorm2j_2016',
+               'name'  : 'CMS_hww_DYttnorm2j',
                'samples'  : {
                    'Dyemb' : '1.00',
                    },

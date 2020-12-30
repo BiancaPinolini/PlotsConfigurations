@@ -19,7 +19,8 @@ btag_algo="deepcsv"
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'HighZll_v0/'
+model_lowZ = 'lowZ/v3_plus/'
+model_highZ = 'highZ/v3_plus/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
@@ -86,8 +87,7 @@ aliases['btag_forward_al']  = {
 
 ## QGL REMORPHING
 morphing_file = "/afs/cern.ch/user/d/dvalsecc/public/qgl_morphing/morphing_functions_final_2016.root"
-
-qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/emb-conf-HighZll/macro/'
+qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/comb_v6/macro/'
 
 aliases['CleanJet_qgl_morphed'] = {
     'class': 'QGL_morphing',
@@ -120,17 +120,17 @@ aliases['zeroJet'] = {
     'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
 }
 
-aliases['srr'] = {
-    'expr':'bVeto && Zeppll_al > 1 && mth > 60'
-}
+# aliases['srr'] = {
+#     'expr':'bVeto && Zeppll_al < 1 && mth > 60'
+# }
 
-aliases['topcr'] = {
+aliases['top_cr'] = {
      'expr': '((zeroJet && !bVeto) || bReq)'
 }
 
-aliases['dycr'] = {
-     'expr': 'mth < 60 && bVeto && mll < 80'
-}
+# aliases['dycr'] = {
+#      'expr': 'mth < 60 && bVeto && mll < 80'
+# }
 
 ## DNN
 
@@ -138,18 +138,33 @@ aliases['cut_index'] = {
     'expr': '1'
 }
 
-mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/emb-conf-HighZll/mva/'
+mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/comb_v6/mva/'
 models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
-aliases['DNNoutput'] = {
-    'class': 'MVAReader_sr_v2',
-    'args': ( models_path +'/sr/models/' + model_version, False, 1),
+aliases['DNNoutput_lowZ'] = {
+    'class': 'MVAReader_lowZ',
+    'args': ( models_path +'/sr/models/' + model_lowZ, False, 1),
     'linesToAdd':[
         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
         'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mvareader_sr_v2.cc+', 
+        '.L ' + mva_reader_path + 'mvareader_lowZ.cc+', 
     ],
 }
+
+aliases['DNNoutput_highZ'] = {
+    'class': 'MVAReader_highZ',
+    'args': ( models_path +'/sr/models/' + model_highZ, False, 1),
+    'linesToAdd':[
+        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+        'gSystem->Load("libDNNEvaluator.so")',
+        '.L ' + mva_reader_path + 'mvareader_highZ.cc+', 
+    ],
+}
+
+aliases['DNNoutput'] = {
+     'expr': '(Zeppll_al < 1)*(DNNoutput_lowZ) + (Zeppll_al >= 1)*(DNNoutput_highZ)'
+ }
+
 
 ###### END ######
 
@@ -261,12 +276,12 @@ handle.close()
 aliases['DY_NLO_pTllrw'] = {
     #'expr': '1',
     'expr': '('+DYrew['2016']['NLO'].replace('x', 'gen_ptll')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
-    'samples': ['DY']
+    'samples': ['DY', 'DYtt']
 }
 aliases['DY_LO_pTllrw'] = {
     #'expr': '1',
     'expr': '('+DYrew['2016']['LO'].replace('x', 'gen_ptll')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
-    'samples': ['DY']
+    'samples': ['DY', 'DYtt']
 }
 
 # Jet bins
@@ -360,7 +375,7 @@ if btag_algo == "deepcsv":
     }
 
     aliases['btagSF'] = {
-        'expr': '(bVeto || (topcr && zeroJet))*bVetoSF + (topcr && !zeroJet)*bReqSF',
+        'expr': '(bVeto || (top_cr && zeroJet))*bVetoSF + (top_cr && !zeroJet)*bReqSF',
         'samples': mc
     }
 

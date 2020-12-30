@@ -11,16 +11,16 @@
 using namespace std;
 using namespace NNEvaluation;
 
-#ifndef MVAReader_sr_v3_plus_H
-#define MVAReader_sr_v3_plus_H
+#ifndef MVAReader_highZ_H
+#define MVAReader_highZ_H
 
-class MVAReader_sr_v3_plus : public multidraw::TTreeFunction {
+class MVAReader_highZ : public multidraw::TTreeFunction {
 public:
   
-  MVAReader_sr_v3_plus(const char* model_path, bool verbose, int cut);
+  MVAReader_highZ(const char* model_path, bool verbose, int cut);
 
-  char const* getName() const override { return "MVAReader_sr_v3_plus"; }
-  TTreeFunction* clone() const override { return new MVAReader_sr_v3_plus(model_path_.c_str(), verbose, cut_); }
+  char const* getName() const override { return "MVAReader_highZ"; }
+  TTreeFunction* clone() const override { return new MVAReader_highZ(model_path_.c_str(), verbose, cut_); }
 
   std::string model_path_;
   int cut_;
@@ -60,7 +60,7 @@ protected:
   
 };
 
-MVAReader_sr_v3_plus::MVAReader_sr_v3_plus(const char* model_path, bool verbose, int cut):
+MVAReader_highZ::MVAReader_highZ(const char* model_path, bool verbose, int cut):
     model_path_(model_path), 
     verbose(verbose),
     cut_(cut)
@@ -70,7 +70,7 @@ MVAReader_sr_v3_plus::MVAReader_sr_v3_plus(const char* model_path, bool verbose,
 
 
 double 
-MVAReader_sr_v3_plus::evaluate(unsigned)
+MVAReader_highZ::evaluate(unsigned)
 {
   // Run only if 
   if ((int)(*(cut_index->Get())) != cut_) {
@@ -101,16 +101,18 @@ MVAReader_sr_v3_plus::evaluate(unsigned)
 
   float output = 0;
 
-  if(*(Zeppll_al->Get()) <1) {
+  if(*(Zeppll_al->Get()) >=1) {
+    // std::cout << *(Zeppll_al->Get()) << "; " << dnn_tensorflow->analyze(input) << std::endl;
     return dnn_tensorflow->analyze(input);
   } else {
+    // std::cout << *(Zeppll_al->Get()) << "; -1" << std::endl;
     return -1.;
   }
 
 }
 
 void
-MVAReader_sr_v3_plus::bindTree_(multidraw::FunctionLibrary& _library)
+MVAReader_highZ::bindTree_(multidraw::FunctionLibrary& _library)
 {  
   _library.bindBranch(cut_index, "cut_index");
   _library.bindBranch(detajj, "detajj");

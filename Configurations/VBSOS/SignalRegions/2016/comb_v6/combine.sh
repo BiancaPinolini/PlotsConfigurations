@@ -4,8 +4,8 @@ cd /afs/cern.ch/user/b/bpinolin/CMSSW_8_1_0/
 eval `scramv1 runtime -sh`
 cd -
 
-date=201230/lowZ
-workDir=/afs/cern.ch/user/b/bpinolin/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/lowZ_conf/datacards
+date=201230/comb_v6
+workDir=/afs/cern.ch/user/b/bpinolin/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/comb_v6/datacards
     
 points=(
 10
@@ -42,7 +42,7 @@ do
     rm combine_logger.out
 
     echo ${var}":" "" > ${workspaceDir}/significance_${output}.txt
-    combine -M Significance ${workspaceDir}/${output}.root -t -1 --setParameters r_vbs=1 --redefineSignalPOIs=r_vbs >>  ${workspaceDir}/significance_${output}.txt
+    combine -M Significance ${workspaceDir}/${output}.root -t -1 --freezeParameters allConstrainedNuisances --setParameters r_vbs=1 --redefineSignalPOIs=r_vbs >>  ${workspaceDir}/significance_${output}.txt
 
     mv higgsCombineTest.Significance.mH120.root ${workspaceDir}/.
 

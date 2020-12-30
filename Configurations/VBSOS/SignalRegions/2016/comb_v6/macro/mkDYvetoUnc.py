@@ -35,10 +35,16 @@ for categories in newfile.GetListOfKeys(): # Cut directory
   for variables in category.GetListOfKeys(): # Variable directory
     variable = category.GetDirectory(variables.GetName())
 
-    DYvetoUp = variable.Get("histo_Dyveto_CMS_embed_veto_2016Up")
-    DYvetoDn = variable.Get("histo_Dyveto_CMS_embed_veto_2016Down")
-    DYuncUp = variable.Get("histo_Dyemb_CMS_embed_veto_2016Up")
-    DYuncDn = variable.Get("histo_Dyemb_CMS_embed_veto_2016Down")
+    print("Ok fin qua ci siamo")
+
+    DYvetoUp = variable.Get("histo_Dyveto_CMS_embed_veto_2017Up")
+    print("DYvetoUp", DYvetoUp)
+    DYvetoDn = variable.Get("histo_Dyveto_CMS_embed_veto_2017Down")
+    print("DYvetoDn", DYvetoDn)
+    DYuncUp = variable.Get("histo_Dyemb_CMS_embed_veto_2017Up")
+    print("DYuncUp", DYuncUp)
+    DYuncDn = variable.Get("histo_Dyemb_CMS_embed_veto_2017Down")
+    print("DYuncDn", DYuncDn)
 
     DYuncUp.Add(DYvetoUp)
     DYuncDn.Add(DYvetoDn)
