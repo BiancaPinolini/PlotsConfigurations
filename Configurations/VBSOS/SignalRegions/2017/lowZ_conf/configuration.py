@@ -4,7 +4,7 @@ tag = 'DNN_2017'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
-date='201224'
+date='201228'
 
 # luminosity to normalize to
 lumi = 41.5
