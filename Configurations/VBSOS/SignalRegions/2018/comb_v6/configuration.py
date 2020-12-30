@@ -1,10 +1,10 @@
 # example of configuration file
 
-tag = 'DNN_comb_HighZll_2018'
+tag = 'DNN_2018'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
-date='201208'
+date='201230'
 
 # luminosity to normalize to
 lumi = 59.74
@@ -22,17 +22,17 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot/plotlin_dycr.py'
+plotFile = 'plot/plotlin_sr.py'
 
 # file with list of nuisances
-# nuisancesFile = 'nuisances.py'
+nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/'+date+'/2018/emb-conf-HighZll/'
+outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/'+date+'/2018/'
 
 # used by mkDatacards to define output directory for datacards
-outputDirDatacard = 'datacards/'+date
+outputDirDatacard = 'datacards/'+date+'/'
 
 # structure file for datacard
 structureFile = 'structure.py'

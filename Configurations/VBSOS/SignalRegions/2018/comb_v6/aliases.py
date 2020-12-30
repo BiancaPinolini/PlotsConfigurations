@@ -17,7 +17,8 @@ mc_emb = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_version = 'HighZll_v0/'
+model_lowZ = 'lowZ/v3_plus/'
+model_highZ = 'highZ/v3_plus/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
@@ -84,7 +85,7 @@ aliases['btag_forward_al']  = {
 
 ## QGL REMORPHING
 morphing_file = "/afs/cern.ch/user/d/dvalsecc/public/qgl_morphing/morphing_functions_final_2018.root"
-qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/emb-conf-HighZll/macro/'
+qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/comb_v6/macro/'
 
 aliases['CleanJet_qgl_morphed'] = {
     'class': 'QGL_morphing',
@@ -103,16 +104,6 @@ aliases['qgl_forward'] = {
     'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(CleanJet_qgl_morphed[0],-9999.) + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(CleanJet_qgl_morphed[1],-9999.)'
 }
 
-## oldRF 201205
-# aliases['qgl_central'] = {
-#     'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) <= TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_qgl[CleanJet_jetIdx[0]],-9999.) + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) < TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_qgl[CleanJet_jetIdx[1]],-9999.)'
-# }
-                        
-# aliases['qgl_forward'] = {
-#     'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_qgl[CleanJet_jetIdx[0]],-9999.) + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_qgl[CleanJet_jetIdx[1]],-9999.)'
-# }
-
-
 ## Variables for DNN
 
 aliases['bVeto'] = {
@@ -129,17 +120,17 @@ aliases['zeroJet'] = {
 
 ## cuts
 
-aliases['srr'] = {
-    'expr':'bVeto && Zeppll_al > 1 && mth > 60'
-}
+# aliases['srr'] = {
+#     'expr':'bVeto && Zeppll_al < 1 && mth > 60'
+# }
 
-aliases['topcr'] = {
+aliases['top_cr'] = {
      'expr': '((zeroJet && !bVeto) || bReq)'
 }
 
-aliases['dycr'] = {
-     'expr': 'mth < 60 && bVeto && mll < 80'
-}
+# aliases['dycr'] = {
+#      'expr': 'mth < 60 && bVeto && mll < 80'
+# }
 
 ## DNN
 
@@ -147,18 +138,32 @@ aliases['cut_index'] = {
     'expr': '1'
 }
 
-mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/emb-conf-HighZll/mva/'
+mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2018/comb_v6/mva/'
 models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
-aliases['DNNoutput'] = {
-    'class': 'MVAReader_sr_v2',
-    'args': ( models_path +'/sr/models/' + model_version, False, 1),
+aliases['DNNoutput_lowZ'] = {
+    'class': 'MVAReader_lowZ',
+    'args': ( models_path +'/sr/models/' + model_lowZ, False, 1),
     'linesToAdd':[
         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
         'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mvareader_sr_v2.cc+', 
+        '.L ' + mva_reader_path + 'mvareader_lowZ.cc+', 
     ],
 }
+
+aliases['DNNoutput_highZ'] = {
+    'class': 'MVAReader_highZ',
+    'args': ( models_path +'/sr/models/' + model_highZ, False, 1),
+    'linesToAdd':[
+        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+        'gSystem->Load("libDNNEvaluator.so")',
+        '.L ' + mva_reader_path + 'mvareader_highZ.cc+', 
+    ],
+}
+
+aliases['DNNoutput'] = {
+     'expr': '(Zeppll_al < 1)*(DNNoutput_lowZ) + (Zeppll_al >= 1)*(DNNoutput_highZ)'
+ }
 
 ###### END ######
 
@@ -311,7 +316,7 @@ aliases['bReqSF'] = {
 }
 
 aliases['btagSF'] = {
-    'expr': '(bVeto || (topcr && zeroJet))*bVetoSF + (topcr && !zeroJet)*bReqSF',
+    'expr': '(bVeto || (top_cr && zeroJet))*bVetoSF + (top_cr && !zeroJet)*bReqSF',
     'samples': mc
 }
 

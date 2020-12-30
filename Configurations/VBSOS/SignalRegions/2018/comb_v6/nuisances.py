@@ -10,6 +10,7 @@
 # cuts
 
 from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
+
 def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
@@ -62,14 +63,13 @@ nuisances['lumi_CurrCalib'] = {
 }
 
 #### FAKES
-
-## FIXME: check the 30% lnN
 nuisances['fake_syst_e'] = {
     'name': 'CMS_fake_syst_e',
     'type': 'lnN',
     'samples': {
         'Fake_e': '1.3'
     },
+    # 'cutspost': lambda self, cuts: [cut for cut in cuts if '20me' not in cut],
     'perRecoBin': True
 }
 
@@ -79,6 +79,7 @@ nuisances['fake_syst_m'] = {
     'samples': {
         'Fake_m': '1.3'
     },
+    # 'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
     'perRecoBin': True
 }
 
@@ -178,8 +179,6 @@ if useEmbeddedDY:
     'folderDown': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbElepTdo_suffix/',
     'AsLnN': '1'
   }
-
-
 
 ##### Muon Efficiency and energy scale
 
@@ -288,7 +287,6 @@ nuisances['PS']  = {
     'AsLnN': '1'
 }
 
-#FIXME normalization factors need to be recomputed for 2018
 nuisances['UE']  = {
                 'name'  : 'UE_CP5',
                 'skipCMS' : 1,
@@ -391,7 +389,6 @@ nuisances['pdf_Higgs_qqbar'] = {
     },
 }
 
-#FIXME: check this 4%
 nuisances['pdf_qqbar'] = {
     'name': 'pdf_qqbar',
     'type': 'lnN',
@@ -414,7 +411,6 @@ nuisances['pdf_Higgs_gg_ACCEPT'] = {
     'type': 'lnN',
 }
 
-#FIXME: these come from HIG-16-042, maybe should be recomputed?
 nuisances['pdf_gg_ACCEPT'] = {
     'name': 'pdf_gg_ACCEPT',
     'samples': {
@@ -423,7 +419,6 @@ nuisances['pdf_gg_ACCEPT'] = {
     'type': 'lnN',
 }
 
-#FIXME: these come from HIG-16-042, maybe should be recomputed?
 nuisances['pdf_Higgs_qqbar_ACCEPT'] = {
     'name': 'pdf_Higgs_qqbar_ACCEPT',
     'type': 'lnN',
@@ -437,7 +432,6 @@ nuisances['pdf_Higgs_qqbar_ACCEPT'] = {
     },
 }
 
-#FIXME: these come from HIG-16-042, maybe should be recomputed?
 nuisances['pdf_qqbar_ACCEPT'] = {
     'name': 'pdf_qqbar_ACCEPT',
     'type': 'lnN',
@@ -505,76 +499,13 @@ nuisances['QCDscale_ggVV'] = {
     },
 }
 
-##### Renormalization & factorization scales
-'''
-nuisances['WWresum0j']  = {
-  'name'  : 'CMS_hww_WWresum_0j',
-  'skipCMS' : 1,
-  'kind'  : 'weight',
-  'type'  : 'shape',
-  'samples'  : {
-     'WW'   : ['nllW_Rup/nllW', 'nllW_Rdown/nllW'],
-   }
-}
-
-nuisances['WWqscale0j']  = {
-   'name'  : 'CMS_hww_WWqscale_0j',
-   'skipCMS' : 1,
-   'kind'  : 'weight',
-   'type'  : 'shape',
-   'samples'  : {
-      'WW'   : ['nllW_Qup/nllW', 'nllW_Qdown/nllW'],
-    }
-}
-
-nuisances['WWresum1j']  = {
-  'name'  : 'CMS_hww_WWresum_1j',
-  'skipCMS' : 1,
-  'kind'  : 'weight',
-  'type'  : 'shape',
-  'samples'  : {
-     'WW'   : ['nllW_Rup/nllW', 'nllW_Rdown/nllW'],
-   }
-}
-
-nuisances['WWqscale1j']  = {
-   'name'  : 'CMS_hww_WWqscale_1j',
-   'skipCMS' : 1,
-   'kind'  : 'weight',
-   'type'  : 'shape',
-   'samples'  : {
-      'WW'   : ['nllW_Qup/nllW', 'nllW_Qdown/nllW'],
-    }
-}
-
-nuisances['WWresum2j']  = {
-  'name'  : 'CMS_hww_WWresum_2j',
-  'skipCMS' : 1,
-  'kind'  : 'weight',
-  'type'  : 'shape',
-  'samples'  : {
-     'WW'   : ['nllW_Rup/nllW', 'nllW_Rdown/nllW'],
-   }
-}
-
-nuisances['WWqscale2j']  = {
-   'name'  : 'CMS_hww_WWqscale_2j',
-   'skipCMS' : 1,
-   'kind'  : 'weight',
-   'type'  : 'shape',
-   'samples'  : {
-      'WW'   : ['nllW_Qup/nllW', 'nllW_Qdown/nllW'],
-    }
-}
-'''
-
 # Uncertainty on SR/CR ratio
 nuisances['CRSR_accept_DY'] = {
     'name': 'CMS_hww_CRSR_accept_DY',
     'type': 'lnN',
     'samples': {'DY': '1.02'},
     'cuts': [cut for cut in cuts if '_CR_' in cut],
-    'cutspost': (lambda self, cuts: [cut for cut in cuts if '_dy_' in cut]),
+    'cutspost': (lambda self, cuts: [cut for cut in cuts if '_DY_' in cut]),
 }
 
 # Uncertainty on SR/CR ratio
@@ -582,7 +513,6 @@ nuisances['CRSR_accept_top'] = {
     'name': 'CMS_hww_CRSR_accept_top',
     'type': 'lnN',
     'samples': {'top': '1.01'},
-    #'samples': {'top': '1.05'},
     'cuts': [cut for cut in cuts if '_CR_' in cut],
     'cutspost': (lambda self, cuts: [cut for cut in cuts if '_top_' in cut]),
 }
@@ -667,16 +597,6 @@ nuisances['QCDscale_ttH'] = {
     'type': 'lnN',
 }
 
-'''
-nuisances['QCDscale_WWewk'] = {
-    'name': 'QCDscale_WWewk',
-    'samples': {
-        'WWewk': '1.11',
-    },
-    'type': 'lnN'
-}
-'''
-
 nuisances['QCDscale_WWewk'] = {
     'name': 'QCDscale_WWewk',
     'kind': 'weight_envelope',
@@ -686,7 +606,6 @@ nuisances['QCDscale_WWewk'] = {
     }
 }
 
-#FIXME: these come from HIG-16-042, maybe should be recomputed?
 nuisances['QCDscale_qqbar_ACCEPT'] = {
     'name': 'QCDscale_qqbar_ACCEPT',
     'type': 'lnN',
@@ -700,7 +619,6 @@ nuisances['QCDscale_qqbar_ACCEPT'] = {
     }
 }
 
-#FIXME: these come from HIG-16-042, maybe should be recomputed?
 nuisances['QCDscale_gg_ACCEPT'] = {
     'name': 'QCDscale_gg_ACCEPT',
     'samples': {
@@ -721,28 +639,9 @@ nuisances['stat'] = {
     'samples': {}
 }
 
-##rate parameters
-'''
-nuisances['DYttnorm0j']  = {
-               'name'  : 'CMS_hww_DYttnorm0j',
-               'samples'  : {
-                   'DY' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j
-              }
-
-nuisances['DYttnorm1j']  = {
-               'name'  : 'CMS_hww_DYttnorm1j',
-               'samples'  : {
-                   'DY' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-'''
+## rate parameters
 nuisances['DYnorm2j']  = {
-                'name'  : 'CMS_hww_DYnorm2j_2018',
+                'name'  : 'CMS_hww_DYnorm2j',
                 'samples'  : {
                     'DY' : '1.00',
                     },
@@ -750,49 +649,12 @@ nuisances['DYnorm2j']  = {
                }
 
 nuisances['DYembnorm2j']  = {
-                 'name'  : 'CMS_hww_DYttnorm2j_2018',
+                 'name'  : 'CMS_hww_DYttnorm2j',
                  'samples'  : {
                    'Dyemb' : '1.00',
                      },
                  'type'  : 'rateParam'
                 }
-'''
-nuisances['WWnorm0j']  = {
-               'name'  : 'CMS_hww_WWnorm0j',
-               'samples'  : {
-                   'WW' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j
-              }
-
-nuisances['ggWWnorm0j']  = {
-               'name'  : 'CMS_hww_WWnorm0j',
-               'samples'  : {
-                   'ggWW' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j
-              }
-
-nuisances['WWnorm1j']  = {
-               'name'  : 'CMS_hww_WWnorm1j',
-               'samples'  : {
-                   'WW' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-
-nuisances['ggWWnorm1j']  = {
-               'name'  : 'CMS_hww_WWnorm1j',
-               'samples'  : {
-                   'ggWW' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-'''
 nuisances['WWnorm2j']  = {
                'name'  : 'CMS_hww_WWnorm2j',
                'samples'  : {
@@ -808,25 +670,6 @@ nuisances['ggWWnorm2j']  = {
                    },
                'type'  : 'rateParam'
               }
-'''
-nuisances['Topnorm0j']  = {
-               'name'  : 'CMS_hww_Topnorm0j',
-               'samples'  : {
-                   'top' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j
-              }
-
-nuisances['Topnorm1j']  = {
-               'name'  : 'CMS_hww_Topnorm1j',
-               'samples'  : {
-                   'top' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-'''
 nuisances['Topnorm2j']  = {
                'name'  : 'CMS_hww_Topnorm2j',
                'samples'  : {
