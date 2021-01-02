@@ -71,8 +71,6 @@ nuisances['lumi_Ghosts'] = {
 }
 
 #### FAKES
-
-## FIXME: check the 30% lnN
 nuisances['fake_syst_e'] = {
     'name': 'CMS_fake_syst_e',
     'type': 'lnN',

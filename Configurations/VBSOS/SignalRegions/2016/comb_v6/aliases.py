@@ -274,7 +274,6 @@ handle = open('%s/src/PlotsConfigurations/Configurations/patches/DYrew.py' % os.
 exec(handle)
 handle.close()
 aliases['DY_NLO_pTllrw'] = {
-    #'expr': '1',
     'expr': '('+DYrew['2016']['NLO'].replace('x', 'gen_ptll')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
     'samples': ['DY', 'DYtt']
 }

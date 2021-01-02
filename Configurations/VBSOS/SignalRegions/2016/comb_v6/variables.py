@@ -3,18 +3,20 @@ variables['events']  = {   'name': '1',
                         'xaxis' : 'events',
                          'fold' : 3,
                         'blind' : {
-                            "sr": [0,2]
+                            "sr_lowZ": [0,2],
+                            "sr_highZ": [0,2]
                             }
                         }
 
-## DNNoutput
+# DNNoutput
 variables['DNNoutput_10'] = { 
                         'name' : 'DNNoutput',
                         'range' : (10,0,1),
                         'xaxis' : 'DNN score',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 variables['DNNoutput_15'] = { 
@@ -23,16 +25,18 @@ variables['DNNoutput_15'] = {
                         'xaxis' : 'DNN score',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }                    
 variables['DNNoutput_20'] = { 
                         'name' : 'DNNoutput',
                         'range' : (20,0,1),
                         'xaxis' : 'DNN score',
-                        'fold' : 1,
+                        'fold' : 3,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 variables['DNNoutput_25'] = { 
@@ -41,7 +45,8 @@ variables['DNNoutput_25'] = {
                         'xaxis' : 'DNN score',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 variables['DNNoutput_30'] = { 
@@ -50,7 +55,8 @@ variables['DNNoutput_30'] = {
                         'xaxis' : 'DNN score',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 
@@ -60,7 +66,8 @@ variables['DNNoutput_35'] = {
                         'xaxis' : 'DNN score',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 
@@ -70,7 +77,8 @@ variables['DNNoutput_40'] = {
                         'xaxis' : 'DNN score',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 
@@ -83,7 +91,8 @@ variables['DNNoutput_lowZ_10'] = {
                         'xaxis' : 'DNN score - Low Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 variables['DNNoutput_lowZ_15'] = { 
@@ -92,7 +101,8 @@ variables['DNNoutput_lowZ_15'] = {
                         'xaxis' : 'DNN score - Low Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }                    
 variables['DNNoutput_lowZ_20'] = { 
@@ -101,7 +111,8 @@ variables['DNNoutput_lowZ_20'] = {
                         'xaxis' : 'DNN score - Low Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 variables['DNNoutput_lowZ_25'] = { 
@@ -110,7 +121,8 @@ variables['DNNoutput_lowZ_25'] = {
                         'xaxis' : 'DNN score - Low Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 variables['DNNoutput_lowZ_30'] = { 
@@ -119,7 +131,8 @@ variables['DNNoutput_lowZ_30'] = {
                         'xaxis' : 'DNN score - Low Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 
@@ -129,7 +142,8 @@ variables['DNNoutput_lowZ_35'] = {
                         'xaxis' : 'DNN score - Low Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 
@@ -139,7 +153,8 @@ variables['DNNoutput_lowZ_40'] = {
                         'xaxis' : 'DNN score - Low Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 
@@ -151,7 +166,8 @@ variables['DNNoutput_highZ_10'] = {
                         'xaxis' : 'DNN score - High Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 variables['DNNoutput_highZ_15'] = { 
@@ -160,7 +176,8 @@ variables['DNNoutput_highZ_15'] = {
                         'xaxis' : 'DNN score - High Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }                    
 variables['DNNoutput_highZ_20'] = { 
@@ -169,7 +186,8 @@ variables['DNNoutput_highZ_20'] = {
                         'xaxis' : 'DNN score - High Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 variables['DNNoutput_highZ_25'] = { 
@@ -178,7 +196,8 @@ variables['DNNoutput_highZ_25'] = {
                         'xaxis' : 'DNN score - High Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 variables['DNNoutput_highZ_30'] = { 
@@ -187,7 +206,8 @@ variables['DNNoutput_highZ_30'] = {
                         'xaxis' : 'DNN score - High Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 
@@ -197,7 +217,8 @@ variables['DNNoutput_highZ_35'] = {
                         'xaxis' : 'DNN score - High Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }
 
@@ -207,6 +228,7 @@ variables['DNNoutput_highZ_40'] = {
                         'xaxis' : 'DNN score - High Z',
                         'fold' : 1,
                         'blind' : {
-                            "sr": [0.5,1]
+                            "sr_lowZ": [0.5,1],
+                            "sr_highZ": [0.5,1]
                             }
                         }

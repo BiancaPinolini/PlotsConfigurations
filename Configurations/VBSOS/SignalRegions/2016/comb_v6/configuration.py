@@ -4,7 +4,7 @@ tag = 'DNN_2016'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
-date='201230'
+date='201231'
 
 # luminosity to normalize to
 lumi = 35.867
@@ -22,7 +22,7 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot/plotlin_sr.py'
+plotFile = 'plot/plot_topcr.py'
 
 # file with list of nuisances
 nuisancesFile = 'nuisances.py'

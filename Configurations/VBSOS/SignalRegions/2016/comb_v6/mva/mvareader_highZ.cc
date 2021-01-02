@@ -56,7 +56,7 @@ protected:
 
 
 
-  TTreeReaderValue<Double_t>* Zeppll_al{};
+  // TTreeReaderValue<Double_t>* Zeppll_al{};
   
 };
 
@@ -99,15 +99,18 @@ MVAReader_highZ::evaluate(unsigned)
   input.push_back( *(mtw1->Get()) );
   input.push_back( *(mtw2->Get()) );
 
-  float output = 0;
 
-  if(*(Zeppll_al->Get()) >=1) {
-    // std::cout << *(Zeppll_al->Get()) << "; " << dnn_tensorflow->analyze(input) << std::endl;
-    return dnn_tensorflow->analyze(input);
-  } else {
-    // std::cout << *(Zeppll_al->Get()) << "; -1" << std::endl;
-    return -1.;
-  }
+  return dnn_tensorflow->analyze(input);
+
+  // float output = 0;
+
+  // if(*(Zeppll_al->Get()) >=1) {
+  //   // std::cout << *(Zeppll_al->Get()) << "; " << dnn_tensorflow->analyze(input) << std::endl;
+  //   return dnn_tensorflow->analyze(input);
+  // } else {
+  //   // std::cout << *(Zeppll_al->Get()) << "; -1" << std::endl;
+  //   return -1.;
+  // }
 
 }
 
@@ -136,7 +139,7 @@ MVAReader_highZ::bindTree_(multidraw::FunctionLibrary& _library)
 
 
 
-  _library.bindBranch(Zeppll_al, "Zeppll_al");
+  // _library.bindBranch(Zeppll_al, "Zeppll_al");
 }
 
 

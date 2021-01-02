@@ -4,7 +4,7 @@ cd /afs/cern.ch/user/b/bpinolin/CMSSW_8_1_0/
 eval `scramv1 runtime -sh`
 cd -
 
-date=201230/comb_v6
+date=201231
 workDir=/afs/cern.ch/user/b/bpinolin/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/comb_v6/datacards
     
 points=(
@@ -13,13 +13,13 @@ points=(
 20
 25
 30
-35
-40
+# 35
+# 40
 )
 
 for pi in "${points[@]}"
 do
-    var=DNNoutput_${pi}
+    var=DNNoutput_highZ_${pi}
 
     datacardDir=${workDir}/${date}
     workspaceDir=${datacardDir}/workspace
@@ -27,7 +27,7 @@ do
     cd $workDir
     output=combine_${var}
 
-    combineCards.py   sr=${datacardDir}/sr/${var}/datacard.txt \
+    combineCards.py   sr_highZ=${datacardDir}/sr_highZ/${var}/datacard.txt \
                       topcr=${datacardDir}/topcr/events/datacard.txt \
                       dycr=${datacardDir}/dycr/events/datacard.txt \
     > ${workspaceDir}/${output}.txt
@@ -42,7 +42,7 @@ do
     rm combine_logger.out
 
     echo ${var}":" "" > ${workspaceDir}/significance_${output}.txt
-    combine -M Significance ${workspaceDir}/${output}.root -t -1 --freezeParameters allConstrainedNuisances --setParameters r_vbs=1 --redefineSignalPOIs=r_vbs >>  ${workspaceDir}/significance_${output}.txt
+    combine -M Significance ${workspaceDir}/${output}.root -t -1 --setParameters r_vbs=1 --redefineSignalPOIs=r_vbs >>  ${workspaceDir}/significance_${output}.txt
 
     mv higgsCombineTest.Significance.mH120.root ${workspaceDir}/.
 
