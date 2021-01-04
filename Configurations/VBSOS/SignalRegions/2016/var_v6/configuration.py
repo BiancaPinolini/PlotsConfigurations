@@ -1,6 +1,6 @@
 # example of configuration file
 
-tag = 'DNN_2016'
+tag = 'var_2016'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
@@ -30,9 +30,3 @@ nuisancesFile = 'nuisances.py'
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
 outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/'+date+'/2016/var_v6/'
-
-# used by mkDatacards to define output directory for datacards
-outputDirDatacard = 'datacards/'+date+'/'
-
-# structure file for datacard
-structureFile = 'structure.py'
