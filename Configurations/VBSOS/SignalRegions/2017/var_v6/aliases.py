@@ -34,9 +34,40 @@ aliases['R_j2l2'] = {
         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
 }
 
-
 aliases['Zeppll_al'] = {
     'expr' : '0.5*TMath::Abs((Alt$(Lepton_eta[0],-9999.)+Alt$(Lepton_eta[1],-9999.))-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.)))'
+}
+
+
+## QGL REMORPHING
+morphing_file = "/afs/cern.ch/user/d/dvalsecc/public/qgl_morphing/morphing_functions_final_2018.root"
+qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/var_v6/macro/'
+
+aliases['CleanJet_qgl_morphed'] = {
+    'class': 'QGL_morphing',
+    'args': (morphing_file),
+     'linesToAdd' : [
+        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+        '.L ' + qgl_reader_path + 'qgl_morphing.cc+',
+        ] 
+}
+
+## Variables for DNN
+
+aliases['bVeto'] = {
+    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0' # medium 0.4184 loose 0.1522
+}
+
+aliases['bReq'] = {
+    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
+}
+
+aliases['zeroJet'] = {
+    'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
+}
+
+aliases['top_cr'] = {
+     'expr': '((zeroJet && !bVeto) || bReq)'
 }
 
 ###### END ######
@@ -63,6 +94,7 @@ aliases['embedtotal'] = {
     'expr': 'embed_total_WP90V1',  # wrt. eleWP
     'samples': 'Dyemb'
 }
+
 # Fake leptons transfer factor
 aliases['fakeW'] = {
     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP,
@@ -148,19 +180,16 @@ handle.close()
 aliases['DY_NLO_pTllrw'] = {
     #'expr': '1',
     'expr': '('+DYrew['2017']['NLO'].replace('x', 'gen_ptll')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
-    'samples': ['DY']
+    'samples': ['DY', 'DYtt']
 }
 aliases['DY_LO_pTllrw'] = {
     #'expr': '1',
     'expr': '('+DYrew['2017']['LO'].replace('x', 'gen_ptll')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
-    'samples': ['DY']
+    'samples': ['DY', 'DYtt']
 }
 
 # Jet bins
 # using Alt$(CleanJet_pt[n], 0) instead of Sum$(CleanJet_pt >= 30) because jet pt ordering is not strictly followed in JES-varied samples
-aliases['zeroJet'] = {
-    'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
-}
 
 # No jet with pt > 30 GeV
 # aliases['oneJet'] = {
@@ -171,27 +200,6 @@ aliases['zeroJet'] = {
 #     'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
 # }
 
-# B tagging
-
-aliases['bVeto'] = {
-    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
-}
-
-aliases['bReq'] = {
-    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
-}
-
-aliases['srr'] = {
-    'expr':'bVeto && Zeppll_al < 1 && mth > 60'
-}
-
-aliases['topcr'] = {
-     'expr': '((zeroJet && !bVeto) || bReq)'
-}
-
-aliases['dycr'] = {
-     'expr': 'mth < 60 && bVeto && mll < 80'
-}
 #B tag scale factors
 
 aliases['bVetoSF'] = {
@@ -205,7 +213,7 @@ aliases['bReqSF'] = {
 }
 
 aliases['btagSF'] = {
-    'expr': '(bVeto || (topcr && zeroJet))*bVetoSF + (topcr && !zeroJet)*bReqSF',
+    'expr': '(bVeto || (top_cr && zeroJet))*bVetoSF + (top_cr && !zeroJet)*bReqSF',
     'samples': mc
 }
 
