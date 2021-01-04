@@ -95,7 +95,9 @@ MVAReader_lowZ::evaluate(unsigned)
   input.push_back( *(Zepp1->Get()) );
   input.push_back( *(Zepp2->Get()) );
   input.push_back( *(qgl_forward->Get()) );
+  // std::cout << "qgl_forward = " << *(qgl_forward->Get()) << std::endl;
   input.push_back( *(qgl_central->Get()) );
+  // std::cout << "qgl_central = " << *(qgl_central->Get()) << std::endl;
   input.push_back( *(mtw1->Get()) );
   input.push_back( *(mtw2->Get()) );
 

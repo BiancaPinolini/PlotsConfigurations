@@ -4,7 +4,7 @@ tag = 'DNN_2016'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
-date='201231'
+date='210103'
 
 # luminosity to normalize to
 lumi = 35.867
@@ -22,14 +22,15 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot/plot_topcr.py'
+plotFile = 'plot/plot_sr.py'
 
 # file with list of nuisances
 nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/'+date+'/2016/'
+# outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/'+date+'/2016/v3_plus_v6/'
+outputDirPlots = '/afs/cern.ch/work/b/bpinolin/public/perFlavia/plots_sr_DNN/2016'
 
 # used by mkDatacards to define output directory for datacards
 outputDirDatacard = 'datacards/'+date+'/'

@@ -273,16 +273,16 @@ addSampleWeight(samples, 'VgS', 'WZTo3LNu_mllmin01', '(Gen_ZGstar_mass > 0.1)')
 
 # ############ VZ ############
 
-# files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu') + \
-#     nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Q') + \
-#     nanoGetSampleFiles(mcDirectory, 'ZZTo4L') + \
-#     nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
+files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu') + \
+    nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Q') + \
+    nanoGetSampleFiles(mcDirectory, 'ZZTo4L') + \
+    nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
 
-# samples['VZ'] = {
-#     'name': files,
-#     'weight': mcCommonWeight+embed_tautauveto + '*1.11',
-#     'FilesPerJob': 4
-# }
+samples['VZ'] = {
+    'name': files,
+    'weight': mcCommonWeight+embed_tautauveto + '*1.11',
+    'FilesPerJob': 4
+}
 
 ########## VVV #########
 

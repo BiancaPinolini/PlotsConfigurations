@@ -22,14 +22,14 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot/plotlin_sr.py'
+plotFile = 'plot/plot_sr.py'
 
 # file with list of nuisances
-# nuisancesFile = 'nuisances.py'
+nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/'+date+'/2016/v3_plus_v7/'
+outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/v3_plus_v7/2016/'
 
 # used by mkDatacards to define output directory for datacards
 outputDirDatacard = 'datacards/'+date+'/'

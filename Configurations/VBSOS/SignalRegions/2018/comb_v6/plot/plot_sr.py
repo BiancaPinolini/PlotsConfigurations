@@ -53,7 +53,7 @@ groupPlot['top']  = {
               }
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
-                  'isSignal' : 1,
+                  'isSignal' : 2,
                   'color': 888, #666,
                   'samples'  : ['WWewk']#,'qqH_hww', 'ZH_hww', 'WH_hww', ']
               }
@@ -212,13 +212,13 @@ plot['ggH_hww'] = {
 
 # data
 
-plot['DATA']  = { 
-                  'nameHR' : 'Data',
-                  'color': 1 ,  
-                  'isSignal' : 0,
-                  'isData'   : 1 ,
-                  'isBlind'  : 0
-              }
+# plot['DATA']  = { 
+#                   'nameHR' : 'Data',
+#                   'color': 1 ,  
+#                   'isSignal' : 0,
+#                   'isData'   : 1 ,
+#                   'isBlind'  : 0
+#               }
 
 
 

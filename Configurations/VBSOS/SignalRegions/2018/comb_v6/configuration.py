@@ -4,7 +4,7 @@ tag = 'DNN_2018'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
-date='201231'
+date='210103'
 
 # luminosity to normalize to
 lumi = 59.74
@@ -29,7 +29,8 @@ nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/'+date+'/2018/'
+#outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/'+date+'/2018/v3_plus_v6/'
+outputDirPlots = '/eos/home-b/bpinolin/www/plots_sr_DNN/2018'
 
 # used by mkDatacards to define output directory for datacards
 outputDirDatacard = 'datacards/'+date+'/'

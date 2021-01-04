@@ -15,7 +15,7 @@ configurations = os.path.dirname(configurations) # Configurations
 
 mc = [skey for skey in samples if skey not in ('Fake', 'DATA', 'Dyemb')]
 mc_emb = [skey for skey in samples if skey not in ('Fake', 'DATA')]
-btag_algo="deepflav"#deepcsv"
+btag_algo="deepflav"#deepcsv
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
@@ -126,7 +126,7 @@ aliases['multiJet'] = {
 # B tagging
 if btag_algo == "deepcsv":
     aliases['bVeto'] = {
-        'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] >  0.6321 ) == 0'  #medium 0.6321 loose 0.2217
+        'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] >  0.6321 ) == 0'  #medium 0.6321 loose 0.2217 medium2018 0.4184
     }
 
     aliases['bReq'] = {
@@ -158,7 +158,7 @@ models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
 aliases['DNNoutput_lowZ'] = {
     'class': 'MVAReader_lowZ',
-    'args': ( models_path +'/sr/models/' + model_lowZ, True, 1),
+    'args': ( models_path +'/sr/models/' + model_lowZ, False, 1),
     'linesToAdd':[
         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
         'gSystem->Load("libDNNEvaluator.so")',

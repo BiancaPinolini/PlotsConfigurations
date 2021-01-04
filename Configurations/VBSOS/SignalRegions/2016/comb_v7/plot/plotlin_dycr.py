@@ -39,7 +39,7 @@ groupPlot['Multiboson']  = {
                   'nameHR' : 'Multiboson',
                   'isSignal' : 0,
                   'color': 617, # kViolet + 1  
-                  'samples'  : ['VVV', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']#'VZ', 
+                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
               }   
 
 groupPlot['Higgs']  = {
@@ -152,12 +152,12 @@ plot['VgS_L'] = {
                   }
 
 
-# plot['VZ']  = { 
-#                   'color': 858, # kAzure -2  
-#                   'isSignal' : 0,
-#                   'isData'   : 0,
-#                   'scale'    : 1.0
-#                   }
+plot['VZ']  = { 
+                  'color': 858, # kAzure -2  
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  'scale'    : 1.0
+                  }
 
 plot['VVV']  = { 
                   'color': 857, # kAzure -3  

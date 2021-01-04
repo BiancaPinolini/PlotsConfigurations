@@ -107,7 +107,7 @@ aliases['qgl_forward'] = {
 ## Variables for DNN
 
 aliases['bVeto'] = {
-    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
+    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0' # medium 0.4184 loose 0.1241
 }
 
 aliases['bReq'] = {

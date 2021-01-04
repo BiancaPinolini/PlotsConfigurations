@@ -672,13 +672,13 @@ nuisances['stat'] = {
 }
 
 ## rate parameters
-nuisances['DYnorm2j']  = {
-                 'name'  : 'CMS_hww_DYnorm2j',
-                 'samples'  : {
-                     'DY' : '1.00',
-                     },
-                 'type'  : 'rateParam'
-                }
+# nuisances['DYnorm2j']  = {
+#                  'name'  : 'CMS_hww_DYnorm2j',
+#                  'samples'  : {
+#                      'DY' : '1.00',
+#                      },
+#                  'type'  : 'rateParam'
+#                 }
 
 nuisances['DYembnorm2j']  = {
                  'name'  : 'CMS_hww_DYttnorm2j',

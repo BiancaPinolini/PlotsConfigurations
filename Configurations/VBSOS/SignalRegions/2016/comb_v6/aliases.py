@@ -109,7 +109,7 @@ aliases['qgl_forward'] = {
 ## Variables for DNN
 
 aliases['bVeto'] = {
-    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
+    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0' # loose 0.2217 medium 0.4184
 }
 
 aliases['bReq'] = {
@@ -283,85 +283,6 @@ aliases['DY_LO_pTllrw'] = {
     'samples': ['DY', 'DYtt']
 }
 
-# Jet bins
-# using Alt$(CleanJet_pt[n], 0) instead of Sum$(CleanJet_pt >= 30) because jet pt ordering is not strictly followed in JES-varied samples
-
-# No jet with pt > 30 GeV
-# aliases['zeroJet'] = {
-#     'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
-# }
-
-# aliases['oneJet'] = {
-#     'expr': 'Alt$(CleanJet_pt[0], 0) > 30.'
-# }
-
-# aliases['multiJet'] = {
-#     'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
-# }
-
-# B tagging
-# if btag_algo == "deepcsv":
-#     aliases['bVeto'] = {
-#         'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
-#     }
-
-#     aliases['bReq'] = {
-#         'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
-#     }
-# elif btag_algo == "deepflav":
-#     aliases['bVeto'] = {
-#         'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepFlavB[CleanJet_jetIdx] >  0.0614) == 0'
-#     }        
-    
-#     aliases['bReq'] = {
-#         'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepFlavB[CleanJet_jetIdx] >  0.0614) >= 1'
-#     }
-
-# Flavour definitions
-
-# aliases['SameFlav'] = {
-#     'expr': '(Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)',
-#     'samples': mc
-# }
-
-# aliases['DiffFlav'] = {
-#     'expr': 'Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13',
-#     'samples': mc
-# }
-
-# CR definitions
-
-# aliases['topcr'] = {
-#     'expr': '((zeroJet && !bVeto) || bReq)'
-# }
-
-# aliases['centralVeto'] = {
-#     'expr': 'Sum$(CleanJet_pt > 30 && CleanJet_eta > TMath::Min(CleanJet_eta[0], CleanJet_eta[1]) && CleanJet_eta < TMath::Max(CleanJet_eta[0], CleanJet_eta[1]) && abs(CleanJet_eta - CleanJet_eta[0]) > 1 && abs(CleanJet_eta - CleanJet_eta[1]) > 1) == 0'        
-# }
-
-# aliases['lowZ'] = {
-#     'expr':  '0.5*abs((Lepton_eta[0] + Lepton_eta[1]) - (CleanJet_eta[0] + CleanJet_eta[1])) < 1'        
-# }
-
-# aliases['highZ'] = {
-#     'expr':  '0.5*abs((Lepton_eta[0] + Lepton_eta[1]) - (CleanJet_eta[0] + CleanJet_eta[1])) >= 1'
-# }
-
-# B tag scale factors
-
-#btagSFSource = '%s/src/PhysicsTools/NanoAODTools/data/btagSF/DeepCSV_2016LegacySF_V1.csv' % os.getenv('CMSSW_BASE')
-
-#aliases['Jet_btagSF_shapeFix'] = {
-#    'linesToAdd': [
-#        'gSystem->Load("libCondFormatsBTauObjects.so");',
-#        'gSystem->Load("libCondToolsBTau.so");',
-#        'gSystem->AddIncludePath("-I%s/src");' % os.getenv('CMSSW_RELEASE_BASE'),
-#        '.L %s/patches/btagsfpatch.cc+' % configurations
-#    ],
-#    'class': 'BtagSF',
-#    'args': (btagSFSource,),
-#    'samples': mc
-#}
 if btag_algo == "deepcsv":
     aliases['bVetoSF'] = {
         'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx]+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))',
