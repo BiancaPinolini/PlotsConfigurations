@@ -23,7 +23,19 @@ cuts['sr'] = {
 }    
 
 # Top control region
-cuts['topcr']  = '((zeroJet && !bVeto) || bReq)'
+cuts['topcr']  = {
+   'expr': '((zeroJet && !bVeto) || bReq)'
+   'categories' : {
+      'lowZ'   : 'Zeppll_al < 1', 
+      'highZ'  : 'Zeppll_al >=1',
+    }
+}
 
 # DY control region
-cuts['dycr'] = 'mth < 60 && bVeto && mll < 80'
+cuts['dycr'] = {
+   'expr': 'mth < 60 && bVeto && mll < 80'
+   'categories' : {
+      'lowZ'   : 'Zeppll_al < 1', 
+      'highZ'  : 'Zeppll_al >=1',
+    }
+}

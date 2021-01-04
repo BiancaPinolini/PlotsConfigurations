@@ -53,10 +53,6 @@ protected:
   TTreeReaderValue<Double_t>* qgl_central{};
   FloatValueReader* mtw1{};
   FloatValueReader* mtw2{};
-
-
-
-  // TTreeReaderValue<Double_t>* Zeppll_al{};
   
 };
 
@@ -102,16 +98,6 @@ MVAReader_highZ::evaluate(unsigned)
 
   return dnn_tensorflow->analyze(input);
 
-  // float output = 0;
-
-  // if(*(Zeppll_al->Get()) >=1) {
-  //   // std::cout << *(Zeppll_al->Get()) << "; " << dnn_tensorflow->analyze(input) << std::endl;
-  //   return dnn_tensorflow->analyze(input);
-  // } else {
-  //   // std::cout << *(Zeppll_al->Get()) << "; -1" << std::endl;
-  //   return -1.;
-  // }
-
 }
 
 void
@@ -136,10 +122,6 @@ MVAReader_highZ::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(qgl_central, "qgl_central");
   _library.bindBranch(mtw1, "mtw1");
   _library.bindBranch(mtw2, "mtw2");
-
-
-
-  // _library.bindBranch(Zeppll_al, "Zeppll_al");
 }
 
 

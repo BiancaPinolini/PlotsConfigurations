@@ -147,7 +147,7 @@ aliases['top_cr'] = {
 }
 
 
-## DNN
+# ## DNN
 
 aliases['cut_index'] = {
     'expr': '1'
@@ -158,7 +158,7 @@ models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
 aliases['DNNoutput_lowZ'] = {
     'class': 'MVAReader_lowZ',
-    'args': ( models_path +'/sr/models/' + model_lowZ, False, 1),
+    'args': ( models_path +'/sr/models/' + model_lowZ, True, 1),
     'linesToAdd':[
         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
         'gSystem->Load("libDNNEvaluator.so")',
