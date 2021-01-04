@@ -9,18 +9,11 @@
 #
 
 
-groupPlot['Higgs']  = {
-                  'nameHR' : 'Higgs',
+groupPlot['top']  = {  
+                  'nameHR' : 'tW and t#bar{t}',
                   'isSignal' : 0,
-                  'color': 632, # kRed 
-                  'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','ttH_hww']
-              }
-
-groupPlot['Multiboson']  = {  
-                  'nameHR' : 'Multiboson',
-                  'isSignal' : 0,
-                  'color': 617, # kViolet + 1  
-                  'samples'  : ['VVV', 'VZ', 'Vg', 'VgS_H', 'VgS_L']
+                  'color': 400,   # kYellow
+                  'samples'  : ['top']
               }
 
 groupPlot['WW']  = {  
@@ -29,37 +22,48 @@ groupPlot['WW']  = {
                   'color': 851, # kAzure -9 
                   'samples'  : ['WW', 'ggWW']
               }
-groupPlot['DY']  = {  
-                  'nameHR' : "DY QCD and EWK",
-                  'isSignal' : 0,
-                  'color': 418,    # kGreen+2
-                  'samples'  : ['DY','Dyemb', 'Zjj']
-              }              
 groupPlot['Fake']  = {
                   'nameHR' : 'nonprompt',
                   'isSignal' : 0,
                   'color': 921,    # kGray + 1
                   'samples'  : ['Fake_m', 'Fake_e']
 }
-
-
-groupPlot['top']  = {  
-                  'nameHR' : 'tW and t#bar{t}',
+groupPlot['Multiboson']  = {  
+                  'nameHR' : 'Multiboson',
                   'isSignal' : 0,
-                  'color': 400,   # kYellow
-                  'samples'  : ['top']
+                  'color': 617, # kViolet + 1  
+                  'samples'  : ['VVV', 'VZ', 'Vg', 'VgS_H', 'VgS_L']
               }
+
+groupPlot['DY']  = {  
+                  'nameHR' : "DY QCD and EWK",
+                  'isSignal' : 0,
+                  'color': 418,    # kGreen+2
+                  'samples'  : ['DY','Dyemb', 'Zjj']
+              } 
+
+groupPlot['Higgs']  = {
+                  'nameHR' : 'Higgs',
+                  'isSignal' : 0,
+                  'color': 632, # kRed 
+                  'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','ttH_hww']
+              }
+
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
-                  'isSignal' : 1,
+                  'isSignal' : 2,
                   'color': 888, #666,
                   'samples'  : ['WWewk']#,'qqH_hww', 'ZH_hww', 'WH_hww', ']
               }
 
+
+
+
+
 #plot = {}
 
 # keys here must match keys in samples.py    
-                    
+#                    
 plot['DY']  = {  
                   'color': 418,    # kGreen+2
                   'isSignal' : 0,
@@ -73,13 +77,12 @@ plot['Dyemb']  = {
                   'isData'   : 0, 
                   'scale'    : 1.0,
               }
-
 plot['Zjj']  = {  
                   'color': 600,    # kBlue
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
-              }              
+              }                
 plot['Fake_m']  = {  
                   'color': 921,    # kGray + 1
                   'isSignal' : 0,
@@ -204,25 +207,6 @@ plot['ggH_hww'] = {
                   'isData'   : 0,    
                   'scale'    : 1    #
                   }
-
-plot['ttH_hww'] = {
-                 'nameHR' : 'ttH',
-                 'color': 632+6, # kRed+6
-                 'isSignal' : 1,
-                 'isData'   : 0,
-                 'scale'    : 1    #
-                 }
-
-
-# data
-
-plot['DATA']  = { 
-                  'nameHR' : 'Data',
-                  'color': 1 ,  
-                  'isSignal' : 0,
-                  'isData'   : 1 ,
-                  'isBlind'  : 0
-              }
 
 
 
