@@ -4,15 +4,17 @@ cd /afs/cern.ch/user/b/bpinolin/CMSSW_8_1_0/
 eval `scramv1 runtime -sh`
 cd -
 
-date=210104
+date=210115
 workDir=/afs/cern.ch/user/b/bpinolin/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2016/comb_v7/datacards
     
 points=(
-10
-15
-20
-25
-30
+    10
+    15
+    20
+    25
+    30
+    35
+    40
 )
 
 for pi in "${points[@]}"

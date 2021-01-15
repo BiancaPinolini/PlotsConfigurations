@@ -19,8 +19,8 @@ btag_algo="deepflav"#deepcsv
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_lowZ = 'lowZ/v3_plus/'
-model_highZ = 'highZ/v3_plus/'
+model_lowZ = 'DNN_WW/lowZ/'
+model_highZ = 'DNN_WW/highZ/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {

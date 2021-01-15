@@ -1,10 +1,10 @@
 # example of configuration file
 
-tag = 'DNN_2016_v7'
+tag = 'DNN_2016_WW'
 outputDir = 'RootFiles'
 treeName = 'Events'
 
-date='210104'
+date='210115'
 
 # luminosity to normalize to
 lumi = 35.867
@@ -22,14 +22,14 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of plot
-plotFile = 'plot/plot_sr.py'
+plotFile = 'plot/plot_dycr.py'
 
 # file with list of nuisances
 nuisancesFile = 'nuisances.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/v3_plus_v7/2016/'
+outputDirPlots = '/eos/home-b/bpinolin/www/VBSOS/DNN_WW/2016/'
 
 # used by mkDatacards to define output directory for datacards
 outputDirDatacard = 'datacards/'+date+'/'
