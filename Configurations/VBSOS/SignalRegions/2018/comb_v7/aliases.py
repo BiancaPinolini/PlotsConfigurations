@@ -22,8 +22,8 @@ btag_algo="deepflav"#deepcsv
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_lowZ = 'lowZ/v3_plus/'
-model_highZ = 'highZ/v3_plus/'
+model_lowZ = 'new_DNN/lowZ/'
+model_highZ = 'new_DNN/highZ/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
@@ -121,11 +121,11 @@ if btag_algo == "deepcsv":
   }
 elif btag_algo == "deepflav":
     aliases['bVeto'] = {
-        'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepFlavB[CleanJet_jetIdx] >   0.2770) == 0' # medium 0.2770 loose 0.0494
+        'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepFlavB[CleanJet_jetIdx] >   0.0494) == 0' # medium 0.2770 loose 0.0494
     }        
     
     aliases['bReq'] = {
-        'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepFlavB[CleanJet_jetIdx] >   0.2770) >= 1'
+        'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepFlavB[CleanJet_jetIdx] >   0.0494) >= 1'
     }
 
 ################################

@@ -230,7 +230,7 @@ samples['WW'] = {
 }
 
 samples['WWewk'] = {
-        'name': nanoGetSampleFiles(mcDirectory, 'WpWmJJ_EWK_noTop'),
+    'name': nanoGetSampleFiles(mcDirectory, 'WpWmJJ_EWK_noTop'),
     'weight': mcCommonWeight+embed_tautauveto + '*(Sum$(abs(GenPart_pdgId)==6 || GenPart_pdgId==25)==0)', #filter tops and Higgs
     'FilesPerJob': 4
 }
