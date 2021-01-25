@@ -7,8 +7,7 @@ supercut = '   mll>50 \
             && ptll>30 \
             && (MET_pt > 20 || PuppiMET_pt > 20) \
             && Alt$(Lepton_pdgId[0]*Lepton_pdgId[1],0)==-11*13 \
-            && mjj > 220 \
-            && detajj > 2 \
+            && mjj > 300 && detajj > 2.5 \
             && Alt$(CleanJet_pt[0],0.)>30 && Alt$(CleanJet_pt[1],0.)>30 \
            '
 

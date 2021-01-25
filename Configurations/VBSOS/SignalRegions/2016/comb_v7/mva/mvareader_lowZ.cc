@@ -49,7 +49,7 @@ protected:
   FloatValueReader* mjj{};
   // TTreeReaderValue<Double_t>* Zepp1{};
   // TTreeReaderValue<Double_t>* Zepp2{};
-  TTreeReaderValue<Double_t>* qgl_forward{};
+  // TTreeReaderValue<Double_t>* qgl_forward{};
   TTreeReaderValue<Double_t>* qgl_central{};
   // FloatValueReader* mtw1{};
   // FloatValueReader* mtw2{};
@@ -90,7 +90,7 @@ MVAReader_lowZ::evaluate(unsigned)
   // input.push_back( *(dR_jl2->Get()) );
   // input.push_back( *(Zepp1->Get()) );
   // input.push_back( *(Zepp2->Get()) );
-  input.push_back( *(qgl_forward->Get()) );
+  // input.push_back( *(qgl_forward->Get()) );
   input.push_back( *(qgl_central->Get()) );
   // input.push_back( *(mtw1->Get()) );
   // input.push_back( *(mtw2->Get()) );
@@ -116,7 +116,7 @@ MVAReader_lowZ::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(mjj, "mjj");
   // _library.bindBranch(Zepp1, "Zepp1_al");
   // _library.bindBranch(Zepp2, "Zepp2_al");
-  _library.bindBranch(qgl_forward, "qgl_forward");
+  // _library.bindBranch(qgl_forward, "qgl_forward");
   _library.bindBranch(qgl_central, "qgl_central");
   // _library.bindBranch(mtw1, "mtw1");
   // _library.bindBranch(mtw2, "mtw2");
