@@ -113,7 +113,7 @@ if useEmbeddedDY:
   embed_tautauveto = '*embed_tautauveto'
 
 if useEmbeddedDY:
-  # Actual embedded data
+#   Actual embedded data
   samples['Dyemb'] = {
     'name': [],
     'weight': 'METFilter_DATA*LepWPCut*Muon_ttHMVA_SF*embedtotal*genWeight',
@@ -128,7 +128,7 @@ if useEmbeddedDY:
       samples['Dyemb']['weights'].extend(['Trigger_ElMu'] * len(files))
 
   if runDYveto:
-      # Vetoed MC: Needed for uncertainty
+    #   Vetoed MC: Needed for uncertainty
       files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu_PSWeights') + \
           nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop') + \
           nanoGetSampleFiles(mcDirectory, 'ST_tW_top') + \
@@ -208,7 +208,7 @@ samples['Zjj'] = {
 
 ###### Top #######
 
-files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu_PSWeights') + \
+files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
     nanoGetSampleFiles(mcDirectory, 'ST_s-channel') + \
     nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop') + \
     nanoGetSampleFiles(mcDirectory, 'ST_t-channel_top') + \
@@ -221,7 +221,7 @@ samples['top'] = {
     'FilesPerJob': 1,
 }
 
-addSampleWeight(samples,'top','TTTo2L2Nu_PSWeights','Top_pTrw')
+addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
 
 ###### WW ########
 '''
@@ -254,7 +254,7 @@ samples['ggWW'] = {
     'FilesPerJob': 10
 }
 
-######## Vg ########
+# ######## Vg ########
 
 files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
     nanoGetSampleFiles(mcDirectory, 'ZGToLLG')
