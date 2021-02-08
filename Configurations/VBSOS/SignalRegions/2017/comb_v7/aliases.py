@@ -20,8 +20,8 @@ btag_algo="deepflav"#deepcsv
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-model_lowZ = 'new_DNN/lowZ/'
-model_highZ = 'new_DNN/highZ/'
+# model_lowZ = 'new_DNN/lowZ/'
+model_highZ = 'new_DNN/highZ/vers2/v4/'
 
 # distance between lepton and jet
 aliases['R_j1l1'] = {
@@ -159,15 +159,15 @@ aliases['cut_index'] = {
 mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/comb_v7/mva/'
 models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
-aliases['DNNoutput_lowZ'] = {
-    'class': 'MVAReader_lowZ',
-    'args': ( models_path +'/sr/models/' + model_lowZ, False, 1),
-    'linesToAdd':[
-        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-        'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mvareader_lowZ.cc+', 
-    ],
-}
+# aliases['DNNoutput_lowZ'] = {
+#     'class': 'MVAReader_lowZ',
+#     'args': ( models_path +'/sr/models/' + model_lowZ, False, 1),
+#     'linesToAdd':[
+#         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+#         'gSystem->Load("libDNNEvaluator.so")',
+#         '.L ' + mva_reader_path + 'mvareader_lowZ.cc+', 
+#     ],
+# }
 
 aliases['DNNoutput_highZ'] = {
     'class': 'MVAReader_highZ',
@@ -179,9 +179,9 @@ aliases['DNNoutput_highZ'] = {
     ],
 }
 
-aliases['DNNoutput'] = {
-     'expr': '(Zeppll_al < 1)*(DNNoutput_lowZ) + (Zeppll_al >= 1)*(DNNoutput_highZ)'
- }
+# aliases['DNNoutput'] = {
+#      'expr': '(Zeppll_al < 1)*(DNNoutput_lowZ) + (Zeppll_al >= 1)*(DNNoutput_highZ)'
+#  }
 
 ###### END ######
 

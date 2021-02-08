@@ -38,7 +38,7 @@ protected:
   FloatValueReader* detajj{};
   FloatValueReader* ptll{};
   // TTreeReaderValue<Double_t>* detall{};
-  TTreeReaderValue<Double_t>* jetpt1{};
+  // TTreeReaderValue<Double_t>* jetpt1{};
   // TTreeReaderValue<Double_t>* jetpt2{};
   // FloatValueReader* met{};
   // FloatValueReader* dphill{};
@@ -47,9 +47,9 @@ protected:
   // TTreeReaderValue<Double_t>* dR_jl1{};
   // TTreeReaderValue<Double_t>* dR_jl2{};
   FloatValueReader* mjj{};
-  // TTreeReaderValue<Double_t>* Zepp1{};
-  // TTreeReaderValue<Double_t>* Zepp2{};
-  // TTreeReaderValue<Double_t>* qgl_forward{};
+  TTreeReaderValue<Double_t>* Zepp1{};
+  TTreeReaderValue<Double_t>* Zepp2{};
+  TTreeReaderValue<Double_t>* qgl_forward{};
   TTreeReaderValue<Double_t>* qgl_central{};
   // FloatValueReader* mtw1{};
   // FloatValueReader* mtw2{};
@@ -77,10 +77,12 @@ MVAReader_highZ::evaluate(unsigned)
   std::vector<float> input{};
 
   input.push_back( *(mjj->Get()) );
-  input.push_back( *(jetpt1->Get()) );
-  // input.push_back( *(jetpt2->Get()) );
   input.push_back( TMath::Abs(*(detajj->Get())));
   input.push_back( *(ptll->Get()) );
+  input.push_back( *(qgl_forward->Get()) );
+  input.push_back( *(qgl_central->Get()) );
+  // input.push_back( *(jetpt1->Get()) );
+  // input.push_back( *(jetpt2->Get()) );
   // input.push_back( *(detall->Get()) );
   // input.push_back( *(met->Get()) );
   // input.push_back( TMath::Abs(*(dphill->Get())));
@@ -88,10 +90,8 @@ MVAReader_highZ::evaluate(unsigned)
   // input.push_back( *(Mll->Get()) );
   // input.push_back( *(dR_jl1->Get()) );
   // input.push_back( *(dR_jl2->Get()) );
-  // input.push_back( *(Zepp1->Get()) );
-  // input.push_back( *(Zepp2->Get()) );
-  // input.push_back( *(qgl_forward->Get()) );
-  input.push_back( *(qgl_central->Get()) );
+  input.push_back( *(Zepp1->Get()) );
+  input.push_back( *(Zepp2->Get()) );
   // input.push_back( *(mtw1->Get()) );
   // input.push_back( *(mtw2->Get()) );
 
@@ -107,7 +107,7 @@ MVAReader_highZ::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(detajj, "detajj");
   _library.bindBranch(ptll, "ptll");
   // _library.bindBranch(detall, "detall_al");
-  _library.bindBranch(jetpt1, "jetpt1_al");
+  // _library.bindBranch(jetpt1, "jetpt1_al");
   // _library.bindBranch(jetpt2, "jetpt2_al");
   // _library.bindBranch(met, "MET_pt");
   // _library.bindBranch(dphill, "dphill");
@@ -116,9 +116,9 @@ MVAReader_highZ::bindTree_(multidraw::FunctionLibrary& _library)
   // _library.bindBranch(dR_jl1, "dR_jl1_al");
   // _library.bindBranch(dR_jl2, "dR_jl2_al");
   _library.bindBranch(mjj, "mjj");
-  // _library.bindBranch(Zepp1, "Zepp1_al");
-  // _library.bindBranch(Zepp2, "Zepp2_al");
-  // _library.bindBranch(qgl_forward, "qgl_forward");
+  _library.bindBranch(Zepp1, "Zepp1_al");
+  _library.bindBranch(Zepp2, "Zepp2_al");
+  _library.bindBranch(qgl_forward, "qgl_forward");
   _library.bindBranch(qgl_central, "qgl_central");
   // _library.bindBranch(mtw1, "mtw1");
   // _library.bindBranch(mtw2, "mtw2");

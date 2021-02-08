@@ -84,7 +84,7 @@ groupPlot['top']  = {
 
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
-                  'isSignal' : 2,
+                  'isSignal' : 1,
                   'color': 888, #666,
                   'samples'  : ['WWewk']#,'qqH_hww', 'ZH_hww', 'WH_hww', ']
               }
@@ -147,7 +147,7 @@ plot['ggWW']  = {
 
 plot['WWewk']  = {
                   'color': 888, # kAzure -9 
-                  'isSignal' : 2,
+                  'isSignal' : 1,
                   'isData'   : 0,
                   'scale'    : 1.0   # ele/mu trigger efficiency   datadriven
                   }

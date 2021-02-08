@@ -129,8 +129,7 @@ if useEmbeddedDY:
 
   if runDYveto:
     #   Vetoed MC: Needed for uncertainty
-      files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu_PSWeights') + \
-          nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop') + \
+      files = nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop') + \
           nanoGetSampleFiles(mcDirectory, 'ST_tW_top') + \
           nanoGetSampleFiles(mcDirectory, 'WpWmJJ_QCD_noTop') + \
           nanoGetSampleFiles(mcDirectory, 'WpWmJJ_EWK_noTop') + \
@@ -149,7 +148,6 @@ if useEmbeddedDY:
           'FilesPerJob': 1, # There's some error about not finding sample-specific variables like "nllW" when mixing different samples into a single job; so split them all up instead
       }
     
-      addSampleWeight(samples, 'Dyveto', 'TTTo2L2Nu_PSWeights', mcCommonWeight + '*((topGenPt * antitopGenPt > 0.) * (TMath::Sqrt((0.103*TMath::Exp(-0.0118*topGenPt) - 0.000134*topGenPt + 0.973) * (0.103*TMath::Exp(-0.0118*antitopGenPt) - 0.000134*antitopGenPt + 0.973))) + (topGenPt * antitopGenPt <= 0.))')
       addSampleWeight(samples, 'Dyveto', 'ST_tW_antitop', mcCommonWeight)
       addSampleWeight(samples, 'Dyveto', 'ST_tW_top', mcCommonWeight)
       addSampleWeight(samples, 'Dyveto', 'WpWmJJ_QCD_noTop', mcCommonWeight + '*(Sum$(abs(GenPart_pdgId)==6 || GenPart_pdgId==25)==0)')
