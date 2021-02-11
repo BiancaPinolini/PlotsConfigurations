@@ -235,6 +235,9 @@ samples['WWewk'] = {
     'FilesPerJob': 4
 }
 
+signals = []
+signals.append('WWewk')
+
 # k-factor 1.4 already taken into account in XSWeight
 files = nanoGetSampleFiles(mcDirectory, 'GluGluToWWToENEN') + \
     nanoGetSampleFiles(mcDirectory, 'GluGluToWWToENMN') + \
@@ -312,7 +315,6 @@ samples['VVV'] = {
 ###########################################
 #############   SIGNALS  ##################
 ###########################################
-signals = []
 
 #### ggH -> WW
 

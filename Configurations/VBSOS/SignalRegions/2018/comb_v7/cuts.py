@@ -18,13 +18,14 @@ supercut = '   mll>50 \
             # && Alt$(CleanJet_pt[1], 0) > 30. \
 
 ##signal region
-cuts['sr'] = {
-   'expr': 'bVeto && mth > 60',
-   'categories' : {
-      'lowZ'   : 'Zeppll_al < 1', 
-      'highZ'  : 'Zeppll_al >=1',
-    }
-}    
+# cuts['sr'] = {
+#    'expr': 'bVeto && mth > 60',
+#    'categories' : {
+#       'lowZ'   : 'Zeppll_al < 1', 
+#       'highZ'  : 'Zeppll_al >=1',
+#     }
+# }    
+cuts['sr_lowZ'] = 'bVeto && mth > 60 && Zeppll_al <1'
 
 # Top control region
 cuts['topcr']  = '((zeroJet && !bVeto) || bReq)'
