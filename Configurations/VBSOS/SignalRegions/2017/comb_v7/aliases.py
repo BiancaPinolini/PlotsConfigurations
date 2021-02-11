@@ -20,30 +20,30 @@ btag_algo="deepflav"#deepcsv
 ###### START ######
 
 # AGGIORNARE VERSIONE DEL MODELLO IN ANALISI
-# model_lowZ = 'new_DNN/lowZ/'
-model_highZ = 'new_DNN/highZ/vers2/v4/'
+model_lowZ = 'new_DNN/lowZ/v0/'
+model_highZ = 'new_DNN/highZ/vers3/v9/'
 
 # distance between lepton and jet
-aliases['R_j1l1'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
-}
+# aliases['R_j1l1'] = {
+#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
+# }
 
-aliases['R_j2l1'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
-}
+# aliases['R_j2l1'] = {
+#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
+# }
 
-aliases['R_j1l2'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
-}
+# aliases['R_j1l2'] = {
+#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
+# }
 
-aliases['R_j2l2'] = {
-        'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
-}
+# aliases['R_j2l2'] = {
+#         'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
+# }
 
 # TRAINING VARIABLES
-aliases['detall_al'] = {
-    'expr': 'TMath::Abs(Alt$(Lepton_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.))'
-}
+# aliases['detall_al'] = {
+#     'expr': 'TMath::Abs(Alt$(Lepton_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.))'
+# }
 aliases['jetpt1_al'] = {
     'expr': 'Alt$(CleanJet_pt[0],-9999.)'
 }
@@ -56,16 +56,16 @@ aliases['eta1_al'] = {
 aliases['eta2_al'] = {
     'expr': 'Alt$(Lepton_eta[1],-9999.)'
 }
-aliases['dphijj_al'] = {
-    'expr': 'TMath::Abs(Alt$(CleanJet_phi[0],-9999.)-Alt$(CleanJet_phi[1],-9999.))'
-}
+# aliases['dphijj_al'] = {
+#     'expr': 'TMath::Abs(Alt$(CleanJet_phi[0],-9999.)-Alt$(CleanJet_phi[1],-9999.))'
+# }
 
-aliases['dR_jl1_al'] = {
-    'expr': '(R_j1l1 < R_j2l1)*R_j1l1+(R_j1l1 >= R_j2l1)*R_j2l1'
-}
-aliases['dR_jl2_al'] = {
-    'expr': '(R_j1l2 < R_j2l2)*R_j1l2+(R_j1l2 >= R_j2l2)*R_j2l2'
-}
+# aliases['dR_jl1_al'] = {
+#     'expr': '(R_j1l1 < R_j2l1)*R_j1l1+(R_j1l1 >= R_j2l1)*R_j2l1'
+# }
+# aliases['dR_jl2_al'] = {
+#     'expr': '(R_j1l2 < R_j2l2)*R_j1l2+(R_j1l2 >= R_j2l2)*R_j2l2'
+# }
 
 aliases['Zeppll_al'] = {
     'expr' : '0.5*TMath::Abs((Alt$(Lepton_eta[0],-9999.)+Alt$(Lepton_eta[1],-9999.))-(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.)))'
@@ -78,34 +78,34 @@ aliases['Zepp2_al'] = {
     'expr' : 'Alt$(Lepton_eta[1],-9999.)-0.5*(Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))'
 }
 
-aliases['btag_central_al'] = {
-    'expr': ' (TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) <= TMath::Abs(Alt$(CleanJet_eta[1],-9999.)))* Alt$(Jet_btagDeepB[CleanJet_jetIdx[0]], -9999.)  + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) < TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_btagDeepB[CleanJet_jetIdx[1]], -9999.)'
-}
+# aliases['btag_central_al'] = {
+#     'expr': ' (TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) <= TMath::Abs(Alt$(CleanJet_eta[1],-9999.)))* Alt$(Jet_btagDeepB[CleanJet_jetIdx[0]], -9999.)  + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) < TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_btagDeepB[CleanJet_jetIdx[1]], -9999.)'
+# }
 
-aliases['btag_forward_al']  = {
-    'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_btagDeepB[CleanJet_jetIdx[0]], -9999.) + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_btagDeepB[CleanJet_jetIdx[1]], -9999.)'
-}
+# aliases['btag_forward_al']  = {
+#     'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(Jet_btagDeepB[CleanJet_jetIdx[0]], -9999.) + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(Jet_btagDeepB[CleanJet_jetIdx[1]], -9999.)'
+# }
 
 ## QGL REMORPHING
-morphing_file = "/afs/cern.ch/user/d/dvalsecc/public/qgl_morphing/morphing_functions_final_2018.root"
-qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/comb_v7/macro/'
+# morphing_file = "/afs/cern.ch/user/d/dvalsecc/public/qgl_morphing/morphing_functions_final_2018.root"
+# qgl_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/comb_v7/macro/'
 
-aliases['CleanJet_qgl_morphed'] = {
-    'class': 'QGL_morphing',
-    'args': (morphing_file),
-     'linesToAdd' : [
-        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-        '.L ' + qgl_reader_path + 'qgl_morphing.cc+',
-        ] 
-}
+# aliases['CleanJet_qgl_morphed'] = {
+#     'class': 'QGL_morphing',
+#     'args': (morphing_file),
+#      'linesToAdd' : [
+#         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+#         '.L ' + qgl_reader_path + 'qgl_morphing.cc+',
+#         ] 
+# }
 
-aliases['qgl_central'] = {
-    'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) <= TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(CleanJet_qgl_morphed[0],-9999.) + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) < TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(CleanJet_qgl_morphed[1],-9999.)'
-}
+# aliases['qgl_central'] = {
+#     'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) <= TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(CleanJet_qgl_morphed[0],-9999.) + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) < TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(CleanJet_qgl_morphed[1],-9999.)'
+# }
                         
-aliases['qgl_forward'] = {
-    'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(CleanJet_qgl_morphed[0],-9999.) + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(CleanJet_qgl_morphed[1],-9999.)'
-}
+# aliases['qgl_forward'] = {
+#     'expr'  : '(TMath::Abs(Alt$(CleanJet_eta[0],-9999.)) > TMath::Abs(Alt$(CleanJet_eta[1],-9999.))) * Alt$(CleanJet_qgl_morphed[0],-9999.) + (TMath::Abs(Alt$(CleanJet_eta[1],-9999.)) >= TMath::Abs(Alt$(CleanJet_eta[0],-9999.))) * Alt$(CleanJet_qgl_morphed[1],-9999.)'
+# }
 
 ## Variables for DNN
 # Jet bins
@@ -159,15 +159,15 @@ aliases['cut_index'] = {
 mva_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/comb_v7/mva/'
 models_path = '/eos/home-b/bpinolin/ML_output/VBSOS'
 
-# aliases['DNNoutput_lowZ'] = {
-#     'class': 'MVAReader_lowZ',
-#     'args': ( models_path +'/sr/models/' + model_lowZ, False, 1),
-#     'linesToAdd':[
-#         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-#         'gSystem->Load("libDNNEvaluator.so")',
-#         '.L ' + mva_reader_path + 'mvareader_lowZ.cc+', 
-#     ],
-# }
+aliases['DNNoutput_lowZ'] = {
+    'class': 'MVAReader_lowZ',
+    'args': ( models_path +'/sr/models/' + model_lowZ, False, 1),
+    'linesToAdd':[
+        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+        'gSystem->Load("libDNNEvaluator.so")',
+        '.L ' + mva_reader_path + 'mvareader_lowZ.cc+', 
+    ],
+}
 
 aliases['DNNoutput_highZ'] = {
     'class': 'MVAReader_highZ',
@@ -179,9 +179,9 @@ aliases['DNNoutput_highZ'] = {
     ],
 }
 
-# aliases['DNNoutput'] = {
-#      'expr': '(Zeppll_al < 1)*(DNNoutput_lowZ) + (Zeppll_al >= 1)*(DNNoutput_highZ)'
-#  }
+aliases['DNNoutput'] = {
+     'expr': '(Zeppll_al < 1)*(DNNoutput_lowZ) + (Zeppll_al >= 1)*(DNNoutput_highZ)'
+ }
 
 ###### END ######
 

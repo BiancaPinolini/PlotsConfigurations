@@ -4,7 +4,7 @@ cd /afs/cern.ch/user/b/bpinolin/CMSSW_8_1_0/
 eval `scramv1 runtime -sh`
 cd -
 
-date=210208
+date=210209
 workDir=/afs/cern.ch/user/b/bpinolin/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/VBSOS/SignalRegions/2017/comb_v7/datacards
     
 points=(
@@ -19,7 +19,7 @@ points=(
 
 for pi in "${points[@]}"
 do
-    var=DNNoutput_highZ_${pi}
+    var=DNNoutput_${pi}
 
     datacardDir=${workDir}/${date}
     workspaceDir=${datacardDir}/workspace
@@ -27,7 +27,8 @@ do
     cd $workDir
     output=combine_${var}
 
-    combineCards.py   sr_highZ=${datacardDir}/sr_highZ/${var}/datacard.txt \
+    combineCards.py   sr_lowZ=${datacardDir}/sr_lowZ/${var}/datacard.txt \
+                      sr_highZ=${datacardDir}/sr_highZ/${var}/datacard.txt \
                       topcr=${datacardDir}/topcr/events/datacard.txt \
                       dycr=${datacardDir}/dycr/events/datacard.txt \
     > ${workspaceDir}/${output}.txt
